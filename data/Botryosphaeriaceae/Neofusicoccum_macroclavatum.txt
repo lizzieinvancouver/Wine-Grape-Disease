@@ -1,0 +1,4 @@
+"Eucalyptus globulus: Australia - 44874, 46936, 48836, 49731, 50111, 50744, 51025, 51616, 51930, 51944, 52134, 53041,"
+"Eucalyptus saligna Australia - 51930, 53041,"
+"Vaccinium sp. Australia - 53042,"
+"Vitis vinifera New Zealand - 44874, 48830, 51930, 52304, 53043,"

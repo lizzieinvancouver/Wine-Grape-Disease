@@ -1,0 +1,114 @@
+NgenusNspec	PgenusPspec
+Tylenchorhynchus clarus	Agrostis sp. L.
+Tylenchorhynchus clarus	Allium sativum L.
+Tylenchorhynchus clarus	Alopecurus sp. L.
+Tylenchorhynchus clarus	Amaranthus sp. L.
+Tylenchorhynchus clarus	Arctostaphylos sp. Adans.
+Tylenchorhynchus clarus	Asparagus officinalis L.
+Tylenchorhynchus clarus	Aster sp.
+Tylenchorhynchus clarus	Astragalus sp. L.
+Tylenchorhynchus clarus	Avena sativa L.
+Tylenchorhynchus clarus	Baccharis emoryi A. Gray
+Tylenchorhynchus clarus	Baccharis sp. L.
+Tylenchorhynchus clarus	Bambusa sp. Schreber.
+Tylenchorhynchus clarus	Beta vulgaris L.
+Tylenchorhynchus clarus	Brassica oleracea Mill.
+Tylenchorhynchus clarus	Brassica rapa L.
+Tylenchorhynchus clarus	Brassica sp.
+Tylenchorhynchus clarus	Cactaceae sp. Juss.
+Tylenchorhynchus clarus	Capsicum frutescens L.
+Tylenchorhynchus clarus	Carthamus tinctorius L.
+Tylenchorhynchus clarus	Chrysanthemum frutescens L.
+Tylenchorhynchus clarus	Chrysanthemum sp. L.
+Tylenchorhynchus clarus	Cicer arietinum L.
+Tylenchorhynchus clarus	Cichorium endivia L.
+Tylenchorhynchus clarus	Citrus limon Burm.
+Tylenchorhynchus clarus	Citrus sinensis (L.) Osbeck
+Tylenchorhynchus clarus	Citrus sp.
+Tylenchorhynchus clarus	Cucumis melo Naud.
+Tylenchorhynchus clarus	Cucumis sativus L.
+Tylenchorhynchus clarus	Cucurbita sp. L.
+Tylenchorhynchus clarus	Cupressus sempervirens L.
+Tylenchorhynchus clarus	Cynara scolymus L.
+Tylenchorhynchus clarus	Cynodon dactylon Pers.
+Tylenchorhynchus clarus	Dahlia sp.
+Tylenchorhynchus clarus	Daucus carota L.
+Tylenchorhynchus clarus	Dichondra sp. J. R. Forst. & G. Forst.
+Tylenchorhynchus clarus	Eriobotrya japonica Lindl.
+Tylenchorhynchus clarus	Eucalyptus sp. L'Her
+Tylenchorhynchus clarus	Eucalyptus tereticornis Sm.
+Tylenchorhynchus clarus	Ficus sp. L.
+Tylenchorhynchus clarus	Fragaria chiloensis Duchesne
+Tylenchorhynchus clarus	Glycine max (L.) Merr.
+Tylenchorhynchus clarus	Gossypium hirsutum L.
+Tylenchorhynchus clarus	Hedera sp. L.
+Tylenchorhynchus clarus	Helianthus annuus L.
+Tylenchorhynchus clarus	Hordeum vulgare L.
+Tylenchorhynchus clarus	Hymenoclea salsola T. & G.
+Tylenchorhynchus clarus	Hystrix californica Kuntze
+Tylenchorhynchus clarus	Ilex sp. L.
+Tylenchorhynchus clarus	Ipomoea sp. L.
+Tylenchorhynchus clarus	Iris sp. L.
+Tylenchorhynchus clarus	Juglans sp.
+Tylenchorhynchus clarus	Juniperus sp. L.
+Tylenchorhynchus clarus	Lactuca sativa L.
+Tylenchorhynchus clarus	Lolium sp. L.
+Tylenchorhynchus clarus	Macadamia sp. F. J. Muell.
+Tylenchorhynchus clarus	Malus sylvestris Mill.
+Tylenchorhynchus clarus	Medicago sativa L.
+Tylenchorhynchus clarus	Musa sp. L.
+Tylenchorhynchus clarus	Nerine sp. Herbert
+Tylenchorhynchus clarus	Nicotiana sp. L.
+Tylenchorhynchus clarus	Olea europaea L.
+Tylenchorhynchus clarus	Oryza sativa L.
+Tylenchorhynchus clarus	Palmaceae sp.
+Tylenchorhynchus clarus	Pennisetum clandestinum Hochst. ex Chiov.
+Tylenchorhynchus clarus	Persea americana Mill.
+Tylenchorhynchus clarus	Petunia sp. Juss.
+Tylenchorhynchus clarus	Phaseolus limensis Macf.
+Tylenchorhynchus clarus	Phaseolus sp. L.
+Tylenchorhynchus clarus	Phaseolus vulgaris L.
+Tylenchorhynchus clarus	Philodendron sp. Schott.
+Tylenchorhynchus clarus	Picea sp. A. Dietr.
+Tylenchorhynchus clarus	Pimpinella anisum L.
+Tylenchorhynchus clarus	Pinus sp. L.
+Tylenchorhynchus clarus	Pisum sativum L.
+Tylenchorhynchus clarus	Platanus sp. L.
+Tylenchorhynchus clarus	Pluchea sericea Cov.
+Tylenchorhynchus clarus	Poa sp. L.
+Tylenchorhynchus clarus	Polygonum aviculare L.
+Tylenchorhynchus clarus	Populus sp. L.
+Tylenchorhynchus clarus	Prunus armeniaca L.
+Tylenchorhynchus clarus	Prunus avium L.
+Tylenchorhynchus clarus	Prunus domestica L.
+Tylenchorhynchus clarus	Prunus dulcis D.A. Webb
+Tylenchorhynchus clarus	Prunus persica C.K. Schneid.
+Tylenchorhynchus clarus	Punica granatum L.
+Tylenchorhynchus clarus	Pyrus communis L.
+Tylenchorhynchus clarus	Raphanus raphanistrum L.
+Tylenchorhynchus clarus	Rhododendron sp. L.
+Tylenchorhynchus clarus	Ribes sp. L.
+Tylenchorhynchus clarus	Rosa sp. L.
+Tylenchorhynchus clarus	Rubus sp.
+Tylenchorhynchus clarus	Saccharum officinarum L.
+Tylenchorhynchus clarus	Salsola kali
+Tylenchorhynchus clarus	Salvia sp. L.
+Tylenchorhynchus clarus	Schinus polygamus Cabr.
+Tylenchorhynchus clarus	Scirpus acutus
+Tylenchorhynchus clarus	Scirpus tuberosus
+Tylenchorhynchus clarus	Solanum lycopersicum L.
+Tylenchorhynchus clarus	Solanum sp. L.
+Tylenchorhynchus clarus	Solanum tuberosum L.
+Tylenchorhynchus clarus	Sorghum bicolor Moench.
+Tylenchorhynchus clarus	Sorghum halepense Pers.
+Tylenchorhynchus clarus	Strelitzia sp. Ait.
+Tylenchorhynchus clarus	Tamarix sp. L.
+Tylenchorhynchus clarus	Trifolium sp. L.
+Tylenchorhynchus clarus	Triticum aestivum L.
+Tylenchorhynchus clarus	Typha sp. L.
+Tylenchorhynchus clarus	Ulmus sp. L.
+Tylenchorhynchus clarus	Vigna unguiculata Van Eselt. ex Verdc.; Vigna sinensis
+Tylenchorhynchus clarus	Vitis vinifera L.
+Tylenchorhynchus clarus	Zea mays L.
+Tylenchorhynchus clarus	Zingiber sp. Boehmer.
+Tylenchorhynchus clarus	Zoysia sp.

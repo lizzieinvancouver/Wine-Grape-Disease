@@ -1,0 +1,241 @@
+NgenusNspec	PgenusPspec
+Xiphinema americanum	Lolium multiflorum Lam.
+Xiphinema americanum	Macadamia sp. F. J. Muell.
+Xiphinema americanum	Magnolia sp. L.
+Xiphinema americanum	Malus sylvestris Mill.
+Xiphinema americanum	Mangifera indica L.
+Xiphinema americanum	Medicago sativa L.
+Xiphinema americanum	Mentha spicata L.
+Xiphinema americanum	Mesembryanthemum sp. L.
+Xiphinema americanum	Mespilus sp. L.
+Xiphinema americanum	Morus sp. L.
+Xiphinema americanum	Musa sp. L.
+Xiphinema americanum	Muscadinia rotundifolia Michx.
+Xiphinema americanum	Nerium oleander L.
+Xiphinema americanum	Nicotiana sp. L.
+Xiphinema americanum	Nicotiana tabacum L.
+Xiphinema americanum	Olea europaea L.
+Xiphinema americanum	Oryza sativa L.
+Xiphinema americanum	Paeonia sp. L.
+Xiphinema americanum	Palmaceae sp.
+Xiphinema americanum	Panicum ramosum L.
+Xiphinema americanum	Panicum virgatum L.
+Xiphinema americanum	Pascopyrum smithii
+Xiphinema americanum	Paspalum notatum Flugge.
+Xiphinema americanum	Passiflora sp. L.
+Xiphinema americanum	Pelargonium sp. L'Her.
+Xiphinema americanum	Pernettya sp. Gaud.-Beaup.
+Xiphinema americanum	Persea americana Mill.
+Xiphinema americanum	Phaseolus limensis Macf.
+Xiphinema americanum	Phaseolus sp. L.
+Xiphinema americanum	Phaseolus vulgaris L.
+Xiphinema americanum	Philodendron selloum
+Xiphinema americanum	Philodendron sp. Schott.
+Xiphinema americanum	Picea glauca Voss
+Xiphinema americanum	Picea pungens Engelm.
+Xiphinema americanum	Pinus cubensis
+Xiphinema americanum	Pinus edulis Engelm.
+Xiphinema americanum	Pinus sp. L.
+Xiphinema americanum	Pinus strobus L.
+Xiphinema americanum	Pinus taeda L.
+Xiphinema americanum	Pistacia vera L.
+Xiphinema americanum	Plantago lanceolata L.
+Xiphinema americanum	Platanus sp. L.
+Xiphinema americanum	Polypodiaceae sp.
+Xiphinema americanum	Populus sp. L.
+Xiphinema americanum	Potentilla canadensis L.
+Xiphinema americanum	Prunus armeniaca L.
+Xiphinema americanum	Prunus avium L.
+Xiphinema americanum	Prunus cerasus L.
+Xiphinema americanum	Prunus domestica L.
+Xiphinema americanum	Prunus dulcis D.A. Webb
+Xiphinema americanum	Prunus persica C.K. Schneid.
+Xiphinema americanum	Prunus serotina
+Xiphinema americanum	Prunus sp. L.
+Xiphinema americanum	Pseudotsuga menziesii Franco
+Xiphinema americanum	Psidium guajava L.
+Xiphinema americanum	Punica granatum L.
+Xiphinema americanum	Pyracantha sp. M. J. Roem.
+Xiphinema americanum	Pyrus communis L.
+Xiphinema americanum	Quercus laurifolia Michx.
+Xiphinema americanum	Quercus rubra L.
+Xiphinema americanum	Quercus sp. L.
+Xiphinema americanum	Quercus velutina Lam.
+Xiphinema americanum	Rhododendron sp. L.
+Xiphinema americanum	Ribes sp. L.
+Xiphinema americanum	Ricinus communis L.
+Xiphinema americanum	Rosa sp. L.
+Xiphinema americanum	Rubus allegheniensis Porter
+Xiphinema americanum	Rubus idaeus L.
+Xiphinema americanum	Rubus longanobaccus
+Xiphinema americanum	Rubus sp.
+Xiphinema americanum	Rubus ursinus Cham & Schlechtend
+Xiphinema americanum	Saccharum officinarum L.
+Xiphinema americanum	Salix sp. L.
+Xiphinema americanum	Salvia apiana
+Xiphinema americanum	Salvia sp. L.
+Xiphinema americanum	Schinus molle L.
+Xiphinema americanum	Schinus polygamus Cabr.
+Xiphinema americanum	Sequoia sempervirens Endl.
+Xiphinema americanum	Sequoia sp. Endl.
+Xiphinema americanum	Solanum lycopersicum L.
+Xiphinema americanum	Solanum tuberosum L.
+Xiphinema americanum	Sorghum bicolor Moench.
+Xiphinema americanum	Sorghum halepense Pers.
+Xiphinema americanum	Sorghum vulgare Pers.
+Xiphinema americanum	Strelitzia nicolai Regel & Korn
+Xiphinema americanum	Strelitzia sp. Ait.
+Xiphinema americanum	Syringa sp. L.
+Xiphinema americanum	Syringa vulgaris L.
+Xiphinema americanum	Tagetes minuta L.
+Xiphinema americanum	Taraxacum officinale Weber
+Xiphinema americanum	Taxus canadensis
+Xiphinema americanum	Taxus sp. L.
+Xiphinema americanum	Thinopyrum intermedium
+Xiphinema americanum	Thuja sp. L.
+Xiphinema americanum	Toxicodendron radicans (L.) Kuntze; Rhus radicans L.
+Xiphinema americanum	Trifolium pratense L.
+Xiphinema americanum	Trifolium repens L.
+Xiphinema americanum	Triticum aestivum L.
+Xiphinema americanum	Ulmus americana L.
+Xiphinema americanum	Ulmus parvifolia Jacq.
+Xiphinema americanum	Ulmus pumila L.
+Xiphinema americanum	Ulmus sp. L.
+Xiphinema americanum	Umbellularia californica Nutt.
+Xiphinema americanum	Vaccinium corymbosum L.
+Xiphinema americanum	Vaccinium corymbosum L. X V. darrowi
+Xiphinema americanum	Vaccinium sp. L.
+Xiphinema americanum	Viburnum sp. L.
+Xiphinema americanum	Vicia sp. L.
+Xiphinema americanum	Vigna unguiculata Van Eselt. ex Verdc.; Vigna sinensis
+Xiphinema americanum	Vitis berlandieri Planch. X V. riparia Michx.
+Xiphinema americanum	Vitis champinii
+Xiphinema americanum	Vitis riparia X V. rupestris
+Xiphinema americanum	Vitis solonis X othello 1613
+Xiphinema americanum	Vitis sp. L.
+Xiphinema americanum	Vitis vinifera L.
+Xiphinema americanum	Yucca sp. L.
+Xiphinema americanum	Zea mays L.
+Xiphinema americanum	Zingiber sp. Boehmer.
+Xiphinema americanum	Eucalyptus tereticornis Sm.
+Xiphinema americanum	Fagus grandifolia J.F. Ehrh.
+Xiphinema americanum	Festuca elatior L.
+Xiphinema americanum	Festuca rubra L.
+Xiphinema americanum	Ficus carica L.
+Xiphinema americanum	Ficus sp. L.
+Xiphinema americanum	Abies balsamea Mill.
+Xiphinema americanum	Abies sp. Mill.
+Xiphinema americanum	Acer negundo L.
+Xiphinema americanum	Acer saccharinum L.
+Xiphinema americanum	Acer sp. L.
+Xiphinema americanum	Agapanthus sp. L'Her
+Xiphinema americanum	Agave sp. L.
+Xiphinema americanum	Agropyron cristatum (L.) Gaertn.
+Xiphinema americanum	Agropyron cristatum (L.) Gaertn. X A. desertorum Fisch. Ex Link
+Xiphinema americanum	Agropyron desertorum Shultes
+Xiphinema americanum	Agropyron smithii Rydb.
+Xiphinema americanum	Allium cepa L.
+Xiphinema americanum	Allium sativum L.
+Xiphinema americanum	Ambrosia sp. L.
+Xiphinema americanum	Anthurium sp. Schott.
+Xiphinema americanum	Arachis hypogaea L.
+Xiphinema americanum	Aralia sp. L.
+Xiphinema americanum	Arctostaphylos sp. Adans.
+Xiphinema americanum	Armoracia rusticana Gilib.
+Xiphinema americanum	Avena nuda L.
+Xiphinema americanum	Avena sativa L.
+Xiphinema americanum	Baccharis sp. L.
+Xiphinema americanum	Bambusa sp. Schreber.
+Xiphinema americanum	Begonia sp.
+Xiphinema americanum	Beta vulgaris L.
+Xiphinema americanum	Betula alba L.
+Xiphinema americanum	Bougainvillea sp. Comm. ex Juss.
+Xiphinema americanum	Brassica oleracea Mill.
+Xiphinema americanum	Buxus sempervirens L.
+Xiphinema americanum	Cactaceae sp. Juss.
+Xiphinema americanum	Calendula sp. L.
+Xiphinema americanum	Camellia japonica L.
+Xiphinema americanum	Camellia sp. L.
+Xiphinema americanum	Canna sp. L.
+Xiphinema americanum	Capsicum frutescens L.
+Xiphinema americanum	Carissa grandiflora A. DC.
+Xiphinema americanum	Carissa sp. L.
+Xiphinema americanum	Carya illinoinensis Koch.
+Xiphinema americanum	Casimiroa sp. Llave.
+Xiphinema americanum	Ceanothus sp. L.
+Xiphinema americanum	Cedrus sp. Trew.
+Xiphinema americanum	Celosia sp. L.
+Xiphinema americanum	Ceratonia siliqua L.
+Xiphinema americanum	Ceratonia sp. L.
+Xiphinema americanum	Chamaecyparis sp. Spach
+Xiphinema americanum	Chrysanthemum maximum Ramond.
+Xiphinema americanum	Chrysanthemum sp. L.
+Xiphinema americanum	Cicer arietinum L.
+Xiphinema americanum	Cichorium intybus L.
+Xiphinema americanum	Citrus aurantium L.
+Xiphinema americanum	Citrus limon Burm.
+Xiphinema americanum	Citrus reticulata Blanco
+Xiphinema americanum	Citrus sinensis (L.) Osbeck
+Xiphinema americanum	Citrus sp.
+Xiphinema americanum	Citrus X paradisi
+Xiphinema americanum	Cornus cerisea L.; Cornus stolonifera
+Xiphinema americanum	Cornus florida L.
+Xiphinema americanum	Cotoneaster sp. Medicus
+Xiphinema americanum	Crassula sp. L.
+Xiphinema americanum	Crataegus sp. L.
+Xiphinema americanum	Cucumis melo Naud.
+Xiphinema americanum	Cucurbita sp. L.
+Xiphinema americanum	Cupressus macrocarpa Hartweg.
+Xiphinema americanum	Cupressus sp. L.
+Xiphinema americanum	Cydonia sp. Mill.
+Xiphinema americanum	Cynara scolymus L.
+Xiphinema americanum	Cynodon dactylon Pers.
+Xiphinema americanum	Dactylis glomerata L.
+Xiphinema americanum	Dahlia sp.
+Xiphinema americanum	Daucus carota L.
+Xiphinema americanum	Dichondra sp. J. R. Forst. & G. Forst.
+Xiphinema americanum	Digitaria decumbens Stent.
+Xiphinema americanum	Diospyros sp. L.
+Xiphinema americanum	Dipsacus sp. L.
+Xiphinema americanum	Elaeagnus sp. L.
+Xiphinema americanum	Elymus wawawaiensis
+Xiphinema americanum	Elytrigia repens (L.) Nevski X Pseudoroegneria spicata (Pursh) Love
+Xiphinema americanum	Epigaea repens L.
+Xiphinema americanum	Equisetum sp. L.
+Xiphinema americanum	Eriobotrya sp. Lindl.
+Xiphinema americanum	Escallonia sp. Mutis
+Xiphinema americanum	Eucalyptus sp. L'Her
+Xiphinema americanum	Fragaria chiloensis Duchesne
+Xiphinema americanum	Fragaria sp. L.
+Xiphinema americanum	Fragaria vesca L.
+Xiphinema americanum	Fragaria X ananassa Duchesne ex Rozier
+Xiphinema americanum	Fraxinus sp. L.
+Xiphinema americanum	Fuchsia sp. L.
+Xiphinema americanum	Gardenia sp. Ellis
+Xiphinema americanum	Gazania sp. Gaertn.
+Xiphinema americanum	Gerbera sp. L.
+Xiphinema americanum	Gladiolus sp. L.
+Xiphinema americanum	Gleditsia sp. L.
+Xiphinema americanum	Gossypium hirsutum L.
+Xiphinema americanum	Grewia asiatica L.
+Xiphinema americanum	Hedera canariensis Willd.
+Xiphinema americanum	Hedera sp. L.
+Xiphinema americanum	Helianthus annuus L.
+Xiphinema americanum	Hibiscus sp.
+Xiphinema americanum	Hordeum vulgare L.
+Xiphinema americanum	Humulus lupulus L.
+Xiphinema americanum	Hydrangea sp.
+Xiphinema americanum	Ilex sp. L.
+Xiphinema americanum	Indigofera hirsuta L.
+Xiphinema americanum	Iris sp. L.
+Xiphinema americanum	Jasminum sp. L.
+Xiphinema americanum	Juglans hindsii (Jepson) R.E.Smith
+Xiphinema americanum	Juglans sp.
+Xiphinema americanum	Juniperus monosperma Sarg.
+Xiphinema americanum	Juniperus sp. L.
+Xiphinema americanum	Lactuca sativa L.
+Xiphinema americanum	Lathyrus odoratus L.
+Xiphinema americanum	Ligustrum sp. L.
+Xiphinema americanum	Lilium sp. L.
+Xiphinema americanum	Liquidambar sp. L.
+Xiphinema americanum	Litchi chinensis Sonn.

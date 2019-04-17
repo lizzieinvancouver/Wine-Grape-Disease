@@ -1,0 +1,272 @@
+NgenusNspec	PgenusPspec
+Mesocriconema axeste	Rosa sp. L.
+Mesocriconema caelatum	Mesembryanthemum sp. L.
+Mesocriconema citri; Mesocriconema sphaerocephalum	Citrus aurantium L.
+Mesocriconema citri; Mesocriconema sphaerocephalum	Citrus limon Burm.
+Mesocriconema citri; Mesocriconema sphaerocephalum	Cynodon dactylon Pers.
+Mesocriconema citri; Mesocriconema sphaerocephalum	Grewia asiatica L.
+Mesocriconema citri; Mesocriconema sphaerocephalum	Mangifera indica L.
+Mesocriconema citri; Mesocriconema sphaerocephalum	Musa X paradisiaca L.
+Mesocriconema curvatum	Antirrhinum sp. L.
+Mesocriconema curvatum	Arundinaria sp.
+Mesocriconema curvatum	Avena sativa L.
+Mesocriconema curvatum	Begonia sp.
+Mesocriconema curvatum	Dianthus caryophyllus L.
+Mesocriconema curvatum	Fragaria X ananassa Duchesne ex Rozier
+Mesocriconema curvatum	Lupinus sp. L.
+Mesocriconema curvatum	Malus sylvestris Mill.
+Mesocriconema curvatum	Mangifera indica L.
+Mesocriconema curvatum	Medicago sativa L.
+Mesocriconema curvatum	Phaseolus vulgaris L.
+Mesocriconema curvatum	Prunus sp. L.
+Mesocriconema curvatum	Quercus robur L.
+Mesocriconema curvatum	Trifolium pratense L.
+Mesocriconema curvatum	Vaccinium macrocarpon Ait.
+Mesocriconema dherdei	Pyrus communis L.
+Mesocriconema ferniae	Ananas comosus (L.) Merr.
+Mesocriconema kirjanovae	Carya sp.
+Mesocriconema lobatum; Mesocriconema rusticum	Abies balsamea Mill.
+Mesocriconema lobatum; Mesocriconema rusticum	Allium sativum L.
+Mesocriconema lobatum; Mesocriconema rusticum	Bambusa sp. Schreber.
+Mesocriconema lobatum; Mesocriconema rusticum	Fragaria X ananassa Duchesne ex Rozier
+Mesocriconema lobatum; Mesocriconema rusticum	Iris sp. L.
+Mesocriconema lobatum; Mesocriconema rusticum	Medicago sativa L.
+Mesocriconema lobatum; Mesocriconema rusticum	Taxus canadensis
+Mesocriconema lobatum; Mesocriconema rusticum	Thuja occidentalis L.
+Mesocriconema lobatum; Mesocriconema rusticum	Trifolium pratense L.
+Mesocriconema lobatum; Mesocriconema rusticum	Triticum aestivum L.
+Mesocriconema nainitalense; Mesocriconema xenoplax	Prunus cerasoides D. Don
+Mesocriconema obtusicaudatum	Vigna unguiculata Van Eselt. ex Verdc.; Vigna sinensis
+Mesocriconema obtusicaudatum	Zea mays L.
+Mesocriconema onoense	Acer saccharinum L.
+Mesocriconema onoense	Ananas comosus (L.) Merr.
+Mesocriconema onoense	Crotalaria longithyrsa E.G. Baker
+Mesocriconema onoense	Cynodon dactylon Pers.
+Mesocriconema onoense	Cyperus iria
+Mesocriconema onoense	Ipomoea batatas Lam.
+Mesocriconema onoense	Oryza glaberrima
+Mesocriconema onoense	Oryza sativa L.
+Mesocriconema onoense	Paspalum hydrophilum
+Mesocriconema onoense	Paspalum scrobiculatum
+Mesocriconema onoense	Saccharum officinarum L.
+Mesocriconema onoense	Sorghum bicolor Moench. X S. arundinaceum
+Mesocriconema onoense	Theobroma cacao L.
+Mesocriconema ornatum	Arachis hypogaea L.
+Mesocriconema ornatum	Cicer arietinum L.
+Mesocriconema ornatum	Cynodon dactylon Pers.
+Mesocriconema ornatum	Cynodon dactylon Pers. X C. transvaalensis
+Mesocriconema ornatum	Eremochloa ophiuroides Hack.
+Mesocriconema ornatum	Glycine max (L.) Merr.
+Mesocriconema ornatum	Gossypium hirsutum L.
+Mesocriconema ornatum	Gossypium sp. L.
+Mesocriconema ornatum	Nicotiana tabacum L.
+Mesocriconema ornatum	Panicum virgatum L.
+Mesocriconema ornatum	Pennisetum purpureum Schumach.
+Mesocriconema ornatum	Saccharum sp. L.
+Mesocriconema ornatum	Secale cereale L.
+Mesocriconema ornatum	Stenotaphrum secundatum Kuntze.
+Mesocriconema ornatum	Vaccinium sp. L.
+Mesocriconema ornatum	Zea mays L.
+Mesocriconema ornatum	Zoysia matrella Merr.
+Mesocriconema ornicauda	Panicum rigidulum Bosc ex Nees
+Mesocriconema ozarkiensis	Paspalum sp.
+Mesocriconema paronostre	Cicer arietinum L.
+Mesocriconema rusticum	Agropyron repens Beauvois
+Mesocriconema rusticum	Agrostis tenuis Sibth.
+Mesocriconema rusticum	Arrhenatherum elatius Mert. & Koch.
+Mesocriconema rusticum	Avena fatua L.
+Mesocriconema rusticum	Avena sativa L.
+Mesocriconema rusticum	Bambusa sp. Schreber.
+Mesocriconema rusticum	Briza maxima L.
+Mesocriconema rusticum	Bromus inermis Leyss.
+Mesocriconema rusticum	Bromus secalinus L.
+Mesocriconema rusticum	Bromus tectorum
+Mesocriconema rusticum	Dactylis glomerata L.
+Mesocriconema rusticum	Digitaria sanguinalis Scop.
+Mesocriconema rusticum	Echinochloa crus-galli Beauv.
+Mesocriconema rusticum	Echinochloa pungens
+Mesocriconema rusticum	Elymus virginicus L.
+Mesocriconema rusticum	Eragrostis pectinacea Nees
+Mesocriconema rusticum	Glyceria striata Hitch.
+Mesocriconema rusticum	Hordeum jubatum L.
+Mesocriconema rusticum	Hystrix patula
+Mesocriconema rusticum	Juglans sp.
+Mesocriconema rusticum	Leersia oryzoides Swartz
+Mesocriconema rusticum	Lolium multiflorum Lam.
+Mesocriconema rusticum	Lotus corniculatus L.
+Mesocriconema rusticum	Medicago sativa L.
+Mesocriconema rusticum	Oryza sativa L.
+Mesocriconema simile	Glycine max (L.) Merr.
+Mesocriconema simile	Prunus persica C.K. Schneid.
+Mesocriconema simile	Vitis sp. L.
+Mesocriconema solivagum	Quercus robur L.
+Mesocriconema sphaerocephala	Cicer arietinum L.
+Mesocriconema sphaerocephala	Citrus sp.
+Mesocriconema sphaerocephala	Glycine max (L.) Merr.
+Mesocriconema sphaerocephala	Hemerocallis sp. L.
+Mesocriconema sphaerocephala	Mangifera indica L.
+Mesocriconema sphaerocephala	Musa acuminata Colla
+Mesocriconema sphaerocephala	Pennisetum purpureum Schumach.
+Mesocriconema sphaerocephala	Pennisetum sp. L.
+Mesocriconema sphaerocephala	Saccharum sp. L.
+Mesocriconema sphaerocephala	Secale cereale L.
+Mesocriconema sphaerocephala	Sorghum bicolor Moench.
+Mesocriconema sphaerocephala	Vicia villosa Roth.
+Mesocriconema sphaerocephala	Zea mays L.
+Mesocriconema surinamense	Acer saccharinum L.
+Mesocriconema teres	Juglans sp.
+Mesocriconema teres	Prunus domestica L.
+Mesocriconema teres	Quercus sp. L.
+Mesocriconema vadense	Pinus sp. L.
+Mesocriconema xenoplax	Abies sp. Mill.
+Mesocriconema xenoplax	Acer rubrum L.
+Mesocriconema xenoplax	Acer sp. L.
+Mesocriconema xenoplax	Agropyron smithii Rydb.
+Mesocriconema xenoplax	Arctostaphylos sp. Adans.
+Mesocriconema xenoplax	Arundinaria sp.
+Mesocriconema xenoplax	Aucuba sp. Thunb.
+Mesocriconema xenoplax	Avena strigosa Schreb.
+Mesocriconema xenoplax	Axonopus compressus (Schwartz) Beauvois.
+Mesocriconema xenoplax	Bambusa sp. Schreber.
+Mesocriconema xenoplax	Bellis sp. L.
+Mesocriconema xenoplax	Bidens pilosa L.
+Mesocriconema xenoplax	Brachiaria platyphylla Nash.
+Mesocriconema xenoplax	Bromus mollis L.
+Mesocriconema xenoplax	Buxus sempervirens L.
+Mesocriconema xenoplax	Camellia sp. L.
+Mesocriconema xenoplax	Carya illinoinensis Koch.
+Mesocriconema xenoplax	Cassia fasciculata Michaux.; Chamaecrista fasciculata
+Mesocriconema xenoplax	Cassia obtusifolia; Senna obtusifolia
+Mesocriconema xenoplax	Chrysanthemum sp. L.
+Mesocriconema xenoplax	Citrus limon Burm.
+Mesocriconema xenoplax	Citrus sinensis (L.) Osbeck
+Mesocriconema xenoplax	Citrus sp.
+Mesocriconema xenoplax	Citrus X paradisi
+Mesocriconema xenoplax	Crotalaria juncea L.
+Mesocriconema xenoplax	Cucurbita sp. L.
+Mesocriconema xenoplax	Cynodon dactylon Pers.
+Mesocriconema xenoplax	Dactylis glomerata L.
+Mesocriconema xenoplax	Dahlia sp.
+Mesocriconema xenoplax	Daphne sp. L.
+Mesocriconema xenoplax	Dianthus caryophyllus L.
+Mesocriconema xenoplax	Eleusine indica Gaertn.
+Mesocriconema xenoplax	Elymus wawawaiensis
+Mesocriconema xenoplax	Eremochloa ophiuroides Hack.
+Mesocriconema xenoplax	Eriobotrya japonica Lindl.
+Mesocriconema xenoplax	Festuca megalura Nutt.
+Mesocriconema xenoplax	Festuca ovina L.
+Mesocriconema xenoplax	Fuchsia sp. L.
+Mesocriconema xenoplax	Geranium carolinianum L.
+Mesocriconema xenoplax	Glycine max (L.) Merr.
+Mesocriconema xenoplax	Ilex cornuta Lindl. & Paxt
+Mesocriconema xenoplax	Ilex crenata Thunb.
+Mesocriconema xenoplax	Ipomoea purpurea (L.) Roth.
+Mesocriconema xenoplax	Juglans hindsii (Jepson) R.E.Smith
+Mesocriconema xenoplax	Juglans regia L.
+Mesocriconema xenoplax	Juglans sp.
+Mesocriconema xenoplax	Juniperus sp. L.
+Mesocriconema xenoplax	Lespedeza striata Hook. & Arn.
+Mesocriconema xenoplax	Lilium sp. L.
+Mesocriconema xenoplax	Lolium multiflorum Lam.
+Mesocriconema xenoplax	Lolium perenne L.
+Mesocriconema xenoplax	Lotus corniculatus L.
+Mesocriconema xenoplax	Lotus pedunculatus Cav.
+Mesocriconema xenoplax	Lotus tenuis Waldst. & Kit.
+Mesocriconema xenoplax	Magnolia tripetala L.
+Mesocriconema xenoplax	Malus sylvestris Mill.
+Mesocriconema xenoplax	Mangifera indica L.
+Mesocriconema xenoplax	Mentha piperita L.
+Mesocriconema xenoplax	Morus sp. L.
+Mesocriconema xenoplax	Musa sp. L.
+Mesocriconema xenoplax	Olea europaea L.
+Mesocriconema xenoplax	Oryza sativa L.
+Mesocriconema xenoplax	Palmaceae sp.
+Mesocriconema xenoplax	Parthenium argentatum Gray
+Mesocriconema xenoplax	Paspalum notatum Flugge.
+Mesocriconema xenoplax	Prunus sp. L.
+Mesocriconema xenoplax	Vitis vinifera L.
+Mesocriconema xenoplax	Pinus clausa
+Mesocriconema xenoplax	Pinus echinata Mill.
+Mesocriconema xenoplax	Pinus elliottii Engelm.
+Mesocriconema xenoplax	Pinus rigida Mill.
+Mesocriconema xenoplax	Pinus serotina
+Mesocriconema xenoplax	Pinus taeda L.
+Mesocriconema xenoplax	Pinus virginiana Mill.
+Mesocriconema xenoplax	Pistacia atlantica Desf. X P. integerrima
+Mesocriconema xenoplax	Plantago lanceolata L.
+Mesocriconema xenoplax	Polypodiaceae sp.
+Mesocriconema xenoplax	Portulaca oleracea L.
+Mesocriconema xenoplax	Prunus armeniaca L.
+Mesocriconema xenoplax	Prunus avium L.
+Mesocriconema xenoplax	Prunus cerasifera Ehrh.
+Mesocriconema xenoplax	Prunus cerasifera Ehrh. X P. munsoniana
+Mesocriconema xenoplax	Prunus cerasus L.
+Mesocriconema xenoplax	Prunus communis L.
+Mesocriconema xenoplax	Prunus domestica L.
+Mesocriconema xenoplax	Prunus dulcis D.A. Webb
+Mesocriconema xenoplax	Prunus kansuensis
+Mesocriconema xenoplax	Prunus persica Batsch.
+Mesocriconema xenoplax	Prunus persica Batsch. X P. dulcis
+Mesocriconema xenoplax	Prunus persica C.K. Schneid.
+Mesocriconema xenoplax	Prunus subcordata X P. domestica
+Mesocriconema xenoplax	Quercus robur L.
+Mesocriconema xenoplax	Quercus sp. L.
+Mesocriconema xenoplax	Rhododendron sp. L.
+Mesocriconema xenoplax	Robinia sp. L.
+Mesocriconema xenoplax	Rosa sp. L.
+Mesocriconema xenoplax	Saccharum officinarum L.
+Mesocriconema xenoplax	Salix sp. L.
+Mesocriconema xenoplax	Schedonorus arundinaceus (Schreb.) Dumont; Festuca arundinacea Schreb.
+Mesocriconema xenoplax	Sida rhombifolia L.
+Mesocriconema xenoplax	Solanum lycopersicum L.
+Mesocriconema xenoplax	Sorghum bicolor Moench.
+Mesocriconema xenoplax	Sorghum vulgare Pers.
+Mesocriconema xenoplax	Strelitzia sp. Ait.
+Mesocriconema xenoplax	Syringa sp. L.
+Mesocriconema xenoplax	Tagetes erecta L.
+Mesocriconema xenoplax	Tagetes patula L.
+Mesocriconema xenoplax	Taraxacum sp. Wiggers
+Mesocriconema xenoplax	Taxus sp. L.
+Mesocriconema xenoplax	Trifolium hirtum All.
+Mesocriconema xenoplax	Trifolium nigrescens Viv.
+Mesocriconema xenoplax	Trifolium subterraneum L.
+Mesocriconema xenoplax	Ulmus americana L.
+Mesocriconema xenoplax	Ulmus sp. L.
+Mesocriconema xenoplax	Umbellularia californica Nutt.
+Mesocriconema xenoplax	Vaccinium macrocarpon Ait.
+Mesocriconema xenoplax	Viburnum sp. L.
+Mesocriconema xenoplax	Vicia sativa L.
+Mesocriconema xenoplax	Vitis berlandieri Planch. X V. riparia Michx.
+Mesocriconema xenoplax	Vitis berlandieri Planch. X V. rupestris
+Mesocriconema xenoplax	Vitis champinii
+Mesocriconema xenoplax	Vitis champinii (Ramsay) x V. champinii (c9021) x V. riparia
+Mesocriconema xenoplax	Vitis doaniana
+Mesocriconema xenoplax	Vitis labrusca L.
+Mesocriconema xenoplax	Vitis riparia
+Mesocriconema xenoplax	Vitis riparia X V. rupestris
+Mesocriconema xenoplax	Vitis rufotomentosa x V. champinii (Dog Ridge) x V. champinii (c9038) x V. riparia
+Mesocriconema xenoplax	Vitis rufotomentosa x V. champinii x V. riparia
+Mesocriconema xenoplax	Vitis rupestris
+Mesocriconema xenoplax	Vitis rupestris x Muscadinia rotundifolia
+Mesocriconema xenoplax	Vitis simpsoni X M. rotundifolia
+Mesocriconema xenoplax	Vitis solonis X othello 1613
+Mesocriconema xenoplax	Vitis solonis X riparia
+Mesocriconema xenoplax	Vitis sp. L.
+Mesocriconema xenoplax	Vitis vinifera L. X V. rupestris
+Mesocriconema rusticum	Panicum capillare L.
+Mesocriconema rusticum	Panicum miliaceum L.
+Mesocriconema rusticum	Phalaris arundinacea L.
+Mesocriconema rusticum	Phalaris canariensis L.
+Mesocriconema rusticum	Phleum pratense L.
+Mesocriconema rusticum	Pinus echinata Mill.
+Mesocriconema rusticum	Poa nemoralis L.
+Mesocriconema rusticum	Poa pratensis L.
+Mesocriconema rusticum	Prunus domestica L.
+Mesocriconema rusticum	Setaria glauca
+Mesocriconema rusticum	Setaria viridis (L.) Beauv.
+Mesocriconema rusticum	Trifolium pratense L.
+Mesocriconema rusticum	Trifolium repens L.
+Mesocriconema rusticum	Triticum aestivum L.
+Mesocriconema rusticum	Vitis vinifera L.
+Mesocriconema rusticum	Zea mays L.
+Mesocriconema siculum	Olea europaea L.

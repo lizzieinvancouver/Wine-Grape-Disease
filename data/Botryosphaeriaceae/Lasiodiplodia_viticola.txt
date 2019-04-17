@@ -1,0 +1,3 @@
+"Mangifera indica: Brazil - 50743,"
+"Vitis sp. Alaska - 51930,Missouri - 51930,United States - 47770, 51195, 51943, 51945,"
+"Vitis vinifera Arkansas - 45430,Australia - 53041,France - 50316,Italy - 50111,Missouri - 45430,United States - 47387, 47902, 48546, 48830, 50111, 50349, 50444, 50744, 52228,"

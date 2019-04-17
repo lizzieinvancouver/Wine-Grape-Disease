@@ -1,0 +1,176 @@
+NgenusNspec	PgenusPspec
+Paratrichodorus minor	Zea mays L.
+Paratrichodorus minor	Abelmoschus esculentus Moench.
+Paratrichodorus minor	Acanthus sp. L.
+Paratrichodorus minor	Acer rubrum L.
+Paratrichodorus minor	Acer sp. L.
+Paratrichodorus minor	Actinidia chinensis Planch.
+Paratrichodorus minor	Aeschynomene americana Micheli
+Paratrichodorus minor	Agrostis sp. L.
+Paratrichodorus minor	Agrostis stolonifera L.
+Paratrichodorus minor	Allium cepa L.
+Paratrichodorus minor	Anethum graveolens L.
+Paratrichodorus minor	Antirrhinum sp. L.
+Paratrichodorus minor	Apium graveolens Pers.
+Paratrichodorus minor	Arachis hypogaea L.
+Paratrichodorus minor	Asparagus officinalis L.
+Paratrichodorus minor	Avena sativa L.
+Paratrichodorus minor	Bambusa sp. Schreber.
+Paratrichodorus minor	Beta vulgaris L.
+Paratrichodorus minor	Brassica juncea Coss.
+Paratrichodorus minor	Brassica napus L.
+Paratrichodorus minor	Brassica oleracea Mill.
+Paratrichodorus minor	Brassica rapa L.
+Paratrichodorus minor	Brassica sp.
+Paratrichodorus minor	Bromus inermis Leyss.
+Paratrichodorus minor	Buxus sempervirens L.
+Paratrichodorus minor	Cactaceae sp. Juss.
+Paratrichodorus minor	Caesalpinia gilliesii Benth.
+Paratrichodorus minor	Camellia sp. L.
+Paratrichodorus minor	Capsicum frutescens L.
+Paratrichodorus minor	Cassia sp. L.
+Paratrichodorus minor	Chrysanthemum X morifolium Ramat.
+Paratrichodorus minor	Cichorium endivia L.
+Paratrichodorus minor	Citrus sinensis (L.) Osbeck
+Paratrichodorus minor	Citrus sp.
+Paratrichodorus minor	Citrus X paradisi
+Paratrichodorus minor	Coleus sp. Lour.
+Paratrichodorus minor	Cotoneaster sp. Medicus
+Paratrichodorus minor	Crotalaria spectabilis Roth
+Paratrichodorus minor	Cucumis melo Naud.
+Paratrichodorus minor	Cucumis sativus L.
+Paratrichodorus minor	Cucurbita pepo L.
+Paratrichodorus minor	Cynara scolymus L.
+Paratrichodorus minor	Cynodon dactylon Pers.
+Paratrichodorus minor	Cynodon dactylon Pers. X C. transvaalensis
+Paratrichodorus minor	Dactylis glomerata L.
+Paratrichodorus minor	Daucus carota L.
+Paratrichodorus minor	Desmodium tortuosum DC.
+Paratrichodorus minor	Digitaria decumbens Stent.
+Paratrichodorus minor	Digitaria sanguinalis Scop.
+Paratrichodorus minor	Diospyros kaki
+Paratrichodorus minor	Echinochloa sp. Beauvois
+Paratrichodorus minor	Eremochloa ophiuroides Hack.
+Paratrichodorus minor	Euphorbia pulcherrima Willd.
+Paratrichodorus minor	Fagopyrum esculentum Moench
+Paratrichodorus minor	Fatsia sp. Decne. & Planch.
+Paratrichodorus minor	Festuca arundinacea Schreb.; Schedonorus arundinaceus (Schreb.) Dumort.; Lolium arundinaceum(Schreb.) Darbysh.
+Paratrichodorus minor	Festuca elatior L.
+Paratrichodorus minor	Festuca pratensis Huds.
+Paratrichodorus minor	Festuca rubra L.
+Paratrichodorus minor	Festuca sp. L.
+Paratrichodorus minor	Ficus sp. L.
+Paratrichodorus minor	Fragaria chiloensis Duchesne
+Paratrichodorus minor	Fragaria X ananassa Duchesne ex Rozier
+Paratrichodorus minor	Gazania sp. Gaertn.
+Paratrichodorus minor	Glycine hispida; Glycine max
+Paratrichodorus minor	Glycine max (L.) Merr.
+Paratrichodorus minor	Gossypium hirsutum L.
+Paratrichodorus minor	Hedychium sp. J. Konig
+Paratrichodorus minor	Helianthus annuus L.
+Paratrichodorus minor	Hibiscus esculentum
+Paratrichodorus minor	Hordeum vulgare L.
+Paratrichodorus minor	Ilex crenata Thunb.
+Paratrichodorus minor	Indigofera hirsuta L.
+Paratrichodorus minor	Ipomoea batatas Lam.
+Paratrichodorus minor	Jasminum sp. L.
+Paratrichodorus minor	Juglans sp.
+Paratrichodorus minor	Juniperus sp. L.
+Paratrichodorus minor	Lactuca sativa L.
+Paratrichodorus minor	Lespedeza cuneata (Dumont-Cours.) G. Don
+Paratrichodorus minor	Lespedeza stipulacea Maxim.
+Paratrichodorus minor	Lespedeza striata Hook. & Arn.
+Paratrichodorus minor	Liquidambar sp. L.
+Paratrichodorus minor	Litchi chinensis Sonn.
+Paratrichodorus minor	Lolium multiflorum Lam.
+Paratrichodorus minor	Lolium perenne L.
+Paratrichodorus minor	Lotus corniculatus L.
+Paratrichodorus minor	Malus sylvestris Mill.
+Paratrichodorus minor	Mangifera indica L.
+Paratrichodorus minor	Medicago sativa L.
+Paratrichodorus minor	Mucuna deeringiana Merrill
+Paratrichodorus minor	Musa sp. L.
+Paratrichodorus minor	Myoporum sp. Banks & Soland
+Paratrichodorus minor	Nerium oleander L.
+Paratrichodorus minor	Nicotiana tabacum L.
+Paratrichodorus minor	Ocimum basilicum L.
+Paratrichodorus minor	Olea europaea L.
+Paratrichodorus minor	Oryza sativa L.
+Paratrichodorus minor	Palmaceae sp.
+Paratrichodorus minor	Panicum ramosum L.
+Paratrichodorus minor	Panicum virgatum L.
+Paratrichodorus minor	Paspalum dilatatum Poir.
+Paratrichodorus minor	Paspalum notatum Flugge.
+Paratrichodorus minor	Pennisetum glaucum (L.) R. Br.
+Paratrichodorus minor	Peperomia sp. Ruiz. & Oav.
+Paratrichodorus minor	Pernettya sp. Gaud.-Beaup.
+Paratrichodorus minor	Persea americana Mill.
+Paratrichodorus minor	Phaseolus limensis Macf.
+Paratrichodorus minor	Phaseolus sp. L.
+Paratrichodorus minor	Phaseolus vulgaris L.
+Paratrichodorus minor	Philodendron selloum
+Paratrichodorus minor	Philodendron sp. Schott.
+Paratrichodorus minor	Phleum pratense L.
+Paratrichodorus minor	Picea abies Karst.
+Paratrichodorus minor	Pinus clausa
+Paratrichodorus minor	Pinus echinata Mill.
+Paratrichodorus minor	Pinus elliottii Engelm.
+Paratrichodorus minor	Pinus palustris Mill.
+Paratrichodorus minor	Pinus strobus L.
+Paratrichodorus minor	Pinus taeda L.
+Paratrichodorus minor	Pisum sativum L.
+Paratrichodorus minor	Pittosporum tobira Ait.
+Paratrichodorus minor	Poa annua L.
+Paratrichodorus minor	Poa pratensis L.
+Paratrichodorus minor	Poa sp. L.
+Paratrichodorus minor	Prunus armeniaca L.
+Paratrichodorus minor	Prunus avium L.
+Paratrichodorus minor	Prunus domestica L.
+Paratrichodorus minor	Prunus dulcis D.A. Webb
+Paratrichodorus minor	Prunus persica C.K. Schneid.
+Paratrichodorus minor	Pyrus communis L.
+Paratrichodorus minor	Quercus sp. L.
+Paratrichodorus minor	Raphanus sativus L.
+Paratrichodorus minor	Rhododendron sp. L.
+Paratrichodorus minor	Ricinus communis L.
+Paratrichodorus minor	Rosa sp. L.
+Paratrichodorus minor	Rubus sp.
+Paratrichodorus minor	Rubus ursinus Cham & Schlechtend
+Paratrichodorus minor	Saccharum officinarum L.
+Paratrichodorus minor	Saccharum sp. L.
+Paratrichodorus minor	Saxifraga sp. L.
+Paratrichodorus minor	Secale cereale L.
+Paratrichodorus minor	Sesamum indicum L.
+Paratrichodorus minor	Setaria glauca
+Paratrichodorus minor	Solanum lycopersicum L.
+Paratrichodorus minor	Solanum melongena L.
+Paratrichodorus minor	Solanum quitoense Lam.
+Paratrichodorus minor	Solanum tuberosum L.
+Paratrichodorus minor	Sorghum bicolor Moench.
+Paratrichodorus minor	Sorghum bicolor Moench. X S. sudanense
+Paratrichodorus minor	Sorghum sudanense Hitchc.
+Paratrichodorus minor	Sorghum vulgare Pers.
+Paratrichodorus minor	Spinacia oleracea L.
+Paratrichodorus minor	Stenotaphrum secundatum Kuntze.
+Paratrichodorus minor	Strelitzia reginae Banks.
+Paratrichodorus minor	Strelitzia sp. Ait.
+Paratrichodorus minor	Tagetes minuta L.
+Paratrichodorus minor	Tagetes patula L.
+Paratrichodorus minor	Taxus baccata L.
+Paratrichodorus minor	Trifolium hybridum L.
+Paratrichodorus minor	Trifolium incarnatum L.
+Paratrichodorus minor	Trifolium pratense L.
+Paratrichodorus minor	Trifolium repens L.
+Paratrichodorus minor	Trifolium subterraneum L.
+Paratrichodorus minor	Triticosecale sp.
+Paratrichodorus minor	Triticum aestivum L.
+Paratrichodorus minor	Vaccinium corymbosum L.
+Paratrichodorus minor	Vaccinium macrocarpon Ait.
+Paratrichodorus minor	Vaccinium sp. L.
+Paratrichodorus minor	Vaccinium virgatum Aiton
+Paratrichodorus minor	Vicia villosa Roth.
+Paratrichodorus minor	Vigna unguiculata Van Eselt. ex Verdc.; Vigna sinensis
+Paratrichodorus minor	Vitis vinifera L.
+Paratrichodorus minor	Yucca sp. L.
+Paratrichodorus minor	Zingiber sp. Boehmer.
+Paratrichodorus minor	Zoysia sp.
