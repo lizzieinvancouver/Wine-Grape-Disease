@@ -1,0 +1,314 @@
+Adoxaceae
+Viburnum | MifsudMaRu2014
+Amaryllidaceae
+Amaryllis | BenDov1994 WilliaGr1992
+Anacardiaceae
+Anacardium occidentale | BenDov1994 WilliaBu1987 WilliaGr1992 WilliaWa1988a
+Mangifera indica | BenDov1994 KondoRaVe2008 WilliaGr1992
+Schinus terebinthifolia | MifsudMaRu2014
+Annonaceae
+Annona cherimola | Gonzal2011
+Annona muricata | BenDov1994 WilliaGr1992
+Cananga odorata | BenDov1994 Matile1978
+Apocynaceae
+Carissa macrocarpa | BenDov2012
+Hoya carnosa | BenDov1994 Signor1875c Willia2004a
+Nerium oleander | BenDov1994 CarnerPe1986 Tsalev1968 Willia2004a WilliaGr1992
+Plumeria rubra | BenDov1994 Willia2004a WilliaGr1992
+Rauvolfia serpentina | BenDov1994 WilliaGr1992
+Araceae
+Aglaonema | BenDov1994 WilliaGr1992
+Alocasia | BenDov1994 CarnerPe1986 WilliaGr1992
+Alocasia macrorrhizos | GranarGo2018
+Anthurium | BenDov1994 CarnerPe1986
+Caladium | BenDov1994 WilliaGr1992
+Colocasia antiquorum | BenDov1994 WilliaGr1992
+Colocasia esculenta | Willia2004a
+Colocasia gigantea | GranarGo2018
+Dieffenbachia | BenDov1994 Marott1987a
+Monstera deliciosa | BenDov1994 WilliaGr1992
+Philodendron | BenDov1994 WilliaGr1992
+Syngonium podophyllum | MirabaGaCa2018
+Xanthosoma | BenDov1994 WilliaGr1992 WilliaWa1988a
+Araliaceae
+Hedera helix | BenDov1994 Cox1987
+Arecaceae
+Areca catechu | BenDov1994 Mamet1949
+Arecaceae | BenDov1994 WilliaGr1992
+Chamaedorea elatior | BenDov1994 GomezM1937 Martin1985
+Chamaedorea elegans | Hadzib1983
+Cocos nucifera | BenDov1994 Mamet1949 WilliaGr1992
+Dictyosperma | BenDov1994 Mamet1949
+Dypsis lutescens | BenDov1994 Mamet1949
+Hyophorbe lagenicaulis | VidyaBh2017
+Metroxylon | Hadzib1983
+Metroxylon sagu | BenDov1994 WilliaGr1992
+Phoenix canariensis | BenDov1994 CarnerPe1986
+Salacca zalacca | LitCa1994
+Trachycarpus | BatsanKaKi2017
+Washingtonia robusta | BenDov1994 GomezM1937 Martin1985
+Asparagaceae
+Asparagus officinalis | BenDov1994 CarnerPe1986
+Cordyline fruticosa | BenDov1994 WilliaBu1987 WilliaWa1988a
+Dracaena | BenDov1994 Martin1985 Willia2004a WilliaWa1988a
+Dracaena | BenDov2012
+Dracaena reflexa | BenDov1994 Mamet1949
+Dracaena surculosa | BenDov1994 WilliaGr1992 | (= Dracaena godseffiana)
+Ruscus aculeatus | BenDov2012
+Yucca | KozarFr1995
+Aspleniaceae
+Asplenium | BenDov1994 GomezM1937 Martin1985
+Asteraceae
+Cineraria | BenDov1994 Essig1915a
+Kleinia neriifolia | BenDov1994 CarnerPe1986
+Senecio | BenDov1994 Cox1987
+Begoniaceae
+Begonia | BenDov1994 Cox1987
+Bignoniaceae
+Jacaranda | BenDov1994 WilliaGr1992
+Jacaranda mimosifolia | GranarGo2018
+Bromeliaceae
+Ananas | BenDov1994 WilliaWa1988a
+Ananas comosus | BenDov1994 WilliaGr1992 WilliaWa1988a
+Buxaceae
+Buxus | Moghad2013
+Cactaceae
+Echinopsis | BatsanKaKi2017 | (= Trichocereus)
+Epiphyllum | BenDov1994 Leonar1920 Marott1987a
+Opuntia | BenDov1994 Essig1915a MazzeoSuRu2008
+Cannaceae
+Canna | BenDov1994 WilliaGr1992
+Caprifoliaceae
+Lonicera | BenDov1994 CarnerPe1986
+Caricaceae
+Carica papaya | BenDov1994 Mamet1949
+Cecidomyiidae
+Diadiplosis multifila | Malump2014a
+Celastraceae
+Euonymus | Moghad2013a
+Clusiaceae
+Garcinia mangostana | Willia2004a
+Combretaceae
+Terminalia catappa | BenDov1994 LitCa1994
+Commelinaceae
+Tradescantia spathacea | BenDov1994 WilliaGr1992
+Costaceae
+Costus | Willia2004a
+Cucurbitaceae
+Cucurbita moschata | BenDov2012
+Cycadaceae
+Cycas | BenDov1994 Betrem1937 Marott1987a Tsalev1968
+Cycas revoluta | BenDov1994 EzzatRa1962 Marott1987a
+Cycas riuminiana | BenDov1994 CarnerPe1986
+Cyperaceae
+Cyperus | BenDov1994 Marott1987a
+Cyperus albostriatus | BenDov1994 Cox1987 Leonar1920
+Ebenaceae
+Diospyros kaki | Gonzal2011
+Euphorbiaceae
+Codiaeum | BenDov1994 CarnerPe1986
+Codiaeum variegatum | WatsonMuSh2014
+Croton | BenDov1994 Betrem1937 Leonar1920 Marott1987a WilliaGr1992 WilliaWa1988a
+Macaranga | BenDov1994 WilliaBu1987 WilliaWa1988a
+Manihot esculenta | BenDov1994 Willia1970DJ
+Ricinus communis | BenDov1994 CarnerPe1986
+Fabaceae
+Acacia | BenDov1994 CarnerPe1986
+Acacia | BenDov1994 Marott1987a Tsalev1968
+Acacia cyclops | BenDov1994 CarnerPe1986
+Acacia simplex | BenDov1994 WilliaBu1987 WilliaWa1988a
+Bauhinia | BenDov1994 Mamet1949
+Cytisus | BenDov1994 Cox1987
+Dolichos | BenDov1994 WilliaWa1988a
+Erythrina | BenDov1994 Tsalev1968
+Flemingia macrophylla | Willia2004a
+Lotus berthelotii | BenDov1994 CarnerPe1986
+Mimosa | BenDov1994 Betrem1937
+Phaseolus | BenDov1994 Cox1987
+Robinia pseudoacacia | BenDov1994 CarnerPe1986
+Sophora microphylla | BenDov1994 Cox1987
+Sophora toromiro | BenDov1994 WilliaWa1988a
+Garryaceae
+Aucuba japonica | BenDov1994 Marott1987a
+Geraniaceae
+Pelargonium | BenDov1994 CarnerPe1986
+Pelargonium zonale | BenDov1994 Marott1987a
+Hernandiaceae
+Hernandia nymphaeifolia | BenDov1994 WilliaWa1988a
+Hydrangeaceae
+Hydrangea | BenDov1994 WilliaGr1992
+Hymenophyllaceae
+Hymenophyllum | GomezM1946 Martin1985
+Juglandaceae
+Juglandaceae | BenDov1994 WilliaGr1992
+Juglans regia | Gonzal2011
+Lamiaceae
+Clerodendrum | BenDov1994 WilliaGr1992
+Clerodendrum | Gertso2016
+Lauraceae
+Laurus nobilis | MifsudMaRu2014
+Litsea laurifolia | BenDov1994 Matile1978
+Persea americana | BenDov1994 CarnerPe1986
+Lecythidaceae
+Barringtonia | BenDov1994 WilliaWa1988a
+Lythraceae
+Punica granatum | BenDov1994 WilliaGr1992
+Magnoliaceae
+Magnolia | BenDov1994
+Malpighiaceae
+Malpighia glabra | BenDov1994 WilliaGr1992
+Malvaceae
+Brachychiton acerifolius | BenDov1994 CarnerPe1986
+Hibiscus rosa-sinensis | BenDov1994 CarnerPe1986
+Talipariti tiliaceum | BenDov1994 WilliaBu1987 WilliaWa1988a
+Theobroma cacao | BenDov1994 Campbe1983 DeLott1964 WilliaGr1992 WilliaWa1988a
+Meliaceae
+Melia azedarach | BenDov1994 EzzatRa1962
+Moraceae
+Artocarpus | BenDov1994 WilliaGr1992
+Artocarpus altilis | BenDov1994 WilliaGr1992
+Artocarpus altilis | BenDov1994 WilliaGr1992 WilliaWa1988a | (= Artocarpus communis)
+Artocarpus heterophyllus | GranarGo2018
+Ficus | BenDov2013
+Ficus amplissima | BenDov1994 CarnerPe1986
+Ficus benghalensis | BenDov2012
+Ficus benjamina | BenDov1994 CarnerPe1986
+Ficus carica | BenDov1994 CarnerPe1986 Cox1987
+Ficus elastica | BenDov1994 Marott1987a
+Ficus lutea | BenDov1994 WilliaGr1992 | including Ficus lutea (nekbudu)
+Ficus microcarpa | MifsudMaRu2014 | (= Ficus microcarpa nitida)
+Ficus septica | BenDov1994 Willia1960a
+Morus | BenDov1994 WilliaGr1992
+Musaceae
+Musa paradisiaca | BenDov1994 Marott1987a
+Musa paradisiaca | BenDov1994 WilliaGr1992 WilliaWa1988a
+Myrtaceae
+Eucalyptus tereticornis | BenDov1994 Mamet1949
+Myrtus communis | BenDov2012
+Pimenta dioica | BenDov1994 WilliaGr1992
+Psidium | BenDov1994 Cox1987
+Psidium guajava | BenDov1994 CarnerPe1986 KondoRaVe2008
+Syzygium aromaticum | BenDov1994 DeLott1964 Matile1978
+Nephrolepidaceae
+Nephrolepis cordifolia | BenDov1994 Mamet1949
+Nephrolepis exaltata | BenDov1994 CarnerPe1986 Mamet1949
+Nyctaginaceae
+Bougainvillea spectabilis | BenDov1994 CarnerPe1986
+Oleaceae
+Jasminum azoricum | GranarGo2018
+Jasminum fluminense | BenDov1994 WilliaGr1992
+Jasminum officinale | BenDov1994 EzzatRa1962 GomezM1937 Martin1985 Willia2004a
+Olea | Gonzal2011
+Olea europaea | BenDov1994 LongoRu1988
+Onagraceae
+Fuchsia | BenDov1994 CarnerPe1986 Marott1987a
+Orchidaceae
+Orchis | BatsanKaKi2017
+Paphiopedilum | Willia2004a
+Phalaenopsis | BenDov1994 DeLott1964 Willia2004a
+Sobralia macrantha | BenDov1994 Mamet1949
+Vanda | Willia2004a
+Oxalidaceae
+Averrhoa carambola | BenDov1994 WilliaGr1992
+Pandanaceae
+Pandanus | Willia2004a
+Pandanus amaryllifolius | Willia2004a
+Pandanus utilis | BenDov1994 Mamet1949 WilliaGr1992
+Passifloraceae
+Passiflora | BenDov1994 CarnerPe1986 Cox1987
+Phytolaccaceae
+Petiveria alliacea | BenDov1994 WilliaGr1992
+Pinaceae
+Cedrus atlantica | BenDov1994 Cox1987
+Pinus | Willia2004a
+Pinus brutia | BenDov2012
+Pinus kesiya | Willia2004a
+Piperaceae
+Piper nigrum | Willia2004a
+Pittosporaceae
+Pittosporum | BenDov1994 Goux1931a Martin1985 PellizPoSe2011
+Pittosporum pentandrum | BenDov1994 WilliaGr1992
+Pittosporum tobira | MifsudMaRu2014
+Pittosporum undulatum | BenDov2012
+Pittosporum viridiflorum | Willia2004a
+Plantaginaceae
+Veronica speciosa | BenDov1994 Marott1987a
+Platanaceae
+Platanus orientalis | Gonzal2011
+Plumbaginaceae
+Limonium | BenDov1994 CarnerPe1986
+Polygonaceae
+Rumex | BenDov1994 Cox1987
+Ruprechtia ramiflora | BenDov1994 WilliaGr1992
+Primulaceae
+Cyclamen | BenDov1994 Cox1987
+Primula obconica | BenDov1994 Essig1915a
+Proteaceae
+Macadamia ternifolia | BenDov1994 Willia1973
+Pteridaceae
+Acrostichum aureum | BenDov1994 Marott1987a
+Adiantum | BenDov1994 Cox1987 Willia2004a WilliaWa1988a
+Pteris arborea | BenDov1994 Signor1875c
+Rhizophoraceae
+Bruguiera | BenDov1994 WilliaWa1988a
+Rosaceae
+Malus pumila | BenDov1994 Cox1987
+Prunus domestica | BenDov1994 Cox1987
+Pyrus | Willia2004a
+Pyrus communis | BenDov1994 Cox1987 Willia2004a
+Rubus | BenDov1994 Mamet1949
+Sorbus americana | BenDov1994 CarnerPe1986
+Rubiaceae
+Coffea | BenDov1994 WilliaWa1988a
+Coffea arabica | BenDov1994 Willia2004a WilliaGr1992 WilliaWa1988a
+Coffea canephora | Willia2004a
+Gardenia | BenDov1994 WilliaGr1992
+Pavetta triflora | BenDov1994 WilliaWa1988a
+Rutaceae
+Citrus | BenDov1994 Betrem1937 WilliaWa1988a
+Citrus aurantium | BenDov1994 Cox1987 WilliaGr1992
+Citrus aurantium | BenDov1994 Granar1991a Marott1987a
+Citrus aurantium | BenDov1994 WilliaGr1992 WilliaWa1988a
+Citrus latipes | Willia2004a
+Citrus limon | BenDov2012
+Citrus maxima | BenDov1994 WilliaWa1988a
+Citrus maxima | Willia2004a
+Citrus paradisi | GranarGo2018
+Citrus reticulata | Gonzal2011
+Salicaceae
+Flacourtia indica | BenDov1994 Essig1915a
+Sapindaceae
+Nephelium lappaceum | BenDov1994 DeLott1964 Willia2004a
+Pometia | Willia2004a
+Sapotaceae
+Manilkara zapota | BenDov1994 WilliaGr1992
+Scrophulariaceae
+Myoporum laetum | BenDov1994 GomezM1937 Martin1985
+Myoporum tenuifolium | BenDov2012
+Solanaceae
+Capsicum annuum | BenDov1994 CarnerPe1986
+Solanum melongena | BenDov1994 WilliaGr1992
+Stangeriaceae
+Stangeria eriopus | BenDov1994 DeLott1964 Essig1915a
+Strelitziaceae
+Strelitzia reginae | BenDov1994 Essig1915a
+Urticaceae
+Cecropia peltata | MartinBlSu2005
+Urtica | BatsanKaKi2017
+Vitaceae
+Cissus | BenDov1994 Cox1987
+Cissus | BenDov1994 Marott1987a
+Vitis vinifera | BenDov1994 Cox1987 Marott1987a WilliaGr1992
+Xanthorrhoeaceae
+Aloe arborescens | BenDov1994 DeLott1964
+Phormium | BenDov1994 WilliaWa1988a
+Phormium tenax | BenDov1994 Willia1962
+Phormium tenax | BenDov2012
+Zamiaceae
+Encephalartos gratus | BenDov1994 Marott1987a
+Macrozamia | BenDov1994 Marott1987a
+Zamia | BenDov1994 Essig1915a
+Zingiberaceae
+Alpinia purpurata | Malump2014a
+Alpinia zerumbet | BenDov1994 WilliaWa1988a
+Hedychium coccineum | Malump2012b

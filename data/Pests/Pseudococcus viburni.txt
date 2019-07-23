@@ -1,0 +1,420 @@
+Acoraceae
+Acorus | GimpelMi1996
+Actinidiaceae
+Actinidia | Gonzal2011
+Adoxaceae
+Sambucus nigra | BenDov1994 Essig1909a
+Viburnum odoratissimum | GimpelMi1996
+Viburnum tinus | BenDov1994 Signor1875c
+Amaranthaceae
+Amaranthus blitum | Moghad2013
+Atriplex lampa | GranarGo2018
+Beta vulgaris | BenDov1994 GimpelMi1996 Willia1985 WilliaGr1992
+Chenopodium album | Gonzal2011
+Amaryllidaceae
+Allium sativum | GimpelMi1996
+Amaryllis | GimpelMi1996
+Haemanthus | BenDov1994 DeLott1967
+Hippeastrum | BenDov1994 Marott1987a
+Narcissus | GimpelMi1996
+Anacardiaceae
+Mangifera indica | Willia2004a
+Pistacia terebinthus | BenDov2012
+Annonaceae
+Annona | GimpelMi1996
+Annona cherimola | BenDov1994 WilliaGr1992
+Annona reticulata | GimpelMi1996
+Apiaceae
+Apium graveolens | Willia2004a
+Daucus carota | BenDov1994 Cox1987
+Apocynaceae
+Gomphocarpus physocarpus | BenDov1994 Cox1987
+Hoya | GimpelMi1996
+Hoya carnosa | BenDov1994 Marott1987a Tranfa1973
+Mandevilla | BenDov1994 Cox1987
+Nerium oleander | BenDov1994 Marott1992a
+Pachypodium lamerei | BenDov1994 Marott1992a
+Aquifoliaceae
+Ilex | GimpelMi1996
+Ilex crenata | GimpelMi1996
+Ilex vomitoria | GimpelMi1996
+Araceae
+Aglaonema | GimpelMi1996
+Calla | GimpelMi1996
+Dieffenbachia | Moghad2013a
+Dieffenbachia seguine | GimpelMi1996
+Typhonodorum | GimpelMi1996
+Zantedeschia | GimpelMi1996
+Araliaceae
+Hedera | GimpelMi1996
+Hedera helix | BenDov1994 GimpelMi1996 Marott1987a Marott1992a
+Schefflera elegantissima | BenDov1994 Marott1992a
+Arecaceae
+Arecaceae | GimpelMi1996
+Phoenix | GimpelMi1996 Moghad2013a
+Asparagaceae
+Asparagus aethiopicus | GimpelMi1996
+Dracaena | BenDov2012
+Ruscus | GimpelMi1996
+Ruscus aculeatus | GimpelMi1996
+Asteraceae
+Achillea millefolium | BenDov1994 Marott1987a
+Ageratum | GimpelMi1996
+Artemisia | BenDov1994 WilliaGr1992
+Aster | GimpelMi1996
+Asteraceae | BenDov2013
+Baccharis pilularis | GimpelMi1996
+Baccharis salicifolia | Gonzal2011
+Cineraria | GimpelMi1996
+Commidendrum robustum | BenDov1994 Matile1976
+Cynara scolymus | BenDov1994 Cox1987
+Dahlia | BenDov1994 GimpelMi1996 Willia1985 WilliaGr1992
+Erigeron canadensis | CostelWe2014
+Eupatorium | Willia2004a
+Gerbera | BenDov1994 GimpelMi1996 Willia1985 WilliaGr1992
+Grindelia glutinosa | BenDov1994 Matile1976
+Gynura aurantiaca | BenDov1987 BenDov1994
+Helianthus | GimpelMi1996
+Helianthus tuberosus | BenDov1994 Willia1985
+Helichrysum | GimpelMi1996
+Matricaria discoidea | CostelWe2014
+Schizogyne sericea | BenDov1994 CarnerPe1986
+Sonchus oleraceus | CostelWe2014
+Taraxacum | Gonzal2011
+Tragopogon porrifolius | BenDov1994 Willia1985
+Begoniaceae
+Begonia | GimpelMi1996
+Bignoniaceae
+Bignonia | BenDov1994 DeLott1967
+Catalpa | GimpelMi1996
+Catalpa speciosa | Moghad2013
+Brassicaceae
+Brassica | GimpelMi1996
+Bromeliaceae
+Ananas comosus | BenDov1994 GimpelMi1996 Matile1976
+Bromelia | GimpelMi1996
+Buxaceae
+Buxus microphylla | GimpelMi1996
+Buxus sempervirens | Moghad2013
+Cactaceae
+Acanthocereus | GimpelMi1996
+Astrophytum | GimpelMi1996
+Austrocactus spiniflorus | GranarGo2018
+Austrocylindropuntia floccosa | GimpelMi1996
+Cactaceae | GimpelMi1996
+Cereus | GimpelMi1996
+Cleistocactus baumannii | GimpelMi1996
+Copiapoa cinerea | Gonzal2011
+Disocactus flagelliformis | BenDov1994 Marott1987a
+Echinocactus | GimpelMi1996
+Echinocereus | GimpelMi1996
+Echinocereus pectinatus | GimpelMi1996
+Echinopsis | GimpelMi1996
+Echinopsis candicans | GimpelMi1996
+Echinopsis oxygona | BenDov1994 Marott1987a
+Epiphyllum | GimpelMi1996
+Epiphyllum | GimpelMi1996 | (= Phyllocactus)
+Epiphyllum anguliger | GimpelMi1996
+Hylocereus | GimpelMi1996
+Lepismium lumbricoides | GimpelMi1996
+Leptocereus quadricostatus | GimpelMi1996
+Mammillaria | GimpelMi1996
+Opuntia | BenDov1994 Essig1909a GimpelMi1996 Marott1987a
+Opuntia tuna | BenDov1994 Marott1987a
+Pereskia | GimpelMi1996
+Pereskia aculeata | GimpelMi1996
+Pereskiopsis | GimpelMi1996
+Quiabentia chacoensis | GranarGo2018
+Quiabentia verticillata | BenDov1994 WilliaGr1992
+Rhipsalis | GimpelMi1996
+Selenicereus grandiflorus | GimpelMi1996
+Cannaceae
+Canna | GimpelMi1996
+Caprifoliaceae
+Lonicera tatarica | GimpelMi1996
+Caricaceae
+Carica papaya | Beards1965 BenDov1994 GimpelMi1996 Marott1992a
+Caryophyllaceae
+Arenaria | GimpelMi1996
+Dianthus | BenDov1994 Cox1987 GimpelMi1996 Marott1987a
+Dianthus caryophyllus | BenDov1994 DeLott1967 Martin1985
+Sagina procumbens | BenDov1994 Willia1985
+Celastraceae
+Euonymus | GimpelMi1996
+Euonymus alatus | GimpelMi1996
+Euonymus fortunei | GimpelMi1996
+Euonymus japonicus | GimpelMi1996
+Convolvulaceae
+Convolvulus arvensis | CostelWe2014
+Ipomoea | GranarGo2018
+Crassulaceae
+Crassula | GimpelMi1996
+Crassula alba | GimpelMi1996
+Echeveria | GimpelMi1996
+Echeveria setosa | BenDov1994 Marott1987a
+Kalanchoe globulifera | GimpelMi1996
+Sedum | GimpelMi1996
+Cucurbitaceae
+Cucumis melo | GranarGo2018
+Cucurbita | GimpelMi1996
+Cucurbita pepo | BenDov1994 Willia1985
+Sechium edule | BenDov1994 GimpelMi1996 Willia1985
+Cupressaceae
+Cupressus | Moghad2010
+Thuja | GimpelMi1996
+Cycadaceae
+Cycadaceae | GimpelMi1996
+Cyperaceae
+Cyperus | BenDov1994 GimpelMi1996 Marott1987a
+Cyperus rotundus | BenDov1994 Willia1985
+Dilleniaceae
+Hibbertia perfoliata | GimpelMi1996
+Ebenaceae
+Diospyros | GimpelMi1996
+Diospyros kaki | BenDov1994 GimpelMi1996 Marott1987a
+Elaeagnaceae
+Elaeagnus | GimpelMi1996
+Ericaceae
+Gaultheria shallon | GimpelMi1996
+Rhododendron | GimpelMi1996
+Vaccinium | GimpelMi1996
+Euphorbiaceae
+Acalypha | GimpelMi1996
+Codiaeum variegatum | Moghad2013
+Croton | GimpelMi1996
+Euphorbia | GimpelMi1996
+Euphorbia pulcherrima | GimpelMi1996
+Manihot esculenta | BenDov1994 WilliaGr1992
+Ricinus | GimpelMi1996
+Sapium | BenDov2012
+Vernicia cordata | BatsanKaKi2017
+Fabaceae
+Acacia | GimpelMi1996
+Albizia | GimpelMi1996
+Bauhinia | BenDov1994 WilliaGr1992
+Caesalpinia | GimpelMi1996
+Ceratonia siliqua | MifsudMaRu2014
+Cercis siliquastrum | BenDov1994 Marott1987a
+Cytisus scoparius | GimpelMi1996
+Dolichos | BenDov1994 GimpelMi1996 Willia1985
+Dorycnium pentaphyllum | KozarFr1995
+Erythrina crista-galli | BenDov1994 Willia1985
+Erythrina speciosa | GranarGo2018
+Glycine max | BenDov1994 Granar1991 WilliaGr1992
+Glycyrrhiza glabra | BenDov2012
+Inga | BenDov1994 WilliaGr1992
+Inga | GranarGo2018
+Laburnum | BenDov1994 Cox1987
+Medicago polymorpha | CostelWe2014
+Medicago sativa | BenDov1994 GimpelMi1996 Granar1991 Willia1985
+Melilotus officinalis | BenDov1994 Willia1985
+Mimosa | GimpelMi1996
+
+Mimosa | GimpelMi1996
+Robinia | BenDov1994 WilliaGr1992
+Robinia pseudoacacia | GranarGo2018
+Sesbania punicea | BenDov1994 DeLott1967
+Sesbania punicea | GimpelMi1996
+Sophora | GimpelMi1996
+Trifolium fragiferum | BenDov1994 Willia1985
+Ulex | BenDov1994 Matile1976
+Geraniaceae
+Geranium | BenDov1994 DeLott1967 GimpelMi1996
+Pelargonium | BenDov1994 GimpelMi1996 Kozar1980
+Gesneriaceae
+Saintpaulia | BenDov1994 Matile1976
+Gnaphosidae
+Ladissa africana | GimpelMi1996
+Iridaceae
+Crocus | GimpelMi1996
+Gladiolus | BenDov1994 GimpelMi1996 Willia1985 WilliaGr1992
+Iridaceae | GimpelMi1996
+Watsonia | GimpelMi1996
+Juglandaceae
+Carya illinoinensis | GranarGo2018 Quiroz2003
+Juglandaceae | BenDov1994 WilliaGr1992
+Lamiaceae
+Holmskioldia sanguinea | GimpelMi1996
+Lauraceae
+Laurus | BenDov1994 Granar1991 WilliaGr1992
+Laurus | GimpelMi1996
+Laurus nobilis | GimpelMi1996
+Persea | GimpelMi1996
+Persea americana | Gonzal2011
+Umbellularia californica | GimpelMi1996
+Liliaceae
+Cardiocrinum giganteum | GimpelMi1996
+Lilium | GimpelMi1996
+Lilium pumilum | GimpelMi1996
+Tulipa | GimpelMi1996
+Loranthaceae
+Notanthera | BenDov1994 WilliaGr1992
+Lythraceae
+Punica | GimpelMi1996
+Punica granatum | BenDov1987 BenDov1994
+Punica granatum | Moghad2013
+Malvaceae
+Abutilon | GimpelMi1996
+Ceiba | GimpelMi1996
+Hibiscus | Gonzal2011
+Malva | Gonzal2011
+Malva parviflora | CostelWe2014
+Theobroma cacao | GimpelMi1996
+Moraceae
+Ficus | GimpelMi1996
+Ficus carica | GimpelMi1996
+Morus | GimpelMi1996
+Morus alba | Moghad2013a
+Myrtaceae
+Eucalyptus | BenDov1994 Willia1985
+Myrceugenia | BenDov1994 WilliaGr1992
+Plinia cauliflora | BenDov1994 WilliaGr1992 | (= Myrciaria jaboticaba)
+Psidium guajava | Gonzal2011
+Nepenthaceae
+Nepenthes | GimpelMi1996
+Nephrolepidaceae
+Nephrolepis | BenDov1994 Marott1987a
+Nyctaginaceae
+Bougainvillea | BenDov1994 Matile1976
+Oleaceae
+Forsythia | GimpelMi1996
+Fraxinus | BenDov1994 Borchs1949
+Jasminum | BenDov1994 Marott1987a
+Onagraceae
+Fuchsia | BenDov1994 Green1917a
+Orchidaceae
+Brassia maculata | GimpelMi1996
+Cattleya | GimpelMi1996
+Cypripedium | GimpelMi1996
+Epidendrum | GimpelMi1996
+Eria vagans | GimpelMi1996
+Orchidaceae | GimpelMi1996
+Rossioglossum grande | GimpelMi1996 | (= Rossioglossum grande)
+Passifloraceae
+Passiflora | BenDov1994 GimpelMi1996 Marott1987a Willia2004a
+Passiflora edulis | BenDov1994 DeLott1968a GimpelMi1996
+Passiflora quadrangularis | BenDov1994 GimpelMi1996 Marott1992a
+Philesiaceae
+Lapageria rosea | GimpelMi1996
+Phytolaccaceae
+Phytolacca dioica | GimpelMi1996
+Pinaceae
+Cedrus libani | BenDov2012
+Pinus | GimpelMi1996
+Pinus mugo | BenDov1994 Marott1992a
+Pinus radiata | GimpelMi1996
+Pittosporaceae
+Pittosporum | BenDov2012 GimpelMi1996
+Pittosporum tobira | BenDov1994 Marott1987a
+Pittosporum undulatum | GimpelMi1996
+Plumbaginaceae
+Limonium | BenDov2012
+Poaceae
+Bambusa | GimpelMi1996
+Poaceae | GimpelMi1996
+Triodia pungens | BenDov1994 Willia1985
+Zea mays | GimpelMi1996
+Zizania | GimpelMi1996
+Polygonaceae
+Eriogonum | GimpelMi1996
+Fallopia convolvulus | BenDov1994 Cox1987
+Rumex | BenDov1994 Cox1987
+Rumex obtusifolius | FoldiKo2006
+Portulacaceae
+Portulaca | Gonzal2011
+Primulaceae
+Cyclamen | BenDov1994 DeLott1967 GimpelMi1996
+Primula | BenDov1994 Marott1992a
+Proteaceae
+Grevillea robusta | Gonzal2011
+Ranunculaceae
+Anemone | GimpelMi1996
+Aquilegia | BenDov1994 Willia1985
+Clematis | GimpelMi1996
+Clematis paniculata | GimpelMi1996
+Ranunculus | BenDov1994 Willia1985
+Rosaceae
+Crataegus | GimpelMi1996
+Cydonia | GimpelMi1996
+Cydonia oblonga | Gonzal2011
+Fragaria | BenDov1994 GimpelMi1996 WilliaGr1992
+Malus | GimpelMi1996
+Malus prunifolia | BenDov2012
+Malus pumila | BenDov1994 Cox1987 Gonzal2011 Willia1985
+Malus sylvestris | BenDov1990g BenDov1994 GimpelMi1996
+Prunus | BenDov1994 GimpelMi1996 WilliaGr1992
+Prunus armeniaca | Gonzal2011
+Prunus avium | Gonzal2011
+Prunus domestica | BenDov1994 Cox1987 GimpelMi1996 GonzalCuBa1996 WilliaGr1992
+Prunus laurocerasus | BatsanKaKi2017
+Prunus persica | BenDov1994 Cox1987
+Pyracantha | BenDov1994 Marott1987a
+Pyrus | GimpelMi1996
+Pyrus communis | BenDov1994 Cox1987 GimpelMi1996 Willia1985 WilliaGr1992
+Rosa | Moghad2013
+Rubus idaeus | BenDov1994 WilliaGr1992
+Spiraea | KozarFr1995
+Rubiaceae
+Bouvardia | BenDov1994 Willia1985
+Coffea | BenDov1994 Matile1976
+Gardenia | GimpelMi1996
+Rutaceae
+Citrus | GimpelMi1996 KaydanKiKo2005 UygunSeEr1998
+Citrus aurantium | BenDov1994 GranarScTe1997 LongoRu1988
+Citrus limon | BenDov1994 Foldi2000 Marott1992a Willia1985
+Citrus paradisi | BatsanKaKi2017
+Citrus reticulata | BenDov1994 Panis1986
+Citrus sinensis | GranarGo2018
+Salicaceae
+Salix | GimpelMi1996
+Santalaceae
+Viscum | GimpelMi1996
+Sapindaceae
+Acer | GimpelMi1996
+Aesculus hippocastanum | Martin1985
+Litchi chinensis | BenDov1994 CarnerPe1986 GimpelMi1996
+Sarraceniaceae
+Sarracenia | GimpelMi1996
+Sarracenia purpurea | BenDov1994 Marott1987a
+Saxifragaceae
+Bergenia crassifolia | BenDov1994 Marott1987a
+Heuchera sanguinea | BenDov1994 GimpelMi1996 Willia1985
+Scrophulariaceae
+Myoporum | BenDov1994 Willia1985
+Simmondsiaceae
+Simmondsia chinensis | BenDov1987 BenDov1994
+Solanaceae
+Cestrum nocturnum | GimpelMi1996
+Cyphomandra | BenDov1994 Cox1987
+Lycium australe | BenDov1994 Willia1985
+Lycium ferocissimum | BenDov1994 Willia1985
+Nicotiana | GimpelMi1996
+Nicotiana tomentosa | Leonar1913 Marott1987a Marott1992a
+Solanum | GimpelMi1996
+Solanum giganteum | BenDov1994 Marott1987a
+Solanum lycopersicum | BenDov1994 Cox1987 SchoenMa1999 Willia1985 Willia2004a | (= Solanum esculentum)
+Solanum muricatum | GimpelMi1996
+Solanum tuberosum | Afifi1968 BenDov1994 Cox1987 GimpelMi1996 Willia1985 WilliaGr1992
+Strelitziaceae
+Strelitzia reginae | GimpelMi1996
+Synodontidae
+Synodus indicus | BenDov1994 Signor1875c
+Tamaricaceae
+Tamarix | GimpelMi1996
+Tamarix gallica | GimpelMi1996
+Taxaceae
+Taxus | GimpelMi1996
+Taxus baccata | BenDov1994 Marott1987a
+Taxus cuspidata | GimpelMi1996
+Theaceae
+Camellia | GimpelMi1996
+Camellia sinensis | AbbasiTaAs2007 Willia2004a
+Camellia sinensis | Moghad2013
+Thymelaeaceae
+Daphne | BenDov1994 Willia1985
+Vitaceae
+Ampelopsis vitifolia | Moghad2013
+Vitis | GimpelMi1996
+Vitis vinifera | BenDov1994 Cox1987 Gonzal1983RH GonzalCuBa1996 PhilliSh1991 Willia1985
+Zingiberaceae
+Zingiber officinale | GimpelMi1996
