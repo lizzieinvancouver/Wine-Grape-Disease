@@ -204,11 +204,12 @@ boxplot(as.numeric(V2) ~ as.factor(V1), data=mpd.z, ylab = "SES.MPD", main = "Me
 dev.off()
 
 
-
-single.sp<-cbind(rep("single.species", length(mntd.single.sp.in.genus$mntd.obs.z)),mntd.single.sp.in.genus$mpd.obs.z)
-all.genus<-cbind(rep("all.genus", length(mntd.all.sp.in.genus$mntd.obs.z)),mntd.all.sp.in.genus$mpd.obs.z)
+single.sp<-cbind(rep("single.species", length(mntd.single.sp.in.genus$mntd.obs.z)),mntd.single.sp.in.genus$mntd.obs.z)
+all.genus<-cbind(rep("all.genus", length(mntd.all.sp.in.genus$mntd.obs.z)),mntd.all.sp.in.genus$mntd.obs.z)
 mntd.z<-as.data.frame(rbind(single.sp, all.genus), stringsAsFactors=FALSE)
 
-pdf("Mean pairwise distances.pdf")
-boxplot(as.numeric(V2) ~ as.factor(V1), data=mpd.z, ylab = "SES.MPD", main = "Mean pairwise distances between hosts")
+pdf("Mean nearest taxon distances.pdf")
+boxplot(as.numeric(V2) ~ as.factor(V1), data=mntd.z, ylab = "SES.MPD", main = "Mean taxon distances between hosts")
 dev.off()
+
+
