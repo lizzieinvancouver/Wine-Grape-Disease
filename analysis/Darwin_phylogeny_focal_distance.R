@@ -36,6 +36,15 @@ host_spp$host_species<- tolower(host_spp$host_species)
 #combines two columns and seperates them by a _
 host_spp$Host = paste(host_spp$host_genus, host_spp$host_species, sep="_")
 
+#adds "vitis_vinifera" to each unique pathogen
+for (i in 1:49) {
+  host_spp <- add_row(host_spp, 
+                      Pathogen = unique(host_spp$Pathogen)[i],
+                      host_genus = "Vitis", 
+                      host_species = "vinifera", 
+                      Host = "Vitis_vinifera")
+}
+
 
 #Read in dataframes
 pathogens<-host_spp
@@ -86,6 +95,7 @@ agg_list<-c(agg_list, host.to.add)
 
 #save output in agg_hosts with a column for the pathogen and a column for the aggricultural host species
 agg_hosts<-rbind(agg_hosts,(cbind(rep(path[i], length(agg_list)), agg_list)))
+
 
 }#end for i
 
@@ -167,6 +177,14 @@ host_spp$host_species<- tolower(host_spp$host_species)
 #combines two columns and seperates them by a _
 host_spp$Host = paste(host_spp$host_genus, host_spp$host_species, sep="_")
 
+#adds "vitis_vinifera" to each unique pathogen
+for (i in 1:49) {
+  host_spp <- add_row(host_spp, 
+                      Pathogen = unique(host_spp$Pathogen)[i],
+                      host_genus = "Vitis", 
+                      host_species = "vinifera", 
+                      Host = "Vitis_vinifera")
+}
 
 #Read in dataframes
 pathogens<-host_spp
@@ -220,6 +238,8 @@ agg_hosts<-rbind(agg_hosts,(cbind(rep(path[i], length(agg_list)), agg_list)))
 path.data<-as.data.frame(agg_hosts)[duplicated(as.data.frame(agg_hosts))==F,]
 path.data.abund<-data.frame(path.data[,1], rep(1, length(path.data[,1])), path.data[,2],stringsAsFactors=FALSE)
 path.matrix<-sample2matrix(path.data.abund)
+
+phylo.comm.data<-match.phylo.comm(tree, path.matrix)
 
 my.paths<-row.names(phylo.comm.data$comm)
 
