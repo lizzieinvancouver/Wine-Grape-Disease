@@ -40,12 +40,18 @@ host_spp$host_species<- tolower(host_spp$host_species)
 #combines two columns and seperates them by a _
 host_spp$Host = paste(host_spp$host_genus, host_spp$host_species, sep="_")
 
+#adds "vitis_vinifera" to each unique pathogen
+for (i in 1:49) {
+  host_spp <- add_row(host_spp, 
+                      Pathogen = unique(host_spp$Pathogen)[i],
+                      host_genus = "Vitis", 
+                      host_species = "vinifera", 
+                      Host = "Vitis_vinifera")
+}
 
 #Read in dataframes
 pathogens<-host_spp
 agg_spp<-read.csv("agricultural_species.csv", stringsAsFactors=F)
-
-df<- agg_spp$Species_name[agg_spp$Species_name %in% host_names]
 
 
 #######################################
@@ -106,6 +112,8 @@ phylo.comm.data<-match.phylo.comm(tree, path.matrix)
 mpd.all.sp.in.genus<-ses.mpd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), null.model = c("taxa.labels"))
 boxplot(mpd.all.sp.in.genus$mpd.obs.z)
 
+write.csv(mpd.all.sp.in.genus, "mpd_all_sp_in_genus.csv")
+
 mntd.all.sp.in.genus<-ses.mntd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), null.model = c("taxa.labels"))
 boxplot(mntd.all.sp.in.genus$mntd.obs.z)
 
@@ -131,7 +139,7 @@ mpd.pool2<-ses.mpd(phylo.comm.data.pool2$comm, cophenetic(phylo.comm.data.pool2$
 #######################################
 #######################################
 
-
+df <-  agg_spp$Species_name[(agg_spp$Species_name %in% tree$tip.label)]
 #Before running this, reload first part of the code!
 #######################################
 #assume single species in genus infected
@@ -159,10 +167,9 @@ agg_list<-NULL
 for (n in 1:length(host_names)){
 
 #if statement extracts all agricultural species in that genus if a species name is not given
-#(assumes pathohen infects entire genus!)
 if (my_hosts$host_species[n] == "sp."){
-host.to.add<-subset(agg_spp, genus == my_hosts$host_genus[n])[1,"Species_name == df"]#just take first species
-###agg_spp$Species_name[(agg_spp$Species_name %in% tree$tip.label)]
+host.to.add<-subset(agg_spp, genus == my_hosts$host_genus[n])[,"Species_name"]
+host.to.add<- host.to.add[min(which(host.to.add %in% tree$tip.label == TRUE))]
 #[1,"Species_name"]#just take first species
 } else {
 #if a species name is given##### - see if it matches to a species in the aggricultural crop list
@@ -183,6 +190,7 @@ agg_hosts<-rbind(agg_hosts,(cbind(rep(path[i], length(agg_list)), agg_list)))
 
 #Remove duplicates
 path.data<-as.data.frame(agg_hosts)[duplicated(as.data.frame(agg_hosts))==F,]
+path.data<- na.omit(path.data)
 path.data.abund<-data.frame(path.data[,1], rep(1, length(path.data[,1])), path.data[,2],stringsAsFactors=FALSE)
 path.matrix<-sample2matrix(path.data.abund)
 
@@ -192,6 +200,8 @@ path.matrix<-sample2matrix(path.data.abund)
 phylo.comm.data<-match.phylo.comm(tree, path.matrix)
 mpd.single.sp.in.genus<-ses.mpd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), abundance.weighted=TRUE, null.model = c("taxa.labels"))
 boxplot(mpd.single.sp.in.genus$mpd.obs.z)
+
+write.csv(mpd.single.sp.in.genus, "mpd.single.sp.in.genus.csv")
 
 mntd.single.sp.in.genus<-ses.mntd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), abundance.weighted=TRUE, null.model = c("taxa.labels"))
 boxplot(mntd.single.sp.in.genus$mntd.obs.z)
