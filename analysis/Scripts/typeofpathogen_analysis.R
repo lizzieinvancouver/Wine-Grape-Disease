@@ -1,5 +1,5 @@
 #sentivity analysis based on type of pathogen
-setwd("~/Documents/Ph.D/Wine_grape_Disease")
+setwd("~/Documents/GitHub/Wine-Grape-Disease/data/")
 
 
 mpd_all_sp_in_genus <- read_csv("mpd_all_sp_in_genus.csv")
