@@ -1,0 +1,29 @@
+Wine-Grape-Disease-Results
+
+All species in genus
+
+mean pairwise distance 
+
+Thirty-six out of forty-four species show phylogenetic clustering while the remaining seven species show phylogenetic evenness. Thirty-three out out of forty-four species have a statistically significant difference between null communities. 
+
+mean nearest taxon distance 
+
+Forty out of forty-three species show phylogenetic clustering while the remaining three species show weak phylogenetic evenness. Thirty-four out out of forty-four species have a statistically significant difference between null communities. 
+
+focal distance to vitis vinfera
+
+Thirty-seven out of forty-three species show phylogentic clustering while the remaining seven species show phylogenetic evenness. Across all analyses the number of taxa ranged from two to two hundred and seventy-nine. Patterns across measures is consistent across species. 
+
+One Species in genus
+
+mean pairwise distance 
+
+Thirty-seven out of forty-three species show phylogenetic clustering while the remaining six species show phylogenetic eveness. Twenty-seven out of the forty-three species have a statistically significant difference between null communities. 
+
+mean nearest taxon distance 
+
+Forty out of forty-three species show phylogenetic clustering while the remaining three species show weak phylogenetic evenness. Twenty-seven out of the forty-three species have a statistically significant difference between null communities. 
+
+focal distance to vitis vinfera
+
+Thirty-six out of forty-three species show phylogentic clustering while the remaining seven species show phylogenetic evenness. Across all analyses the number of taxa ranged from two to two hundred and twenty. Patterns across measures is consistent across species. 

@@ -117,7 +117,7 @@ write.csv(mpd.all.sp.in.genus, "mpd_all_sp_in_genus.csv")
 mntd.all.sp.in.genus<-ses.mntd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), null.model = c("taxa.labels"))
 boxplot(mntd.all.sp.in.genus$mntd.obs.z)
 
-
+write.csv(mntd.all.sp.in.genus, "mntd_all_sp_in_genus.csv")
 #######################################
 #######################################
 #######################################
@@ -205,6 +205,8 @@ write.csv(mpd.single.sp.in.genus, "mpd.single.sp.in.genus.csv")
 
 mntd.single.sp.in.genus<-ses.mntd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), abundance.weighted=TRUE, null.model = c("taxa.labels"))
 boxplot(mntd.single.sp.in.genus$mntd.obs.z)
+
+write.csv(mntd.single.sp.in.genus, "mntd.single.sp.in.genus.csv")
 
 single.sp<-cbind(rep("single.species", length(mpd.single.sp.in.genus$mpd.obs.z)),mpd.single.sp.in.genus$mpd.obs.z)
 all.genus<-cbind(rep("all.genus", length(mpd.all.sp.in.genus$mpd.obs.z)),mpd.all.sp.in.genus$mpd.obs.z)
