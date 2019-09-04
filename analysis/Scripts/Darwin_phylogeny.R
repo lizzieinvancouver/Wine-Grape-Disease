@@ -1,6 +1,6 @@
 rm(list=ls()) # remove everything currently held in the R memory
 options(stringsAsFactors=FALSE)
-setwd("~/Documents/Ph.D/Wine_grape_Disease")
+setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/Scripts/")
 
 
 library(ape)
@@ -112,12 +112,14 @@ phylo.comm.data<-match.phylo.comm(tree, path.matrix)
 mpd.all.sp.in.genus<-ses.mpd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), null.model = c("taxa.labels"))
 boxplot(mpd.all.sp.in.genus$mpd.obs.z)
 
-write.csv(mpd.all.sp.in.genus, "mpd_all_sp_in_genus.csv")
+path_out = "~/Documents/GitHub/Wine-Grape-Disease/analysis/output/"
+write.csv(mpd.all.sp.in.genus, paste(path_out, "mpd_all_sp_in_genus.csv", sep= ""))
 
 mntd.all.sp.in.genus<-ses.mntd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), null.model = c("taxa.labels"))
 boxplot(mntd.all.sp.in.genus$mntd.obs.z)
 
-write.csv(mntd.all.sp.in.genus, "mntd_all_sp_in_genus.csv")
+write.csv(mntd.all.sp.in.genus, paste(path_out, "mntd_all_sp_in_genus.csv", sep= ""))
+
 #######################################
 #######################################
 #######################################
@@ -201,12 +203,12 @@ phylo.comm.data<-match.phylo.comm(tree, path.matrix)
 mpd.single.sp.in.genus<-ses.mpd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), abundance.weighted=TRUE, null.model = c("taxa.labels"))
 boxplot(mpd.single.sp.in.genus$mpd.obs.z)
 
-write.csv(mpd.single.sp.in.genus, "mpd.single.sp.in.genus.csv")
+write.csv(mpd.single.sp.in.genus, paste(path_out, "mpd.single.sp.in.genus.csv", sep= ""))
 
 mntd.single.sp.in.genus<-ses.mntd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), abundance.weighted=TRUE, null.model = c("taxa.labels"))
 boxplot(mntd.single.sp.in.genus$mntd.obs.z)
 
-write.csv(mntd.single.sp.in.genus, "mntd.single.sp.in.genus.csv")
+write.csv(mntd.single.sp.in.genus, paste(path_out, "mntd.single.sp.in.genus.csv", sep= ""))
 
 single.sp<-cbind(rep("single.species", length(mpd.single.sp.in.genus$mpd.obs.z)),mpd.single.sp.in.genus$mpd.obs.z)
 all.genus<-cbind(rep("all.genus", length(mpd.all.sp.in.genus$mpd.obs.z)),mpd.all.sp.in.genus$mpd.obs.z)

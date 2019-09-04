@@ -1,4 +1,7 @@
-setwd("~/Documents/Ph.D/Wine_grape_Disease")
+setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/Scripts/")
+
+rm(list=ls()) # remove everything currently held in the R memory
+options(stringsAsFactors=FALSE)
 
 library(ape)
 library(picante)
@@ -188,7 +191,7 @@ for (i in 1:49) {
 
 #Read in dataframes
 pathogens<-host_spp
-agg_spp<-read.csv("agricultural_species.csv", stringsAsFactors=F)
+agg_spp<-read.csv("~/Documents/GitHub/Wine-Grape_Disease/analyses/input/agricultural_species.csv", stringsAsFactors=F)
 
 df<- agg_spp$Species_name[agg_spp$Species_name %in% host_names]
 
@@ -280,5 +283,6 @@ SES.FPD2[j]<-(FPD2[j]-mean(rnd.FPD2))/sd(rnd.FPD2)
 
 FPD.results2<-data.frame(my.paths, FPD2, SES.FPD2)
 
-write.csv(FPD.results, "Focaldistanceentiregenus.csv")
-write.csv(FPD.results2, "Focaldistanceonespecies.csv")
+path_out = "~/Documents/GitHub/Wine-Grape-Disease/analysis/output/"
+write.csv(FPD.results, paste(path_out, "Focaldistanceonespecies.csv", sep= ""))
+write.csv(FPD.results2,paste(path_out, "Focaldistanceonespecies.csv", sep= ""))

@@ -1,5 +1,5 @@
 #sentivity analysis based on type of pathogen
-setwd("~/Documents/Ph.D/Wine_grape_Disease")
+setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/")
 rm(list=ls()) # remove everything currently held in the R memory
 options(stringsAsFactors=FALSE)
 
@@ -12,15 +12,10 @@ library(tibble)
 library(dplyr)
 
 
-
-
 mpd_all_sp_in_genus <- read_csv("mpd_all_sp_in_genus.csv")
 mpd_single_sp_in_genus <- read_csv("mpd.single.sp.in.genus.csv")
 focaldistance_onespecies <- read_csv("Focaldistanceonespecies.csv")
 focaldistance_enitregenus <- read_csv("Focaldistanceentiregenus.csv")
-
-focaldistance_onespecies$SES.FPD <- focaldistance_onespecies$SES.FPD2 #converts SES.FPD2 to SES.FPD
-focaldistance_onespecies <- focaldistance_onespecies[,-4] #removes SES.FPD2 column
 
 ####loop for getting aov for mpd using different combinations of variables
 
