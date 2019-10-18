@@ -73,9 +73,54 @@ loo3 <- loo(post3)
 loo4 <- loo(post4)
 comp <- compare_models(loo1, loo2, loo3, loo4)
 
-pp_check(post2, plotfun = "hist", nreps = 5)
-pp_check(post2, plotfun = "stat", stat = "mean")
-pp_check(post2, plotfun = "stat_2d", stat = c("mean", "sd"))
+pp_check(post1, plotfun = "hist", nreps = 5)
+pp_check(post1, plotfun = "stat", stat = "mean")
+pp_check(post1, plotfun = "stat_2d", stat = c("mean", "sd"))
+
+#stimulating predictions
+MPD_SEQ <- seq(from = -10, to = 2, by = 1)
+y_S <- posterior_predict(post2, newdata = data.frame(category = "S", mpd = MPD_SEQ))
+y_G <- posterior_predict(post2, newdata = data.frame(category = "G", mpd = MPD_SEQ))
+
+par(mfrow = c(1:2), mar = c(5,4,2,1))
+boxplot(y_G, axes = FALSE, outline = FALSE, ylim = c(-10,5),
+        xlab = "mpd", ylab = "Predicted mpd", main = "G")
+axis(1, at = 1:ncol(y_G), labels = MPD_SEQ, las = 3)
+axis(2, las = 1)
+boxplot(y_S, outline = FALSE, col = "red", axes = FALSE, ylim = c(-10,1),
+        xlab = "mpd", ylab = NULL, main = "S")
+axis(1, at = 1:ncol(y_G), labels = MPD_SEQ, las = 3)
+
+
+# stimulating predictions for type
+MPD_SEQ <- seq(from = -10, to = 2, by = 1)
+y_N <- posterior_predict(post1, newdata = data.frame(Type = "N", mpd = MPD_SEQ))
+y_P <- posterior_predict(post1, newdata = data.frame(Type = "P", mpd = MPD_SEQ))
+y_V <- posterior_predict(post1, newdata = data.frame(Type = "V", mpd = MPD_SEQ))
+Y_F <- posterior_predict(post1, newdata = data.frame(Type = "F", mpd = MPD_SEQ))
+Y_B <- posterior_predict(post1, newdata = data.frame(Type = "B", mpd = MPD_SEQ))
+
+par(mfrow = c(3:2), mar = c(5,4,2,1))
+boxplot(y_N, axes = FALSE, outline = FALSE, ylim = c(-10,5),
+        xlab = "mpd", ylab = "Predicted mpd", main = "N")
+axis(1, at = 1:ncol(y_N), labels = MPD_SEQ, las = 3)
+axis(2, las = 1)
+boxplot(y_P, outline = FALSE, col = "red", axes = FALSE, ylim = c(-10,1),
+        xlab = "mpd", ylab = NULL, main = "P")
+axis(1, at = 1:ncol(y_N), labels = MPD_SEQ, las = 3)
+boxplot(y_V, axes = FALSE, outline = FALSE, ylim = c(-10,5),
+        xlab = "mpd", ylab = "Predicted mpd", main = "V")
+axis(1, at = 1:ncol(y_N), labels = MPD_SEQ, las = 3)
+axis(2, las = 1)
+boxplot(Y_F, outline = FALSE, col = "red", axes = FALSE, ylim = c(-10,1),
+        xlab = "mpd", ylab = NULL, main = "F")
+axis(1, at = 1:ncol(y_N), labels = MPD_SEQ, las = 3)
+boxplot(Y_B, axes = FALSE, outline = FALSE, ylim = c(-10,5),
+        xlab = "mpd", ylab = "Predicted mpd", main = "B")
+axis(1, at = 1:ncol(y_N), labels = MPD_SEQ, las = 3)
+axis(2, las = 1)
+
+
 
 post1<- stan_glm(mpd.obs.z~ Type, data = mpd_all_sp_in_genus,
                  family = gaussian(link="identity"),)
