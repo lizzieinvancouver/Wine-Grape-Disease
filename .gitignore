@@ -1,3 +1,5 @@
-**/.RData
-**/.Rhistory
-**/.DS_Store
+#ignore MAC DS_Store Files
+.DS_Store
+.Rdata
+.Rhistory
+
