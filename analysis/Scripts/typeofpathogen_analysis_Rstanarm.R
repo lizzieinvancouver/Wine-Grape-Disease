@@ -12,6 +12,7 @@ library(tibble)
 library(dplyr)
 library(rstanarm)
 library(loo)
+library(rethinking)
 
 #loading in datasets
 mpd_all_sp_in_genus <- read_csv("mpd_all_sp_in_genus.csv")
@@ -180,4 +181,22 @@ comp <- compare_models(loo1, loo2, loo3, loo4,loo5)
 pp_check(post2, plotfun = "hist", nreps = 5)
 pp_check(post2, plotfun = "stat", stat = "mean")
 pp_check(post2, plotfun = "stat_2d", stat = c("mean", "sd"))
+
+
+
+mpd_all_sp_in_genus$tax_id <- coerce_index(mpd_all_sp_in_genus$Type)
+mpd_all_sp_in_genus <- select(mpd_all_sp_in_genus, mpd.obs.z, tax_id)
+mpd_all_sp_in_genus <- na.omit(mpd_all_sp_in_genus)
+mpd_all_sp_in_genus <- as.vector(mpd_all_sp_in_genus)
+
+
+m_alt <- map(
+  alist(
+    mpd.obs.z ~ dnorm (mu, sigma),
+    mu <- a[tax_id], 
+    a[tax_id] ~ dnorm (-2.82, 2.66),
+    sigma ~ dunif (0, 10)
+  ), 
+  data = mpd_all_sp_in_genus)
+
 
