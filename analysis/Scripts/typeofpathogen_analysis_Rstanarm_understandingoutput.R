@@ -44,3 +44,80 @@ For each parameter, mcse is Monte Carlo standard error, n_eff is a crude measure
 # Type F = -2.8 + -1.0 = -3.8
 # Type N = -2.8 +  0.8 = -2.0 (etc. for TypeP and TypeV)
 # To get the credible intervals for F (not F relative to B, which is what the model shows above) you would ADD the posterior (last 1000 or so draws) of the intercept and TypeF ... 
+
+coef(post1)
+
+fits <- post1 %>% 
+  as_data_frame %>% 
+  rename(intercept = `(Intercept)`) %>% 
+  select(-sigma)
+
+
+path <- unique(names(fits))
+
+dose <- (matrix(NA, nrow= nrow(fits), ncol = ncol(fits)))
+for (n in 1:length(path)){ 
+  dose[,1]<- as.matrix(fits[,1] * 1)
+  dose[,n]<- as.matrix(fits[,1] + fits[,n])
+}  
+
+dose <- as.data.frame(dose)
+dose <- dose %>%
+  rename(
+  intercept = V1,
+  TypeF = V2,
+  TypeN = V3,
+  TypeP = V4,
+  TypeV = V5
+)
+  
+
+prob_lwr <- .10
+prob_upr <- .90
+
+  
+path <- unique(names(dose))
+tycho <- (matrix(NA, nrow= 3, ncol = ncol(dose)))
+for (n in 1:length(path)){ 
+  tycho[1,n]<- as.matrix(median(dose[,n]))
+  tycho[2,n] <- as.matrix(quantile(dose[,n], prob_lwr))                    
+  tycho[3,n]<- as.matrix(quantile(dose[,n], prob_upr)) 
+}  
+
+tycho <- as.data.frame(tycho)
+tycho <- tycho %>%
+  rename(
+    B = V1,
+    F = V2,
+    N = V3,
+    P = V4,
+    V = V5
+  )
+
+
+ford <- t(tycho)
+colnames(ford) <- as.character(unlist(ford[1,]))
+ford <- ford[-1,]
+ford <- as.data.frame(ford)
+ford <- rownames_to_column(ford)
+colnames(ford)[1] <- "Type"
+colnames(ford)[2] <- "mpd.obs.z"
+
+
+#Vizulizing Data
+cloud<- ggplot(mpd_all_sp_in_genus, aes(x = Type, y =mpd.obs.z )) + 
+  geom_point(size = 1, position = position_jitter(height = 0.05, width = 0.1)) 
+
+cloud + geom_point(aes(x=1, y= -2.85), colour= "red") + 
+ geom_point(aes(x=2, y= -3.84), colour= "red") +
+ geom_point(aes(x=3, y= -2.03), colour= "red") +
+ geom_point(aes(x=4, y= -3.17), colour= "red") +
+ geom_point(aes(x=5, y= -3.48), colour= "red") +
+ geom_errorbar(data= cloud1, aes(ymin=lower, ymax=upper), width=.2,
+                position=position_dodge(0.05))
+
+
+
+#Vizulizing Data
+cloud<- ggplot(mpd_all_sp_in_genus, aes(x = Type, y =mpd.obs.z )) + 
+  geom_point(size = 1, position = position_jitter(height = 0.05, width = 0.1)) 
