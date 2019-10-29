@@ -33,7 +33,7 @@ summary(post1)
 
 base <- ggplot(mpd_all_sp_in_genus, aes(x = Type, y =mpd.obs.z )) + 
   geom_point(size = 1, position = position_jitter(height = 0.05, width = 0.1)) + 
-  scale_x_continuous(breaks = c(0,1), labels = c("S", "G"))
+  scale_x_continuous(breaks = c(0,1))
 
 base + geom_abline(intercept = coef(post1)[1], slope = coef(post1)[2], 
                    color = "skyblue4", size = 1)
@@ -188,15 +188,3 @@ mpd_all_sp_in_genus$tax_id <- coerce_index(mpd_all_sp_in_genus$Type)
 mpd_all_sp_in_genus <- select(mpd_all_sp_in_genus, mpd.obs.z, tax_id)
 mpd_all_sp_in_genus <- na.omit(mpd_all_sp_in_genus)
 mpd_all_sp_in_genus <- as.vector(mpd_all_sp_in_genus)
-
-
-m_alt <- map(
-  alist(
-    mpd.obs.z ~ dnorm (mu, sigma),
-    mu <- a[tax_id], 
-    a[tax_id] ~ dnorm (-2.82, 2.66),
-    sigma ~ dunif (0, 10)
-  ), 
-  data = mpd_all_sp_in_genus)
-
-
