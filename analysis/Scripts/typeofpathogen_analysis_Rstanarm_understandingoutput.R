@@ -12,6 +12,7 @@ library(tibble)
 library(dplyr)
 library(rstanarm)
 library(loo)
+library(shinystan)
 
 #loading in datasets
 mpd_all_sp_in_genus <- read_csv("mpd_all_sp_in_genus.csv")
