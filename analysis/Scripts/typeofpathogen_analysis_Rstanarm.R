@@ -17,8 +17,6 @@ library(rethinking)
 #loading in datasets
 mpd_all_sp_in_genus <- read_csv("mpd_all_sp_in_genus.csv")
 mpd_single_sp_in_genus <- read_csv("mpd.single.sp.in.genus.csv")
-focaldistance_onespecies <- read_csv("Focaldistanceonespecies.csv")
-focaldistance_enitregenus <- read_csv("Focaldistanceentiregenus.csv")
 mntd_all_sp_in_genus <- read_csv("mntd_all_sp_in_genus.csv")
 mntd_single_sp_in_genus <- read_csv("mntd.single.sp.in.genus.csv")
 
