@@ -20,8 +20,10 @@ mpd_single_sp_in_genus <- read_csv("mpd.single.sp.in.genus.csv")
 mntd_all_sp_in_genus <- read_csv("mntd_all_sp_in_genus.csv")
 mntd_single_sp_in_genus <- read_csv("mntd.single.sp.in.genus.csv")
 
+post1<- stan_glm(mpd.obs.z~ Type, data = mpd_all_sp_in_genus,
+                 family = gaussian(link="identity"),)
 
-> summary(post1)
+summary(post1)
 
 Model Info:
 
