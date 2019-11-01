@@ -1,4 +1,3 @@
-.DS_Store
-.Rdata
-.Rhistory
-
+*.DS_Store
+*.Rdata
+*.Rhistory
