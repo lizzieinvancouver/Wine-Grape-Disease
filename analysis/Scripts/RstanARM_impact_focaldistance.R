@@ -28,19 +28,27 @@ fits <- calvin %>%
   rename(intercept = `(Intercept)`) %>% 
   select(-sigma)
 
-#stimulating predictions
-SES.FPD_SEQ <- seq(from = -10, to = 2, by = 2)
-impact_SEQ <- seq(from = 0, to = 100, by = 14.3)
-y_calvin <- posterior_predict(calvin, newdata = data.frame(impact = impact_SEQ ,SES.FPD= SES.FPD_SEQ))
+plot(intercept~SES.FPD, data= fits)
+abline(lm(intercept~SES.FPD, data= fits))
+summary(lm(intercept~SES.FPD, data= fits))
+
+MJ<- ggplot(fits, aes(x = intercept, y =SES.FPD )) + 
+  geom_point(size = 1, position = position_jitter(height = 0.05, width = 0.1)) 
 
 
-boxplot(y_calvin, axes = FALSE, outline = FALSE, ylim = c(0,100),
-        xlab = "SES.MPD", ylab = "Predicted impact")
-axis(1, at = 1:ncol(y_calvin), labels = SES.FPD_SEQ, las = 3)
-axis(2, las = 1)
+KW <- stan_glm(impact~ SES.FPD, data = focaldistance_onespecies,
+                   family = gaussian(link="identity"),) 
 
+summary(coef(KW))
 
+fits2 <- KW %>% 
+  as_data_frame %>% 
+  rename(intercept = `(Intercept)`) %>% 
+  select(-sigma)
 
-boxplot(y_S, outline = FALSE, col = "red", axes = FALSE, ylim = c(-10,1),
-        xlab = "mpd", ylab = NULL, main = "S")
-axis(1, at = 1:ncol(y_G), labels = MPD_SEQ, las = 3)
+plot(intercept~SES.FPD, data= fits2)
+abline(lm(intercept~SES.FPD, data= fits2))
+summary(lm(intercept~SES.FPD, data= fits2))
+
+kanye<- ggplot(fits2, aes(x = intercept, y =SES.FPD )) + 
+  geom_point(size = 1, position = position_jitter(height = 0.05, width = 0.1)) 

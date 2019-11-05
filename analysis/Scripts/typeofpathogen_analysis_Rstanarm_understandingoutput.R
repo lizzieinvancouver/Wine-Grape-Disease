@@ -119,14 +119,17 @@ tycho <- tycho %>%
     V = V5
   )
 
+rownames(tycho)[1] <- "median"
+rownames(tycho)[2] <- "lower"
+rownames(tycho)[3] <- "upper"
+
+
 
 ford <- t(tycho)
-colnames(ford) <- as.character(unlist(ford[1,]))
-ford <- ford[-1,]
 ford <- as.data.frame(ford)
 ford <- rownames_to_column(ford)
 colnames(ford)[1] <- "Type"
-colnames(ford)[2] <- "mpd.obs.z"
+
 
 cloud1<- full_join(mpd_all_sp_in_genus, ford, by= "Type")
 
