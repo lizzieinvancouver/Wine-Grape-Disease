@@ -13,20 +13,45 @@ library(dplyr)
 library(rstanarm)
 library(loo)
 library(shinystan)
+library(broom)
 
 #loading in datasets
 focaldistance_onespecies <- read_csv("Focaldistanceonespecies.csv")
 focaldistance_enitregenus <- read_csv("Focaldistanceentiregenus.csv")
 
 calvin <- stan_glm(impact~ SES.FPD, data = focaldistance_enitregenus,
-                          family = gaussian(link="identity"),) 
+                          family = gaussian(link="identity"), iter= 4000) 
+calvin2 <- stan_lmer(impact~ SES.FPD + (1 + SES.FPD | Type), data = focaldistance_enitregenus
+                     ,iter= 4000 )
 
 summary(calvin)
+summary(calvin2)
+
+pp_check(calvin2)
+
+kamikwazi <- tidy(calvin2, intervals=TRUE, prob=.95,
+                  parameters = "non-varying")
+                  
+print(kamikwazi, digits = 2)
+
+kamikwazi2 <- tidy(calvin2, intervals=TRUE, prob=.95,
+                  parameters = "hierarchical")
+
+
+print(kamikwazi2, digits = 2)
+
+kamikwazi3 <- tidy(calvin2, intervals=TRUE, prob=.95,
+                   parameters = "varying")
+
+print(kamikwazi3, digits = 2)
+
 
 fits <- calvin %>% 
   as_data_frame %>% 
   rename(intercept = `(Intercept)`) %>% 
   select(-sigma)
+
+pp_check(calvin)
 
 plot(intercept~SES.FPD, data= fits)
 abline(lm(intercept~SES.FPD, data= fits))
@@ -35,9 +60,17 @@ summary(lm(intercept~SES.FPD, data= fits))
 MJ<- ggplot(fits, aes(x = intercept, y =SES.FPD )) + 
   geom_point(size = 1, position = position_jitter(height = 0.05, width = 0.1)) 
 
+launch_shinystan(calvin)
+callshinystan(calvin)
+
+pp_check(calvin, plotfun = "hist", nreps = 5)
+pp_check(calvin, plotfun = "stat", stat = "mean")
+pp_check(calvin, plotfun = "stat_2d", stat = c("mean", "sd"))
+
 
 KW <- stan_glm(impact~ SES.FPD, data = focaldistance_onespecies,
                    family = gaussian(link="identity"),) 
+
 
 summary(coef(KW))
 
