@@ -24,23 +24,28 @@ calvin <- stan_glm(impact~ SES.FPD, data = focaldistance_enitregenus,
 calvin2 <- stan_lmer(impact~ SES.FPD + (1 + SES.FPD | Type), data = focaldistance_enitregenus
                      ,iter= 4000 )
 
+calvin3 <- stan_lmer(impact~ SES.FPD + (1 + SES.FPD | category), data = focaldistance_enitregenus
+                     ,iter= 4000 )
+
+
 summary(calvin)
 summary(calvin2)
+summary(calvin3)
 
 pp_check(calvin2)
 
-kamikwazi <- tidy(calvin2, intervals=TRUE, prob=.95,
+kamikwazi <- tidy(calvin3, intervals=TRUE, prob=.95,
                   parameters = "non-varying")
                   
 print(kamikwazi, digits = 2)
 
-kamikwazi2 <- tidy(calvin2, intervals=TRUE, prob=.95,
+kamikwazi2 <- tidy(calvin3, intervals=TRUE, prob=.95,
                   parameters = "hierarchical")
 
 
 print(kamikwazi2, digits = 2)
 
-kamikwazi3 <- tidy(calvin2, intervals=TRUE, prob=.95,
+kamikwazi3 <- tidy(calvin3, intervals=TRUE, prob=.95,
                    parameters = "varying")
 
 print(kamikwazi3, digits = 2)
@@ -51,11 +56,29 @@ fits <- calvin %>%
   rename(intercept = `(Intercept)`) %>% 
   select(-sigma)
 
+fits2 <- calvin2 %>% 
+  as_data_frame %>% 
+  rename(intercept = `(Intercept)`) %>% 
+  select(-sigma)
+
+fits3 <- calvin3 %>% 
+  as_data_frame %>% 
+  rename(intercept = `(Intercept)`) %>% 
+  select(-sigma)
+
 pp_check(calvin)
 
 plot(intercept~SES.FPD, data= fits)
 abline(lm(intercept~SES.FPD, data= fits))
 summary(lm(intercept~SES.FPD, data= fits))
+
+plot(intercept~SES.FPD, data= fits2)
+abline(lm(intercept~SES.FPD, data= fits2))
+summary(lm(intercept~SES.FPD, data= fits2))
+
+plot(intercept~SES.FPD, data= fits3)
+abline(lm(intercept~SES.FPD, data= fits3))
+summary(lm(intercept~SES.FPD, data= fits3))
 
 MJ<- ggplot(fits, aes(x = intercept, y =SES.FPD )) + 
   geom_point(size = 1, position = position_jitter(height = 0.05, width = 0.1)) 
@@ -72,7 +95,7 @@ KW <- stan_glm(impact~ SES.FPD, data = focaldistance_onespecies,
                    family = gaussian(link="identity"),) 
 
 
-summary(coef(KW))
+summary(KW)
 
 fits2 <- KW %>% 
   as_data_frame %>% 
