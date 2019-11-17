@@ -20,12 +20,13 @@ focaldistance_onespecies <- read_csv("Focaldistanceonespecies.csv")
 focaldistance_enitregenus <- read_csv("Focaldistanceentiregenus.csv")
 
 calvin <- stan_glm(impact~ SES.FPD, data = focaldistance_enitregenus,
-                          family = gaussian(link="identity"), iter= 4000) 
+                          family = gaussian(link="identity"), iter= 4000, adapt_delta= 0.99) 
 calvin2 <- stan_lmer(impact~ SES.FPD + (1 + SES.FPD | Type), data = focaldistance_enitregenus
-                     ,iter= 4000 )
+                     ,iter= 4000, adapt_delta= 0.99 )
+pairs(calvin2)
 
 calvin3 <- stan_lmer(impact~ SES.FPD + (1 + SES.FPD | category), data = focaldistance_enitregenus
-                     ,iter= 4000 )
+                     ,iter= 4000, adapt_delta= 0.99 )
 
 
 summary(calvin)
