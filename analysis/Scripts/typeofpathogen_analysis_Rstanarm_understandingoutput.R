@@ -146,6 +146,7 @@ cloud + geom_point(aes(x=1, y= -2.85), colour= "red") +
  geom_errorbar(data= cloud1, aes(ymin=lower, ymax=upper), width=.2,
                 position=position_dodge(0.05))
 
+launch_shinystan(post1)
 #######################################
 #mpd.single.species
 #######################################

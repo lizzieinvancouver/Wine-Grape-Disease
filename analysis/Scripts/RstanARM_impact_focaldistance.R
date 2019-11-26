@@ -26,7 +26,7 @@ calvin2 <- stan_lmer(impact~ SES.FPD + (1 + SES.FPD | Type), data = focaldistanc
 pairs(calvin2)
 
 calvin3 <- stan_lmer(impact~ SES.FPD + (1 + SES.FPD | category), data = focaldistance_enitregenus
-                     ,iter= 4000, adapt_delta= 0.99 )
+                     ,iter= 4000, adapt_delta= 0.999, prior_covariance = decov(shape = 2) )
 
 
 summary(calvin)
