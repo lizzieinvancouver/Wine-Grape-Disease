@@ -3,16 +3,11 @@ setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/") # setwd("~/Docum
 rm(list=ls()) # remove everything currently held in the R memory
 options(stringsAsFactors=FALSE)
 
-library(tidyverse)
-library(dbplyr)
-library(tidyr)
-library(reshape2)
-library(data.table)
-library(tibble)
 library(dplyr)
 library(rstanarm)
 library(loo)
 library(shinystan)
+library(readr)
 
 #loading in datasets
 mpd_all_sp_in_genus <- read_csv("mpd_all_sp_in_genus.csv")

@@ -3,15 +3,9 @@ setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/") # setwd("~/Docum
 rm(list=ls()) # remove everything currently held in the R memory
 options(stringsAsFactors=FALSE)
 
-library(tidyverse)
-library(dbplyr)
-library(tidyr)
-library(reshape2)
-library(data.table)
-library(tibble)
+
 library(dplyr)
 library(rstanarm)
-library(loo)
 library(shinystan)
 library(broom)
 
@@ -21,13 +15,24 @@ focaldistance_enitregenus <- read_csv("Focaldistanceentiregenus.csv")
 
 calvin <- stan_glm(impact~ SES.FPD, data = focaldistance_enitregenus,
                           family = gaussian(link="identity"), iter= 4000, adapt_delta= 0.99) 
-calvin2 <- stan_lmer(impact~ SES.FPD + (1 + SES.FPD | Type), data = focaldistance_enitregenus
+#calvin2 <- stan_lmer(impact~ SES.FPD + (1 + SES.FPD | Type), data = focaldistance_enitregenus
                      ,iter= 4000, adapt_delta= 0.99 )
 pairs(calvin2)
 
-calvin3 <- stan_lmer(impact~ SES.FPD + (1 + SES.FPD | category), data = focaldistance_enitregenus
+#calvin3 <- stan_lmer(impact~ SES.FPD + (1 + SES.FPD | category), data = focaldistance_enitregenus
                      ,iter= 4000, adapt_delta= 0.999, prior_covariance = decov(shape = 2) )
+calvin4 <- stan_glm(impact~ SES.FPD + Type, data = focaldistance_enitregenus,
+                    family = gaussian(link="identity"), iter= 4000, adapt_delta= 0.99)
+calvin5 <- stan_glm(impact~ SES.FPD * Type, data = focaldistance_enitregenus,
+                    family = gaussian(link="identity"), iter= 4000, adapt_delta= 0.99)
+calvin6 <- stan_glm(impact~ SES.FPD + Type + category, data = focaldistance_enitregenus,
+                    family = gaussian(link="identity"), iter= 4000, adapt_delta= 0.99)
 
+
+launch_shinystan(calvin)
+launch_shinystan(calvin4)
+launch_shinystan(calvin5)
+launch_shinystan(calvin6)
 
 summary(calvin)
 summary(calvin2)
