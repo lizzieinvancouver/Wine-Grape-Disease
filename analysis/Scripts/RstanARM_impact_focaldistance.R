@@ -29,10 +29,24 @@ calvin6 <- stan_glm(impact~ SES.FPD + Type + category, data = focaldistance_enit
                     family = gaussian(link="identity"), iter= 4000, adapt_delta= 0.99)
 
 
+calvin2.1 <- stan_glm(impact~ SES.FPD, data = focaldistance_onespecies,
+                   family = gaussian(link="identity"), iter= 4000, adapt_delta= 0.99) 
+calvin2.2 <- stan_glm(impact~ SES.FPD + Type, data = focaldistance_onespecies,
+                    family = gaussian(link="identity"), iter= 4000, adapt_delta= 0.99)
+calvin2.3 <- stan_glm(impact~ SES.FPD * Type, data = focaldistance_onespecies,
+                    family = gaussian(link="identity"), iter= 4000, adapt_delta= 0.99)
+calvin2.4 <- stan_glm(impact~ SES.FPD + Type + category, data = focaldistance_onespecies,
+                    family = gaussian(link="identity"), iter= 4000, adapt_delta= 0.99)
+
+
 launch_shinystan(calvin)
 launch_shinystan(calvin4)
 launch_shinystan(calvin5)
 launch_shinystan(calvin6)
+launch_shinystan(calvin2.1)
+launch_shinystan(calvin2.2)
+launch_shinystan(calvin2.3)
+launch_shinystan(calvin2.4)
 
 summary(calvin)
 summary(calvin2)
