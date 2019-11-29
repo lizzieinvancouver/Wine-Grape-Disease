@@ -3,6 +3,7 @@ setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/") # setwd("~/Docum
 rm(list=ls()) # remove everything currently held in the R memory
 options(stringsAsFactors=FALSE)
 
+library(tibble)
 library(dplyr)
 library(rstanarm)
 library(loo)
