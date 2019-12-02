@@ -39,6 +39,10 @@ calvin2.4 <- stan_glm(impact~ SES.FPD + Type + category, data = focaldistance_on
                     family = gaussian(link="identity"), iter= 4000, adapt_delta= 0.99)
 
 
+theweeknd <- stan_glm(impact~ Type, data = focaldistance_enitregenus,
+                      family = gaussian(link="identity"), iter= 4000, adapt_delta= 0.99)
+
+
 launch_shinystan(calvin)
 launch_shinystan(calvin4)
 launch_shinystan(calvin5)
@@ -47,6 +51,7 @@ launch_shinystan(calvin2.1)
 launch_shinystan(calvin2.2)
 launch_shinystan(calvin2.3)
 launch_shinystan(calvin2.4)
+launch_shinystan(theweeknd)
 
 summary(calvin)
 summary(calvin2)
