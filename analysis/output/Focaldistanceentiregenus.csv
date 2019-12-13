@@ -1,50 +1,50 @@
-,my.paths,FPD,SES.FPD,Type,category,bodysize,impact 
-1,Agrobacterium_vitis,NA,NA,B,S,,1
-2,Alternaria_alternata,267.7995258,-0.425775719,F,G,,27
-3,Ampeloglypter_ater,1.985059,-6.191449096,P,S,3.5,5
-4,Aspergilus_niger,3.375182,-4.336857244,F,S,,15
-5,Botrytis_cinerea,251.2056382,-6.172546924,F,G,,8
-6,Calosphaeria_alnicola,235.0694798,-1.985038706,F,G,,
-7,closterovirus ,1.985059,-6.052380711,V,S,,8
-8,Daktulosphaira_vitifoliae,1.985059,-5.932623229,P,S,1,5
-9,Elsino‘_ampelina,3.375182,-4.065663058,F,S,,90
-10,Erostella_minima,NA,NA,F,S,,75
-11,Erysiphe_necator ,0.594936,-4.609975459,V,S,,
-12,Eutypa_lata,223.9418475,-4.978249307,F,G,,24
-13,Grapevine Leafroll_Associated Viruses,1.985059,-6.027750097,V,S,,68
-14,Grapevinephytoplasma_diseases,1.985059,-6.139965758,F,S,,
-15,Greeneria_uvicola,3.375182,-4.357673936,F,S,,3
-16,Guignardia_Bidwellii,3.375182,-4.343265154,F,S,,80
-17,Helicotylenchus_pseudorobustus,302.2493628,2.39595915,B,G,,40
-18,Lasiodiplodia_theobromae,266.0613103,-0.688720639,N,G,1.64,10
-19,Meloidogyne_arenaria,278.453223,0.905741547,N,G,1.64,30
-20,Meloidogyne_hapla,240.5624447,-2.799431969,N,G,1.14,30
-21,Meloidogyne_incognita,265.4932789,-0.417150702,N,G,1.58,20
-22,Meloidogyne_javanica,292.7489635,2.318145733,N,G,,30
-23,Mesocriconema_xenoplax,275.1920301,1.182314454,N,G,0.62,75
-24,Mycosphaerella_angulata,3.375182,-4.32452394,F,S,,
-25,Otiorhynchus_sulcatus,177.613759,-4.175237803,P,G,10,33
-26,Paratrichodorus_minor,275.3401397,1.278444027,N,G,0.71,
-27,Phaeoacremonium_aleophilum,216.5467008,-3.412639684,F,S,,19
-28,Phaeoacremonium_minimum,244.5641061,-1.609364057,F,S,,60
-29,Phaeomoniella_aleophilum,NA,NA,F,S,,15
-30,Phaeomoniella_chlamydospora,NA,NA,F,S,,15
-31,Phomopsis_viticola,3.375182,-4.301393585,F,S,,30
-32,Planococcus_ficus,244.0887825,-1.55605447,P,G,4,13
-33,Plasmopara_viticola,1.985059,-5.926915187,F,S,,100
-34,Pleurostoma_minimum,NA,NA,N,S,,
-35,Popillia_japonica,228.707777,-3.523642287,P,G,15,76
-36,Pseudocercospora_vitis,1.985059,-6.188843032,F,S,,50
-37,Pseudococcus_longispinus,274.0918661,0.633399229,P,G,1.13,25
-38,Pseudococcus_viburni,255.0504614,-1.721426304,P,G,1.5,25
-39,Pseudomonas_syringae,238.331013,-0.673058624,B,G,,60
-40,Pseudopezicula_tetrsaspora,0.594936,-4.475219702,F,S,,90
-41,Sourrot_yeasts,195.236158,-4.124242878,B,G,,17
-42,Togninia_minima,243.4680772,-0.948098829,F,S,,60
-43,TomRSV,235.069476,-0.542771815,V,G,,
-44,Tylenchorhynchus_clarus,261.2092381,-1.587321757,N,S,0.59,10
-45,Tylenchulus_semipenetrans,234.2458095,-1.952126647,N,G,0.35,50
-46,Xiphinema_americanum,255.533816,-3.227970034,N,G,2.2,10
-47,Xiphinema_index,234.8746662,-2.736753469,N,G,0.33,10
-48,Xylella_fastidiosa,220.7893244,-3.14587628,B,G,,3
-49,Xylophilus_ampelinus,NA,NA,B,S,,70
+,my.paths,FPD,SES.FPD,Type,category,bodysize,impact ,impact2,
+1,Agrobacterium_vitis,NA,NA,B,S,,1,,
+2,Alternaria_alternata,267.7995258,-0.425775719,F,G,,27,15,https://sfamjournals.onlinelibrary.wiley.com/doi/full/10.1046/j.1472-765X.2003.01376.x
+3,Ampeloglypter_ater,1.985059,-6.191449096,P,S,3.5,5,,
+4,Aspergilus_niger,3.375182,-4.336857244,F,S,,15,80,https://www.sciencedirect.com/science/article/pii/S0168160507003911?via%3Dihub
+5,Botrytis_cinerea,251.2056382,-6.172546924,F,G,,8,50,
+6,Calosphaeria_alnicola,235.0694798,-1.985038706,F,G,,,,
+7,closterovirus ,1.985059,-6.052380711,V,S,,8,22,
+8,Daktulosphaira_vitifoliae,1.985059,-5.932623229,P,S,1,5,33,
+9,Elsino‘_ampelina,3.375182,-4.065663058,F,S,,90,50,
+10,Erostella_minima,NA,NA,F,S,,75,,
+11,Erysiphe_necator ,0.594936,-4.609975459,V,S,,,5,
+12,Eutypa_lata,223.9418475,-4.978249307,F,G,,24,94,
+13,Grapevine Leafroll_Associated Viruses,1.985059,-6.027750097,V,S,,68,80,
+14,Grapevinephytoplasma_diseases,1.985059,-6.139965758,F,S,,,39,Pavan et al 2012
+15,Greeneria_uvicola,3.375182,-4.357673936,F,S,,3,30,"Ridings & Clayton, 1970"
+16,Guignardia_Bidwellii,3.375182,-4.343265154,F,S,,80,80,
+17,Helicotylenchus_pseudorobustus,302.2493628,2.39595915,B,G,,40,47,
+18,Lasiodiplodia_theobromae,266.0613103,-0.688720639,N,G,1.64,10,57,
+19,Meloidogyne_arenaria,278.453223,0.905741547,N,G,1.64,30,5,
+20,Meloidogyne_hapla,240.5624447,-2.799431969,N,G,1.14,30,5,
+21,Meloidogyne_incognita,265.4932789,-0.417150702,N,G,1.58,20,56,
+22,Meloidogyne_javanica,292.7489635,2.318145733,N,G,,30,30,
+23,Mesocriconema_xenoplax,275.1920301,1.182314454,N,G,0.62,75,55,
+24,Mycosphaerella_angulata,3.375182,-4.32452394,F,S,,,87,
+25,Otiorhynchus_sulcatus,177.613759,-4.175237803,P,G,10,33,62,
+26,Paratrichodorus_minor,275.3401397,1.278444027,N,G,0.71,,50,
+27,Phaeoacremonium_aleophilum,216.5467008,-3.412639684,F,S,,19,95,
+28,Phaeoacremonium_minimum,244.5641061,-1.609364057,F,S,,60,10,
+29,Phaeomoniella_aleophilum,NA,NA,F,S,,15,,
+30,Phaeomoniella_chlamydospora,NA,NA,F,S,,15,,
+31,Phomopsis_viticola,3.375182,-4.301393585,F,S,,30,37.5,
+32,Planococcus_ficus,244.0887825,-1.55605447,P,G,4,13,10,
+33,Plasmopara_viticola,1.985059,-5.926915187,F,S,,100,99,
+34,Pleurostoma_minimum,NA,NA,N,S,,,,
+35,Popillia_japonica,228.707777,-3.523642287,P,G,15,76,86,
+36,Pseudocercospora_vitis,1.985059,-6.188843032,F,S,,50,50,
+37,Pseudococcus_longispinus,274.0918661,0.633399229,P,G,1.13,25,13,
+38,Pseudococcus_viburni,255.0504614,-1.721426304,P,G,1.5,25,65,
+39,Pseudomonas_syringae,238.331013,-0.673058624,B,G,,60,85,
+40,Pseudopezicula_tetrsaspora,0.594936,-4.475219702,F,S,,90,,
+41,Sourrot_yeasts,195.236158,-4.124242878,B,G,,17,50,https://www.academicwino.com/2011/09/influence-of-sour-rot-on-chemical.html/
+42,Togninia_minima,243.4680772,-0.948098829,F,S,,60,10,
+43,TomRSV,235.069476,-0.542771815,V,G,,,10,
+44,Tylenchorhynchus_clarus,261.2092381,-1.587321757,N,S,0.59,10,,
+45,Tylenchulus_semipenetrans,234.2458095,-1.952126647,N,G,0.35,50,37,
+46,Xiphinema_americanum,255.533816,-3.227970034,N,G,2.2,10,40,
+47,Xiphinema_index,234.8746662,-2.736753469,N,G,0.33,10,89,
+48,Xylella_fastidiosa,220.7893244,-3.14587628,B,G,,3,63,
+49,Xylophilus_ampelinus,NA,NA,B,S,,70,,

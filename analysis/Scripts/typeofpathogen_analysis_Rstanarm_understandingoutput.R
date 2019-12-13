@@ -6,15 +6,15 @@ options(stringsAsFactors=FALSE)
 library(tibble)
 library(dplyr)
 library(rstanarm)
-library(loo)
 library(shinystan)
 library(readr)
+library(ggplot2)
 
 #loading in datasets
-mpd_all_sp_in_genus <- read_csv("mpd_all_sp_in_genus.csv")
-mpd_single_sp_in_genus <- read_csv("mpd.single.sp.in.genus.csv")
-mntd_all_sp_in_genus <- read_csv("mntd_all_sp_in_genus.csv")
-mntd_single_sp_in_genus <- read_csv("mntd.single.sp.in.genus.csv")
+mpd_all_sp_in_genus <- read.csv("mpd_all_sp_in_genus.csv")
+mpd_single_sp_in_genus <- read.csv("mpd.single.sp.in.genus.csv")
+mntd_all_sp_in_genus <- read.csv("mntd_all_sp_in_genus.csv")
+mntd_single_sp_in_genus <- read.csv("mntd.single.sp.in.genus.csv")
 
 post1<- stan_glm(mpd.obs.z~ Type, data = mpd_all_sp_in_genus,
                  family = gaussian(link="identity"),)
@@ -235,9 +235,9 @@ summary(post3)
 
 fits3 <- post3 %>% 
   as_data_frame %>% 
-  rename(intercept = `(Intercept)`) %>% 
-  select(-sigma)
+  rename(intercept = `(Intercept)`) 
 
+fits3 <- fits3[,-6]
 
 path <- unique(names(fits3))
 
