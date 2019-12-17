@@ -1,5 +1,5 @@
 #sentivity analysis based on type of pathogen
-setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/") # setwd("~/Documents/git/projects/misc/darwin/winegrapedisease/Wine-Grape-Disease/analysis/output")
+setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/") # setwd("~/Documents/git/projects/others/darwin/winegrapedisease/Wine-Grape-Disease/analysis/output")
 rm(list=ls()) # remove everything currently held in the R memory
 options(stringsAsFactors=FALSE)
 
@@ -66,10 +66,10 @@ base2 +
   stat_function(fun = reg1, args = args, aes(color = "S"), size = 1.5)  
  
 
-loo1 <- loo(post1)
+loo1 <- loo(post1, k_threshold = 0.7)
 loo2 <- loo(post2)
 loo3 <- loo(post3)
-loo4 <- loo(post4)
+loo4 <- loo(post4, k_threshold = 0.7)
 comp <- compare_models(loo1, loo2, loo3, loo4)
 
 pp_check(post1, plotfun = "hist", nreps = 5)
