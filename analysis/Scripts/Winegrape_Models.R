@@ -14,15 +14,37 @@ library(tidyr)
 #loading in datasets
 focaldistance_onespecies <- read.csv("Focaldistanceonespecies.csv")
 focaldistance_enitregenus <- read.csv("Focaldistanceentiregenus.csv")
-mpd_all_sp_in_genus <- read_csv("mpd_all_sp_in_genus.csv")
-mpd_single_sp_in_genus <- read_csv("mpd.single.sp.in.genus.csv")
-mntd_all_sp_in_genus <- read_csv("mntd_all_sp_in_genus.csv")
-mntd_single_sp_in_genus <- read_csv("mntd.single.sp.in.genus.csv")
+mpd_all_sp_in_genus <- read.csv("mpd_all_sp_in_genus.csv")
+mpd_single_sp_in_genus <- read.csv("mpd.single.sp.in.genus.csv")
+mntd_all_sp_in_genus <- read.csv("mntd_all_sp_in_genus.csv")
+mntd_single_sp_in_genus <- read.csv("mntd.single.sp.in.genus.csv")
 
 #New impact data model
 calvin <- stan_glm(impact2~ SES.FPD, data = focaldistance_enitregenus,
                    family = gaussian(link="identity"), iter= 4000, adapt_delta= 0.99) 
+summary(calvin)
 launch_shinystan(calvin)
+
+calvin2 <- stan_glm(impact2~ SES.FPD, data = focaldistance_onespecies,
+                   family = gaussian(link="identity"), iter= 4000, adapt_delta= 0.99)
+summary(calvin2)
+launch_shinystan(calvin2)
+
+#Betafit with impact2
+focaldistance_enitregenus$impact2 <- focaldistance_enitregenus$impact2* 0.01
+focaldistance_onespecies$impact2 <- focaldistance_onespecies$impact2 * 0.01
+
+beta_fit1 <- stan_betareg(impact2~ SES.FPD, data = focaldistance_enitregenus)
+
+summary(beta_fit1)
+
+launch_shinystan(beta_fit1)
+
+beta_fit2 <- stan_betareg(impact2~ SES.FPD, data = focaldistance_onespecies)
+
+summary (beta_fit2)
+
+launch_shinystan(beta_fit2)
 
 #MPD model based on type of pathogen
 post1<- stan_glm(mpd.obs.z~ Type, data = mpd_all_sp_in_genus,
@@ -186,3 +208,4 @@ color + geom_point(aes(x=1, y= -2.84), colour= "red") +
                 position=position_dodge(0.05))
 
 launch_shinystan(post3)
+
