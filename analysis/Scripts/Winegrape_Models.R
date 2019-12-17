@@ -10,6 +10,8 @@ library(shinystan)
 library(broom)
 library(betareg)
 library(tidyr)
+library(fitdistrplus)
+library(logspline)
 
 #loading in datasets
 focaldistance_onespecies <- read.csv("Focaldistanceonespecies.csv")
@@ -18,6 +20,14 @@ mpd_all_sp_in_genus <- read.csv("mpd_all_sp_in_genus.csv")
 mpd_single_sp_in_genus <- read.csv("mpd.single.sp.in.genus.csv")
 mntd_all_sp_in_genus <- read.csv("mntd_all_sp_in_genus.csv")
 mntd_single_sp_in_genus <- read.csv("mntd.single.sp.in.genus.csv")
+
+#Data fit Checking
+test<- focaldistance_enitregenus$impact2
+test <- test[!is.na(test)]
+test2 <- (focaldistance_onespecies$impact2)
+test2 <- test2[!is.na(test2)]
+descdist(test, discrete = FALSE)
+descdist(test2, discrete = FALSE)
 
 #New impact data model
 calvin <- stan_glm(impact2~ SES.FPD, data = focaldistance_enitregenus,
@@ -45,6 +55,14 @@ beta_fit2 <- stan_betareg(impact2~ SES.FPD, data = focaldistance_onespecies)
 summary (beta_fit2)
 
 launch_shinystan(beta_fit2)
+
+#Model with sesfpd & ses.mpd
+
+beta_fit3 <- stan_betareg(impact2~ SES.FPD + mpd.obs.z, data = focaldistance_enitregenus)
+
+summary(beta_fit3)
+
+launch_shinystan(beta_fit3)
 
 #MPD model based on type of pathogen
 post1<- stan_glm(mpd.obs.z~ Type, data = mpd_all_sp_in_genus,
