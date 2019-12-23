@@ -1,7 +1,7 @@
 ,my.paths,FPD,SES.FPD,Type,category,bodysize,impact ,impact2,,mpd.obs.z
 1,Agrobacterium_vitis,NA,NA,B,S,,1,,,NA
 2,Alternaria_alternata,267.7995258,-0.425775719,F,G,,27,15,https://sfamjournals.onlinelibrary.wiley.com/doi/full/10.1046/j.1472-765X.2003.01376.x,0.501419267
-3,Ampeloglypter_ater,1.985059,-6.191449096,P,S,3.5,5,,,-4.616136227
+3,Ampeloglypter_ater,1.985059,-6.191449096,P,S,3.5,5,5,,-4.616136227
 4,Aspergilus_niger,3.375182,-4.336857244,F,S,,15,80,https://www.sciencedirect.com/science/article/pii/S0168160507003911?via%3Dihub,-3.153848168
 5,Botrytis_cinerea,251.2056382,-6.172546924,F,G,,8,50,,-7.50895028
 6,Calosphaeria_alnicola,235.0694798,-1.985038706,F,G,,,,,-10.19253647
@@ -38,11 +38,11 @@
 37,Pseudococcus_longispinus,274.0918661,0.633399229,P,G,1.13,25,13,,1.537955237
 38,Pseudococcus_viburni,255.0504614,-1.721426304,P,G,1.5,25,65,,-1.259745314
 39,Pseudomonas_syringae,238.331013,-0.673058624,B,G,,60,85,,-1.887080519
-40,Pseudopezicula_tetrsaspora,0.594936,-4.475219702,F,S,,90,,,-3.237547653
+40,Pseudopezicula_tetrsaspora,0.594936,-4.475219702,F,S,,90,90,,-3.237547653
 41,Sourrot_yeasts,195.236158,-4.124242878,B,G,,17,50,https://www.academicwino.com/2011/09/influence-of-sour-rot-on-chemical.html/,-6.583304488
 42,Togninia_minima,243.4680772,-0.948098829,F,S,,60,10,,-1.877304108
 43,TomRSV,235.069476,-0.542771815,V,G,,,10,,-0.434740301
-44,Tylenchorhynchus_clarus,261.2092381,-1.587321757,N,S,0.59,10,,,-2.063710243
+44,Tylenchorhynchus_clarus,261.2092381,-1.587321757,N,S,0.59,10,10,,-2.063710243
 45,Tylenchulus_semipenetrans,234.2458095,-1.952126647,N,G,0.35,50,37,,-6.47614777
 46,Xiphinema_americanum,255.533816,-3.227970034,N,G,2.2,10,40,,-3.243377122
 47,Xiphinema_index,234.8746662,-2.736753469,N,G,0.33,10,89,,-5.588194631

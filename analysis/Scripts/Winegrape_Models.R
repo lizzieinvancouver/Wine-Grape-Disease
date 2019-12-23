@@ -62,7 +62,29 @@ beta_fit3 <- stan_betareg(impact2~ SES.FPD + mpd.obs.z, data = focaldistance_eni
 
 summary(beta_fit3)
 
+beta_fit4 <- stan_betareg(impact2~ mpd.obs.z, data = focaldistance_enitregenus)
+
+summary(beta_fit4)
+
+beta_fit3.5 <- stan_betareg(impact2~ SES.FPD + mpd.obs.z, data = focaldistance_onespecies)
+
+summary(beta_fit3.5)
+
+beta_fit4.5 <- stan_betareg(impact2~ mpd.obs.z, data = focaldistance_onespecies)
+
+summary(beta_fit4.5)
+
 launch_shinystan(beta_fit3)
+
+launch_shinystan(beta_fit4)
+
+loo1 <- loo(beta_fit1)
+
+loo1.2 <- loo(beta_fit3)
+
+loo1.3 <- loo(beta_fit4)
+
+loo_compare(loo1, loo1.2, loo1.3)
 
 #MPD model based on type of pathogen
 post1<- stan_glm(mpd.obs.z~ Type, data = mpd_all_sp_in_genus,
@@ -226,7 +248,4 @@ color + geom_point(aes(x=1, y= -2.84), colour= "red") +
                 position=position_dodge(0.05))
 
 launch_shinystan(post3)
-<<<<<<< HEAD
 
-=======
->>>>>>> 456166d91774d7c4ff0c87ae3d841c17682ea36f
