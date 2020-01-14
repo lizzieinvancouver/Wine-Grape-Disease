@@ -20,6 +20,8 @@ mpd_all_sp_in_genus <- read.csv("mpd_all_sp_in_genus.csv")
 mpd_single_sp_in_genus <- read.csv("mpd.single.sp.in.genus.csv")
 mntd_all_sp_in_genus <- read.csv("mntd_all_sp_in_genus.csv")
 mntd_single_sp_in_genus <- read.csv("mntd.single.sp.in.genus.csv")
+MNTD_MPDcomparison <-read_excel("MNTD_MPDcomparison.xlsx")
+
 
 #Data fit Checking
 test<- focaldistance_enitregenus$impact2
@@ -248,4 +250,7 @@ color + geom_point(aes(x=1, y= -2.84), colour= "red") +
                 position=position_dodge(0.05))
 
 launch_shinystan(post3)
+
+plot(impact2~SES.FPD, data= focaldistance_enitregenus)
+abline(lm(impact2~SES.FPD, data= focaldistance_enitregenus), col= "red")
 

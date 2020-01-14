@@ -4,10 +4,10 @@ options(stringsAsFactors=FALSE)
 setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/")
 
 #loading in datasets
-mpd_all_sp_in_genus <- read_csv("mpd_all_sp_in_genus.csv")
-mpd_single_sp_in_genus <- read_csv("mpd.single.sp.in.genus.csv")
-mntd_all_sp_in_genus <- read_csv("mntd_all_sp_in_genus.csv")
-mntd_single_sp_in_genus <- read_csv("mntd.single.sp.in.genus.csv")
+mpd_all_sp_in_genus <- read.csv("mpd_all_sp_in_genus.csv")
+mpd_single_sp_in_genus <- read.csv("mpd.single.sp.in.genus.csv")
+mntd_all_sp_in_genus <- read.csv("mntd_all_sp_in_genus.csv")
+mntd_single_sp_in_genus <- read.csv("mntd.single.sp.in.genus.csv")
 
 #Figure 1
 mntd<-cbind(rep("MNTD", length(mntd_all_sp_in_genus$mntd.obs.z)),mntd_all_sp_in_genus$mntd.obs.z)
@@ -16,7 +16,7 @@ phylomet<-as.data.frame(rbind(mntd, mpd), stringsAsFactors=FALSE)
 
 pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/phylogenetic_metrics.pdf")
 par(mfrow= c(1,1))
-boxplot(as.numeric(V2) ~ as.factor(V1), data=phylomet, ylab = "SES", main = "MNTD and MPD for Winegrape Pathogens")
+boxplot(as.numeric(V2) ~ as.factor(V1), data=phylomet, ylab = "SES", pch= 30)
 abline(h=0, col=2, lty=2)
 dev.off()
 
@@ -35,3 +35,16 @@ abline(h=0, col=2, lty=2)
 dev.off()
 
 
+pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/MPDvsMNTD.pdf")
+par(mfrow= c(1,1))
+plot(MNTD_MPDcomparison$`All Species in Genus`~MNTD_MPDcomparison$...3, data = MNTD_MPDcomparison, ylab = "SES.MNTD", 
+     xlab = "SES.MPD", pch=30)
+abline(v=0, col=2, lty=2)
+abline(h=0, col=2, lty=2)
+dev.off()
+
+pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/MPDdatabytype.pdf")
+boxplot(mpd_all_sp_in_genus$mpd.obs.z~mpd_all_sp_in_genus$Type, data = mpd_all_sp_in_genus, 
+        ylab = "SES.MPD", xlab="")
+abline(h=0, col=2, lty=2)
+dev.off()
