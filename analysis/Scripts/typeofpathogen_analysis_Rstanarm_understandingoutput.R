@@ -70,9 +70,9 @@ coef(post1)
 
 fits <- post1 %>% 
   as_data_frame %>% 
-  rename(intercept = `(Intercept)`) %>% 
-  select(-sigma)
-
+  rename(intercept = `(Intercept)`)
+  
+fits <- fits[,-6]
 
 path <- unique(names(fits))
 
@@ -93,8 +93,8 @@ dose <- dose %>%
 )
   
 
-prob_lwr <- .10
-prob_upr <- .90
+prob_lwr <- .025
+prob_upr <- .975
 
   
 path <- unique(names(dose))
