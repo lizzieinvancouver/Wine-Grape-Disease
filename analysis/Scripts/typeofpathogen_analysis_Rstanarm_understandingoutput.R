@@ -94,7 +94,7 @@ dose <- dose %>%
   
 
 prob_lwr <- .025
-prob_upr <- .975
+prob_upr <- .905
 
   
 path <- unique(names(dose))
@@ -132,15 +132,22 @@ cloud1<- full_join(mpd_all_sp_in_genus, ford, by= "Type")
 
 #Vizulizing Data
 cloud<- ggplot(mpd_all_sp_in_genus, aes(x = Type, y =mpd.obs.z )) + 
-  geom_point(size = 1, position = position_jitter(height = 0.05, width = 0.1)) 
+  geom_point(size = 1.5, shape= 21, position = position_jitter(height = 0.5, width = 0.1)) 
 
-cloud + geom_point(aes(x=1, y= -2.85), colour= "red") + 
- geom_point(aes(x=2, y= -3.84), colour= "red") +
- geom_point(aes(x=3, y= -2.03), colour= "red") +
- geom_point(aes(x=4, y= -3.17), colour= "red") +
- geom_point(aes(x=5, y= -3.48), colour= "red") +
+
+cloud  + ylab ("SES.MPD")
+
+cloud + geom_point(aes(x=1, y= -2.90), colour= "red") + 
+ geom_point(aes(x=2, y= -3.85), colour= "red") +
+ geom_point(aes(x=3, y= -1.99), colour= "red") +
+ geom_point(aes(x=4, y= -3.16), colour= "red") +
+ geom_point(aes(x=5, y= -3.45), colour= "red") +
  geom_errorbar(data= cloud1, aes(ymin=lower, ymax=upper), width=.2,
                 position=position_dodge(0.05))
+
+
+
+
 
 launch_shinystan(post1)
 #######################################

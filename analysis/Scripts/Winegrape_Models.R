@@ -46,7 +46,7 @@ launch_shinystan(calvin2)
 focaldistance_enitregenus$impact2 <- focaldistance_enitregenus$impact2* 0.01
 focaldistance_onespecies$impact2 <- focaldistance_onespecies$impact2 * 0.01
 
-beta_fit1 <- stan_betareg(impact2~ SES.FPD, data = focaldistance_enitregenus)
+beta_fit1 <- stan_betareg(impact2~ SES.FPD, data = focaldistance_enitregenus, prior = normal(0,3))
 
 summary(beta_fit1)
 
@@ -90,7 +90,9 @@ loo_compare(loo1, loo1.2, loo1.3)
 
 #MPD model based on type of pathogen
 post1<- stan_glm(mpd.obs.z~ Type, data = mpd_all_sp_in_genus,
-                 family = gaussian(link="identity"),)
+                 family = gaussian(link="identity"),prior = normal(0,81))
+
+launch_shinystan(post1)
 
 coef(post1)
 
