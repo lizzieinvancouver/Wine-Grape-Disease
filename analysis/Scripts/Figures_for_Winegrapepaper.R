@@ -5,7 +5,7 @@ setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/")
 
 library(readxl)
 library(ggplot2)
-library(betareg)
+
 
 
 
