@@ -46,7 +46,9 @@ launch_shinystan(calvin2)
 focaldistance_enitregenus$impact2 <- focaldistance_enitregenus$impact2* 0.01
 focaldistance_onespecies$impact2 <- focaldistance_onespecies$impact2 * 0.01
 
-beta_fit1 <- stan_betareg(impact2~ SES.FPD, data = focaldistance_enitregenus, prior = normal(0,3))
+beta_fit1 <- stan_betareg(impact2~ SES.FPD, data = focaldistance_enitregenus)
+
+prior_summary(beta_fit1)
 
 summary(beta_fit1)
 
@@ -54,9 +56,14 @@ launch_shinystan(beta_fit1)
 
 beta_fit2 <- stan_betareg(impact2~ SES.FPD, data = focaldistance_onespecies)
 
+
+prior_summary(beta_fit2)
+
 summary (beta_fit2)
 
 launch_shinystan(beta_fit2)
+
+#to change prior just add prior = normal(Mean,SD) to Betafit1 and 2
 
 #Model with sesfpd & ses.mpd
 
@@ -256,3 +263,4 @@ launch_shinystan(post3)
 plot(impact2~SES.FPD, data= focaldistance_enitregenus)
 abline(lm(impact2~SES.FPD, data= focaldistance_enitregenus), col= "red")
 
+#

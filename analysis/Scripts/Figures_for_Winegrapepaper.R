@@ -4,7 +4,9 @@ options(stringsAsFactors=FALSE)
 setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/")
 
 library(readxl)
-source()
+library(ggplot2)
+library(betareg)
+
 
 
 
@@ -15,15 +17,11 @@ mntd_all_sp_in_genus <- read.csv("mntd_all_sp_in_genus.csv")
 mntd_single_sp_in_genus <- read.csv("mntd.single.sp.in.genus.csv")
 MNTD_MPDcomparison <-read_excel("MNTD_MPDcomparison.xlsx")
 
-#Figure 1
+#Figure Phylogenetic Metric Comparison
 mntd<-cbind(rep("MNTD", length(mntd_all_sp_in_genus$mntd.obs.z)),mntd_all_sp_in_genus$mntd.obs.z)
 mpd<-cbind(rep("MPD", length(mpd_all_sp_in_genus$mpd.obs.z)),mpd_all_sp_in_genus$mpd.obs.z)
 phylomet<-as.data.frame(rbind(mntd, mpd), stringsAsFactors=FALSE)
 plot(phylomet)
-
-
-
-
 
 pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/phylogenetic_metrics.pdf")
 boxplot(as.numeric(V2) ~ as.factor(V1), data=phylomet, ylab = "SES")
@@ -31,19 +29,11 @@ abline(h=0, col=2, lty=2)
 dev.off()
 
 
-
+#Figure MPD and MNTD results for saturated analysis
 
 single.sp<-cbind(rep("single.species", length(mpd_single_sp_in_genus$mpd.obs.z)),mpd_single_sp_in_genus$mpd.obs.z)
 all.genus<-cbind(rep("all.genus", length(mpd_all_sp_in_genus$mpd.obs.z)),mpd_all_sp_in_genus$mpd.obs.z)
 mpd.z<-as.data.frame(rbind(single.sp, all.genus), stringsAsFactors=FALSE)
-
-
-pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/Mean pairwise distances.pdf")
-par(mfrow= c(1,1))
-boxplot(as.numeric(V2) ~ as.factor(V1), data=mpd.z, ylab = "SES.MPD", main = "Mean pairwise distances between hosts")
-abline(h=0, col=2, lty=2)
-dev.off()
-
 
 pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/MPDvsMNTD.pdf")
 par(mfrow= c(1,1))
@@ -57,6 +47,7 @@ text(-9, 0.5, "MNTD>MPD", cex = 0.75)
 text(1.25, -5.75, "MPD>MNTD", cex = 0.75)
 dev.off()
 
+#Figure MPD results aggregated by type of pathogen
 pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/MPDdatabytype.pdf")
 cloud<- cloud  + ylab ("SES.MPD")
 cloud<- cloud + geom_point(aes(x=1, y= -2.90), colour= "red") + 
@@ -68,5 +59,3 @@ cloud<- cloud + geom_point(aes(x=1, y= -2.90), colour= "red") +
                 position=position_dodge(0.05))
 cloud
 dev.off()
-
-
