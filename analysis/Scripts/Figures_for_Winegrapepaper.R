@@ -15,9 +15,9 @@ mpd_all_sp_in_genus <- read.csv("mpd_all_sp_in_genus.csv")
 mpd_single_sp_in_genus <- read.csv("mpd.single.sp.in.genus.csv")
 mntd_all_sp_in_genus <- read.csv("mntd_all_sp_in_genus.csv")
 mntd_single_sp_in_genus <- read.csv("mntd.single.sp.in.genus.csv")
-MNTD_MPDcomparison <-read_excel("MNTD_MPDcomparison.xlsx")
+MNTD_MPDcomparison <-read.csv("MNTD_MPDcomparison.csv")
 
-#Figure Phylogenetic Metric Comparison
+#Below is code that creates figure Phylogenetic Metric Comparison
 mntd<-cbind(rep("MNTD", length(mntd_all_sp_in_genus$mntd.obs.z)),mntd_all_sp_in_genus$mntd.obs.z)
 mpd<-cbind(rep("MPD", length(mpd_all_sp_in_genus$mpd.obs.z)),mpd_all_sp_in_genus$mpd.obs.z)
 phylomet<-as.data.frame(rbind(mntd, mpd), stringsAsFactors=FALSE)
@@ -29,7 +29,7 @@ abline(h=0, col=2, lty=2)
 dev.off()
 
 
-#Figure MPD and MNTD results for saturated analysis
+##Below is code that creates figure MPD and MNTD results for saturated analysis
 
 single.sp<-cbind(rep("single.species", length(mpd_single_sp_in_genus$mpd.obs.z)),mpd_single_sp_in_genus$mpd.obs.z)
 all.genus<-cbind(rep("all.genus", length(mpd_all_sp_in_genus$mpd.obs.z)),mpd_all_sp_in_genus$mpd.obs.z)
@@ -47,7 +47,7 @@ text(-9, 0.5, "MNTD>MPD", cex = 0.75)
 text(1.25, -5.75, "MPD>MNTD", cex = 0.75)
 dev.off()
 
-#Figure MPD results aggregated by type of pathogen
+##Below is code that creates figure MPD results aggregated by type of pathogen
 pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/MPDdatabytype.pdf")
 cloud<- cloud  + ylab ("SES.MPD")
 cloud<- cloud + geom_point(aes(x=1, y= -2.90), colour= "red") + 
