@@ -142,7 +142,7 @@ cloud + geom_point(aes(x=1, y= -2.90), colour= "red") +
  geom_point(aes(x=3, y= -1.99), colour= "red") +
  geom_point(aes(x=4, y= -3.16), colour= "red") +
  geom_point(aes(x=5, y= -3.45), colour= "red") +
- geom_errorbar(data= cloud1, aes(ymin=lower, ymax=upper), width=.2,
+ geom_errorbar(data= cloud1, aes(ymin=lower, ymax=upper), width=0,
                 position=position_dodge(0.05))
 
 
