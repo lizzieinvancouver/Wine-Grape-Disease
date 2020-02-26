@@ -4,6 +4,7 @@ options(stringsAsFactors=FALSE)
 setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/")
 
 library(ggplot2)
+library(betareg)
 
 
 
@@ -62,18 +63,21 @@ cloud
 dev.off()
 
 ####Beta regression plot 
-df <- data.frame(impact = predict(beta_fit1, data.frame(SES.FPD = seq(-8, 4, 0.01))),
-                 +                  SES.FPD = seq(-8, 4, 0.29))
+df <- data.frame(impact = predict(beta_fit1, data.frame(SES.FPD = seq(-8, 4, 0.01))), SES.FPD = seq(-8, 4, 0.29),)
 d<- abs(df$impact)
 df["impact2"] <- d
 df<- df[,-1]
 
-ggplot() + geom_point(data = focaldistance_enitregenus, 
-                      aes(x = SES.FPD, y = impact2),
-                      size = 2, shape = 2) + geom_smooth(data=df, aes(x= SES.FPD, y= impact2, colour='red'))
+df2 <- data.frame(impact = predict(gy_logit, data.frame(SES.FPD = seq(-8, 4, 0.29)), se=TRUE), SES.FPD = seq(-8, 4, 0.29))
+
+                  ggplot() + geom_point(data = focaldistance_enitregenus, 
+aes(x = SES.FPD, y = impact2),
+size = 2, shape = 2) + geom_smooth(data=df, aes(x= SES.FPD, y= impact2, colour='red'), se = TRUE)
 
 ggplot() + geom_point(data = focaldistance_enitregenus, 
                       aes(x = SES.FPD, y = impact2),
                       size = 2, shape = 2) + geom_line(data=df, aes(x= SES.FPD, y= impact2, colour='red'))
 
 
+
+gy_logit <- betareg(impact2 ~ SES.FPD, data = focaldistance_enitregenus)
