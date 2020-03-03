@@ -75,55 +75,29 @@ focaldistance_onespecies$impact2 <- focaldistance_onespecies$impact2 * 0.01
 beta_fit1 <- stan_betareg(impact2~ SES.FPD, data = focaldistance_enitregenus)
 
 df <- data.frame(impact = predict(beta_fit1))
-                                  #data.frame(SES.FPD = seq(-8, 4, 0.01))), SES.FPD = seq(-8, 4, 0.29))
-d<- abs(df$impact)
-df["impact2"] <- d
-df<- df[,-1]
 
-ggplot() + geom_point(data = focaldistance_enitregenus, 
-                      aes(x = SES.FPD, y = impact2),
-                      size = 2, shape = 2) + geom_smooth(data=df, aes(x= SES.FPD, y= impact2, colour='red'), se = TRUE)
+prob_lwr <- .025
+prob_upr <- .905
+path <- unique(names(df))
+tycho <- (matrix(NA, nrow= 3, ncol = ncol(df)))
+for (n in 1:length(path)){
+tycho[1,n]<- as.matrix(median(df[,n]))
+tycho[2,n] <- as.matrix(quantile(df[,n], prob_lwr))
+tycho[3,n]<- as.matrix(quantile(df[,n], prob_upr))
+}
 
-fits <- beta_fit1 %>% 
-  as_data_frame 
+tycho <- t(tycho)
+tycho <- as.data.frame(tycho)
 
-#gy_logit <- betareg(impact2 ~ SES.FPD, data = focaldistance_enitregenus)
+new<-focaldistance_enitregenus[!is.na(focaldistance_enitregenus$SES.FPD),]
+new<-new[-6,]
+full<-cbind(new,tycho)
 
-#df1 <- data.frame(impact = predict(gy_logit, data.frame(SES.FPD = seq(-8, 4, 0.29))), SES.FPD = seq(-8, 4, 0.29))
-d#f2 <- data.frame(impact = predict(gy_logit,type= "quantile", at = c(0.025,0.905),data.frame(SES.FPD = seq(-8, 4, 0.29))), SES.FPD = seq(-8, 4, 0.29))
-#df2$impact <- df1$impact
-                  
-#ggplot() + geom_point(data = focaldistance_enitregenus, 
-#aes(x = SES.FPD, y = impact2),
-#size = 2, shape = 2) + geom_smooth(data=df, aes(x= SES.FPD, y= impact2, colour='red'), se = TRUE)
+yay<- ggplot() + geom_point(data = full,
+aes(x = SES.FPD, y = impact2),
+size = 2, shape = 2)
 
-#hey<-ggplot(data = focaldistance_enitregenus, 
-             aes(x = SES.FPD, y = impact2),
-             size = 2, shape = 2) + geom_point() 
-
-#hey +
-  geom_line(data=df2, aes(x= SES.FPD, y= impact, colour='red')) + 
-  geom_line(data=df2,aes(y = impact.q_0.025), color = "red") +
-  geom_line(data=df2,aes(y = impact.q_0.905), color = "red") 
-
-#+geom_ribbon(data= df2, aes(ymin=impact.q_0.025,ymax=impact.q_0.905), fill="blue", alpha="0.5")                     
-
-
-  
-
-
-
-#gy_logitmod <- betareg(impact2 ~ SES.FPD, data = focaldistance_enitregenus)
-#predmod <- predict(beta_fit1, type= "quantile", at = c(0.025,0.905))
-#predmod<- as.data.frame(predmod)
-#focaldistance_enitregenus$lwl <- predmod$fit-1.96*predmod$se.fit
-#focaldistance_enitregenus$upl <- predmod$fit+1.96*predmod$se.fit
-
-
-#ggplot(focaldistance_enitregenus, aes(x = SES.FPD, y = impact2)) +
-  #geom_point() +
-  #geom_smooth(method = 'loess') +
-  #geom_line(aes(y = lwl), color = "red") +
-  #geom_line(aes(y = upl), color = "red")
-
-
+yay + geom_ribbon(data= full, aes(ymin = lower, ymax = upper, x=SES.FPD), fill = "grey") +
+geom_smooth(data=full, aes(x=SES.FPD, y=median)) + geom_smooth(data=full, aes(x=SES.FPD, y=lower)) + geom_smooth(data=full, aes(x=SES.FPD, y=upper))+ geom_point(data = full,
+aes(x = SES.FPD, y = impact2),
+size = 2, shape = 2)
