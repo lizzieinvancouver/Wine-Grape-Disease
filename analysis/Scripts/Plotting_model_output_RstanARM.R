@@ -1,7 +1,7 @@
 #Plotting Model output for RstanARM
 rm(list=ls()) # remove everything currently held in the R memory
 options(stringsAsFactors=FALSE)
-setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/")
+setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/") # setwd("~/Documents/git/projects/others/darwin/winegrapedisease/Wine-Grape-Disease/analysis/output/")
 
 library(ggplot2)
 library(tidyverse)
@@ -31,16 +31,23 @@ names(modfixed98) <- c("term", "estimate", "error98")
 modfixed98$level <- "main"
 modfixed98$`2%` <- modfixed98$estimate - modfixed98$error98
 modfixed98$`98%` <- modfixed98$estimate + modfixed98$error98
-#how to use this information to plot credible intervals ontop of this information
+#how to use this information to plot credible intervals ontop of this information # Lizzie says, hmm, I think this gives us the credible interval around the mean, but that might not be the best way to plot the uncertainty. 
 
 
 #creates data set from linear model
-df <- data.frame(impact = posterior_predict(impact_linear_model))
+df <- data.frame(impact = posterior_predict(impact_linear_model)) # Lizzie says: I still don't have a good idea of what this does as in general you need to give this command the model *and* new data to predict. Based on the below code you seem to be using it as a way to grab the posterior but I don't think you're getting exactly that (here it says you're getting 'in-sample posterior samples' https://mc-stan.org/rstanarm/articles/rstanarm.html), it would be better to just do that directly, like this (I just took one 'par' aka paramter, but you can call more):
+posteriorSamples <- as.data.frame(as.matrix(impact_linear_model, pars = "SES.FPD"))
+
+# I think you can use this get predictions that might help with plotting ... for example:
+range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)
+newdat <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=500))
+names(newdat) <- "SES.FPD"
+df.newdat <- posterior_predict(impact_linear_model, newdata=newdat) # this gives you predictions along your data range, you coudld from here plot something like Fig 4.7, left side, but I think the HPDI you have below is a better approach... 
 
 #rethinking code
 #pulls out mean for each repitions 
 df.mean <- apply(df, 2, mean)
-df.HPDI <- apply(df, 2, HPDI, prob=0.95)
+df.HPDI <- apply(df, 2, HPDI, prob=0.95) # This seems like a good start! Can you go use the actual posterior samples (see my code above for posteriorSamples) and follow the code around pages 105-106 to plot the type of shading and line in Figure 4.7 right side? 
 
 #creates numeric vector of SES.FPD 
 e<-na.omit(focaldistance_enitregenus$SES.FPD)
