@@ -36,7 +36,7 @@ modfixed98$`98%` <- modfixed98$estimate + modfixed98$error98
 
 #creates data set from linear model
 df <- data.frame(impact = posterior_predict(impact_linear_model)) # Lizzie says: I still don't have a good idea of what this does as in general you need to give this command the model *and* new data to predict. Based on the below code you seem to be using it as a way to grab the posterior but I don't think you're getting exactly that (here it says you're getting 'in-sample posterior samples' https://mc-stan.org/rstanarm/articles/rstanarm.html), it would be better to just do that directly, like this (I just took one 'par' aka paramter, but you can call more):
-posteriorSamples <- as.data.frame(as.matrix(impact_linear_model, pars = "SES.FPD"))
+posteriorSamples <- as.data.frame(as.matrix(impact_linear_model)) #pars = "SES.FPD"
 
 # I think you can use this get predictions that might help with plotting ... for example:
 range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)
@@ -46,8 +46,17 @@ df.newdat <- posterior_predict(impact_linear_model, newdata=newdat) # this gives
 
 #rethinking code
 #pulls out mean for each repitions 
-df.mean <- apply(df, 2, mean)
-df.HPDI <- apply(df, 2, HPDI, prob=0.95) # This seems like a good start! Can you go use the actual posterior samples (see my code above for posteriorSamples) and follow the code around pages 105-106 to plot the type of shading and line in Figure 4.7 right side? 
+df.mean <- apply(df.newdat, 2, mean)
+df.HPDI <- apply(df.newdat, 2, HPDI, prob=0.95) # This seems like a good start! Can you go use the actual posterior samples (see my code above for posteriorSamples) and follow the code around pages 105-106 to plot the type of shading and line in Figure 4.7 right side? 
+#I get impossibly large values for HPDI
+
+df.mean <- as.data.frame(df.mean)
+
+
+plot(impact2~SES.FPD, data=focaldistance_enitregenus, col=col.alpha(rangi2,0.5))
+lines(newdat$SES.FPD,df.mean$df.mean)
+shade(df.HPDI,newdat)
+
 
 #creates numeric vector of SES.FPD 
 e<-na.omit(focaldistance_enitregenus$SES.FPD)
@@ -98,11 +107,11 @@ dose <- dose %>%
 prob_lwr <- .025
 prob_upr <- .975
 path <- unique(names(dose))
-tycho <- (matrix(NA, nrow= 3, ncol = ncol(dose)))
-for (n in 1:length(path)){
-  tycho[1,n]<- as.matrix(median(dose[,n]))
-  tycho[2,n] <- as.matrix(quantile(dose[,n], prob_lwr))
-  tycho[3,n]<- as.matrix(quantile(dose[,n], prob_upr))
+tycho <- (matrix(NA, nrow= 3, ncol = ncol(df.newdat)))
+for (n in 1:ncol(df.newdat)){
+  tycho[1,n]<- as.matrix(median(df.newdat[,n]))
+  tycho[2,n] <- as.matrix(quantile(df.newdat[,n], prob_lwr))
+  tycho[3,n]<- as.matrix(quantile(df.newdat[,n], prob_upr))
 }
 
 tycho <- t(tycho)
