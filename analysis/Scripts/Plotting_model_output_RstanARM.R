@@ -46,16 +46,28 @@ df.newdat <- posterior_predict(impact_linear_model, newdata=newdat) # this gives
 
 #rethinking code
 #pulls out mean for each repitions 
-df.mean <- apply(df.newdat, 2, mean)
-df.HPDI <- apply(df.newdat, 2, HPDI, prob=0.95) # This seems like a good start! Can you go use the actual posterior samples (see my code above for posteriorSamples) and follow the code around pages 105-106 to plot the type of shading and line in Figure 4.7 right side? 
-#I get impossibly large values for HPDI
+df.mean <- apply(posteriorSamples, 2, mean)
+df.HPDI <- apply(posteriorSamples, 2, HPDI, prob=0.95) # This seems like a good start! Can you go use the actual posterior samples (see my code above for posteriorSamples) and follow the code around pages 105-106 to plot the type of shading and line in Figure 4.7 right side? 
 
-df.mean <- as.data.frame(df.mean)
+df.mean <- as.matrix(df.mean)
+
+#to calculate impact value for each data point
+dose <- (matrix(NA, nrow= nrow(newdat), ncol = ncol(newdat)))
+for (n in 1:500){
+  dose[n,]<- as.matrix(df.mean[1,] +  (df.mean[2,] * newdat[n,]))
+  
+} 
+
+dose <- as.data.frame(dose)
+
+join <- cbind(dose,newdat)
 
 
 plot(impact2~SES.FPD, data=focaldistance_enitregenus, col=col.alpha(rangi2,0.5))
-lines(newdat$SES.FPD,df.mean$df.mean)
-shade(df.HPDI,newdat)
+lines(join$SES.FPD,join$V1)
+
+shade(df.HPDI,join$SES.FPD)
+### doesn't work
 
 
 #creates numeric vector of SES.FPD 
