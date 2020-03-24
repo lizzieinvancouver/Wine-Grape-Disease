@@ -65,8 +65,7 @@ join <- cbind(dose,newdat)
 
 plot(impact2~SES.FPD, data=focaldistance_enitregenus, col=col.alpha(rangi2,0.5))
 lines(join$SES.FPD,join$V1)
-
-shade(df.HPDI,join$SES.FPD)
+shade(df.HPDI,seq(range(df.HPDI[,2])))
 ### doesn't work
 
 
