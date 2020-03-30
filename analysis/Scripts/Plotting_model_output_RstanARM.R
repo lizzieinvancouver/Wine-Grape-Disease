@@ -51,6 +51,15 @@ df.HPDI <- apply(posteriorSamples, 2, HPDI, prob=0.95) # This seems like a good 
 
 df.mean <- as.matrix(df.mean)
 
+
+posteriorSamples <- as.data.frame(as.matrix(impact_linear_model))
+posteriorSamples10 <-posteriorSamples[1:10,]
+
+plot(impact2~SES.FPD, data=focaldistance_enitregenus)
+
+for(i in 1:10)
+  abline(a=posteriorSamples10$`(Intercept)`[i], b=posteriorSamples10$SES.FPD[i], col=col.alpha("black",0.3))
+
 #to calculate impact value for each data point
 dose <- (matrix(NA, nrow= nrow(newdat), ncol = ncol(newdat)))
 for (n in 1:500){
@@ -67,6 +76,30 @@ plot(impact2~SES.FPD, data=focaldistance_enitregenus, col=col.alpha(rangi2,0.5))
 lines(join$SES.FPD,join$V1)
 shade(df.HPDI,seq(range(df.HPDI[,2])))
 ### doesn't work
+
+###rethinking code 2.0 (page101-103)
+
+#this gives you ten data points
+focaldistance_enitregenus2.0<-focaldistance_enitregenus[1:12,]
+
+#new model with just ten data points
+impact_linear_model2.0 <- stan_glm(impact2~ SES.FPD, data = focaldistance_enitregenus2.0,
+                                family = gaussian(link="identity"),)
+
+
+#extracts entire posterior
+posteriorSamples <- as.data.frame(as.matrix(impact_linear_model2.0))
+
+#extracts first 10 samples
+posteriorSamples10 <-posteriorSamples[1:10,]
+
+
+#plots 10 data points with uncertainity 
+plot(impact2~SES.FPD, data=focaldistance_enitregenus2.0)
+
+for(i in 1:10)
+  abline(a=posteriorSamples10$`(Intercept)`[i], b=posteriorSamples10$SES.FPD[i], col=col.alpha("black",0.3))
+
 
 
 #creates numeric vector of SES.FPD 
