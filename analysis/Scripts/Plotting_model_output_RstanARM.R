@@ -25,15 +25,6 @@ impact_linear_model <- stan_glm(impact2~ SES.FPD, data = focaldistance_enitregen
 
 summary(impact_linear_model,digits= 4)
 
-#Cat's code
-modfixed98<-as.data.frame(tidy(impact_linear_model, prob=0.98))
-names(modfixed98) <- c("term", "estimate", "error98")
-modfixed98$level <- "main"
-modfixed98$`2%` <- modfixed98$estimate - modfixed98$error98
-modfixed98$`98%` <- modfixed98$estimate + modfixed98$error98
-#how to use this information to plot credible intervals ontop of this information # Lizzie says, hmm, I think this gives us the credible interval around the mean, but that might not be the best way to plot the uncertainty. 
-
-
 #creates data set from linear model
 df <- data.frame(impact = posterior_predict(impact_linear_model)) # Lizzie says: I still don't have a good idea of what this does as in general you need to give this command the model *and* new data to predict. Based on the below code you seem to be using it as a way to grab the posterior but I don't think you're getting exactly that (here it says you're getting 'in-sample posterior samples' https://mc-stan.org/rstanarm/articles/rstanarm.html), it would be better to just do that directly, like this (I just took one 'par' aka paramter, but you can call more):
 posteriorSamples <- as.data.frame(as.matrix(impact_linear_model)) #pars = "SES.FPD"
@@ -44,38 +35,7 @@ newdat <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)
 names(newdat) <- "SES.FPD"
 df.newdat <- posterior_predict(impact_linear_model, newdata=newdat) # this gives you predictions along your data range, you coudld from here plot something like Fig 4.7, left side, but I think the HPDI you have below is a better approach... 
 
-#rethinking code
-#pulls out mean for each repitions 
-df.mean <- apply(posteriorSamples, 2, mean)
-df.HPDI <- apply(posteriorSamples, 2, HPDI, prob=0.95) # This seems like a good start! Can you go use the actual posterior samples (see my code above for posteriorSamples) and follow the code around pages 105-106 to plot the type of shading and line in Figure 4.7 right side? 
 
-df.mean <- as.matrix(df.mean)
-
-
-posteriorSamples <- as.data.frame(as.matrix(impact_linear_model))
-posteriorSamples10 <-posteriorSamples[1:10,]
-
-plot(impact2~SES.FPD, data=focaldistance_enitregenus)
-
-for(i in 1:10)
-  abline(a=posteriorSamples10$`(Intercept)`[i], b=posteriorSamples10$SES.FPD[i], col=col.alpha("black",0.3))
-
-#to calculate impact value for each data point
-dose <- (matrix(NA, nrow= nrow(newdat), ncol = ncol(newdat)))
-for (n in 1:500){
-  dose[n,]<- as.matrix(df.mean[1,] +  (df.mean[2,] * newdat[n,]))
-  
-} 
-
-dose <- as.data.frame(dose)
-
-join <- cbind(dose,newdat)
-
-
-plot(impact2~SES.FPD, data=focaldistance_enitregenus, col=col.alpha(rangi2,0.5))
-lines(join$SES.FPD,join$V1)
-shade(df.HPDI,seq(range(df.HPDI[,2])))
-### doesn't work
 
 ###rethinking code 2.0 (page101-103)
 
@@ -89,91 +49,69 @@ impact_linear_model2.0 <- stan_glm(impact2~ SES.FPD, data = focaldistance_enitre
 
 #extracts entire posterior
 posteriorSamples <- as.data.frame(as.matrix(impact_linear_model2.0))
+posteriorSamples <- as.data.frame(as.matrix(impact_linear_model))
 
+mu_at_5 <- posteriorSamples$`(Intercept)` + posteriorSamples$SES.FPD * 5
 #extracts first 10 samples
 posteriorSamples10 <-posteriorSamples[1:10,]
 
 
 #plots 10 data points with uncertainity 
-plot(impact2~SES.FPD, data=focaldistance_enitregenus2.0)
+plot(impact2~SES.FPD, data=focaldistance_enitregenus)
 
 for(i in 1:10)
   abline(a=posteriorSamples10$`(Intercept)`[i], b=posteriorSamples10$SES.FPD[i], col=col.alpha("black",0.3))
 
 
+######Putting it all together
+#codes linear model
+impact_linear_model <- stan_glm(impact2~ SES.FPD, data = focaldistance_enitregenus,
+                                family = gaussian(link="identity"),)
 
-#creates numeric vector of SES.FPD 
-e<-na.omit(focaldistance_enitregenus$SES.FPD)
-e <- e[-5]
+#gets posterior
+posteriorSamples <- as.data.frame(as.matrix(impact_linear_model))
+posteriorSamples <- posteriorSamples[1:1000,]
 
-join <- cbind(e,df.mean)
-join <- as.data.frame(join)
-plot(impact2~SES.FPD, data=focaldistance_enitregenus, col=col.alpha(rangi2,0.5))
-abline(lm(join$df.mean~join$e, data=join))
-### plots very wide intervals
-shade(df.HPDI, e)
+#gets original data
+orginal_data<- as.data.frame(focaldistance_enitregenus$SES.FPD)
 
+dose <- (matrix(NA, nrow= nrow(posteriorSamples), ncol = ncol(t(orginal_data))))
 
-### using just normal lm
-lm.out <- lm(join$df.mean~join$e, data=join)
-predlm.out = predict(lm.out, interval = "confidence")
-joinlm= cbind(join,predlm.out )
+#does the link function in rethinking with orginal model!
+for (n in 1:49){
+  dose[,n]<- as.matrix(posteriorSamples$`(Intercept)` + posteriorSamples$SES.FPD * orginal_data[n,])
+  
+} 
 
-ggplot(joinlm, aes(x=e, y=df.mean)) + 
-  geom_point(data = focaldistance_enitregenus,
-             aes(x = SES.FPD, y = impact2)) + 
-  geom_ribbon(aes(ymin=lwr, ymax=upr)) +
-  geom_line(aes(y=fit), size= 1)
+#codes for new data
+newdat <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=500))
 
+dose2.0 <- (matrix(NA, nrow= nrow(posteriorSamples), ncol = ncol(t(newdat))))
 
-### plots prediction intervals 
-fits <- impact_linear_model%>% 
-  as_data_frame %>% 
-  rename(intercept = `(Intercept)`)
-
-path <- unique(names(fits))
-
-dose <- (matrix(NA, nrow= nrow(fits), ncol = ncol(fits)))
-for (n in 1:length(path)){
-  dose[,1]<- as.matrix(fits[,1] * fits[,2])
-  dose[,2]<- as.matrix(fits[,2] * 1)
-}  
-
-dose <- as.data.frame(dose)
-
-dose <- dose %>%
-  rename(
-    impact = V1,
-    SES.FPD = V2
-  )
+#codes for link function with new data
+for (n in 1:500){
+  dose2.0[,n]<- as.matrix(posteriorSamples$`(Intercept)` + posteriorSamples$SES.FPD * newdat[n,])
+  
+} 
 
 
-prob_lwr <- .025
-prob_upr <- .975
-path <- unique(names(dose))
-tycho <- (matrix(NA, nrow= 3, ncol = ncol(df.newdat)))
-for (n in 1:ncol(df.newdat)){
-  tycho[1,n]<- as.matrix(median(df.newdat[,n]))
-  tycho[2,n] <- as.matrix(quantile(df.newdat[,n], prob_lwr))
-  tycho[3,n]<- as.matrix(quantile(df.newdat[,n], prob_upr))
-}
+#figure 4.6
+plot(impact2~SES.FPD, data=focaldistance_enitregenus, type= "n")
+for ( i in 1:100 )
+  points(t(newdat) , dose2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
 
-tycho <- t(tycho)
-tycho <- as.data.frame(tycho)
+# summarize the distribution of dose2.0
+dose2.0.mean <- apply( dose2.0 , 2 , mean )
+dose2.0.HPDI <- apply( dose2.0 , 2 , HPDI , prob=0.89 )
 
-colnames(tycho)[1] <- "median"
-colnames(tycho)[2] <- "lower"
-colnames(tycho)[3] <- "upper"
+# plot raw data
+# fading out points to make line and interval more visible
+plot( impact2~SES.FPD , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5) )
 
-new<-focaldistance_enitregenus[!is.na(focaldistance_enitregenus$SES.FPD),]
-new<-new[-6,]
-full<-cbind(new,tycho)
-
-yay<- ggplot(data = focaldistance_enitregenus,
-             aes(x = SES.FPD, y = impact2)) + geom_point(data = focaldistance_enitregenus,
-                                                         aes(x = SES.FPD, y = impact2),
-                                                         size = 2, shape = 2)
-yay + geom_smooth(method= 'lm', formula= y~x)
+# plot the MAP line, aka the mean impacts for each SES.FPD
+lines(t(newdat), dose2.0.mean)
+# plot a shaded region for 89% HPDI
+shade(dose2.0.HPDI,t(newdat) )
 
 
 #### Invlogit 
@@ -182,21 +120,54 @@ focaldistance_enitregenus$impact2 <- inv.logit(focaldistance_enitregenus$impact2
 
 impact_invlogit_model <- stan_glm(impact2~ SES.FPD, data = focaldistance_enitregenus,
                                   family = gaussian(link="identity"),)
-summary(impact_invlogit_model)                                                                                                                                                             
+                                                                                                                                                            
+#gets posterior
+posteriorSamples2.0 <- as.data.frame(as.matrix(impact_invlogit_model))
+posteriorSamples2.0 <- posteriorSamples2.0[1:1000,]
 
-#creates data set from linear model
-df <- data.frame(impact = posterior_predict(impact_invlogit_model))
+#obtains original data
+orginal_data<- as.data.frame(focaldistance_enitregenus$SES.FPD)
 
-path <- unique(names(df))
+#creates empty matrix
+afterhours <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(orginal_data))))
 
-#back converts all data
-df_trans <- (matrix(NA, nrow= nrow(df), ncol = ncol(df)))
-for (n in 1:length(path)){
-  df_trans[,n]<- as.matrix(logit(df[,n]))  
-}
+for (n in 1:49){
+  afterhours[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$SES.FPD * orginal_data[n,])
+  #back transforms each row after inverlogit each impact
+  afterhours[,n]  <- as.matrix(logit(afterhours[,n] ))
+} 
 
-#pulls out model fit
-fits <- impact_invlogit_model%>% 
-  as_data_frame %>% 
-  rename(intercept = `(Intercept)`) %>% 
-  select(-sigma)
+
+#codes for new data
+newdat <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=500))
+
+afterhours2.0 <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(newdat))))
+
+for (n in 1:500){
+  afterhours2.0[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$SES.FPD * newdat[n,])
+  #back transforms each row after inverlogit each impact
+  afterhours2.0[,n]  <- as.matrix(logit(afterhours2.0[,n] ))
+} 
+
+#reinputs old data
+focaldistance_enitregenus <- read.csv("Focaldistanceentiregenus.csv")
+
+focaldistance_enitregenus$impact2 <- focaldistance_enitregenus$impact2* 0.01
+
+#figure 4.6
+plot(impact2~SES.FPD, data=focaldistance_enitregenus, type= "n")
+for ( i in 1:100 )
+  points(t(newdat) , afterhours2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
+
+# summarize the distribution of dose2.0
+afterhours2.0.mean <- apply( afterhours2.0 , 2 , mean )
+afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
+
+# plot raw data
+# fading out points to make line and interval more visible
+plot( impact2~SES.FPD , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5) )
+
+# plot the MAP line, aka the mean impacts for each SES.FPD
+lines(t(newdat), afterhours2.0.mean)
+# plot a shaded region for 89% HPDI
+shade(afterhours2.0.HPDI,t(newdat) )
