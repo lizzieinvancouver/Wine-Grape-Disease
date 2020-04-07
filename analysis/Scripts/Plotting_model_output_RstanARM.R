@@ -3,7 +3,6 @@ rm(list=ls()) # remove everything currently held in the R memory
 options(stringsAsFactors=FALSE)
 setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/") # setwd("~/Documents/git/projects/others/darwin/winegrapedisease/Wine-Grape-Disease/analysis/output/")
 
-library(ggplot2)
 library(tidyverse)
 library(dplyr)
 library(boot)
@@ -26,16 +25,13 @@ impact_linear_model <- stan_glm(impact2~ SES.FPD, data = focaldistance_enitregen
 summary(impact_linear_model,digits= 4)
 
 #creates data set from linear model
-df <- data.frame(impact = posterior_predict(impact_linear_model)) # Lizzie says: I still don't have a good idea of what this does as in general you need to give this command the model *and* new data to predict. Based on the below code you seem to be using it as a way to grab the posterior but I don't think you're getting exactly that (here it says you're getting 'in-sample posterior samples' https://mc-stan.org/rstanarm/articles/rstanarm.html), it would be better to just do that directly, like this (I just took one 'par' aka paramter, but you can call more):
-posteriorSamples <- as.data.frame(as.matrix(impact_linear_model)) #pars = "SES.FPD"
+posteriorSamples <- as.data.frame(as.matrix(impact_linear_model)) 
 
 # I think you can use this get predictions that might help with plotting ... for example:
 range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)
 newdat <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=500))
 names(newdat) <- "SES.FPD"
-df.newdat <- posterior_predict(impact_linear_model, newdata=newdat) # this gives you predictions along your data range, you coudld from here plot something like Fig 4.7, left side, but I think the HPDI you have below is a better approach... 
-
-
+ 
 
 ###rethinking code 2.0 (page101-103)
 
@@ -104,6 +100,7 @@ for ( i in 1:100 )
 dose2.0.mean <- apply( dose2.0 , 2 , mean )
 dose2.0.HPDI <- apply( dose2.0 , 2 , HPDI , prob=0.89 )
 
+#plots linearmodel.pdf
 # plot raw data
 # fading out points to make line and interval more visible
 plot( impact2~SES.FPD , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5) )
@@ -163,7 +160,8 @@ for ( i in 1:100 )
 afterhours2.0.mean <- apply( afterhours2.0 , 2 , mean )
 afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
 
-# plot raw data
+#below plots Inverselogit_linearmodel.pdf
+# plots raw data
 # fading out points to make line and interval more visible
 plot( impact2~SES.FPD , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5) )
 

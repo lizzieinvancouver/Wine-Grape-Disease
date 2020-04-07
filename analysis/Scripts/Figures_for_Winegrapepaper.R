@@ -77,7 +77,30 @@ focaldistance_onespecies$impact2 <- focaldistance_onespecies$impact2 * 0.01
 
 beta_fit1 <- stan_betareg(impact2~ SES.FPD, data = focaldistance_enitregenus)
 
-df <- data.frame(impact = posterior_predict(beta_fit1))
+fits <- beta_fit1%>% 
+  as_data_frame %>% 
+  rename(intercept = `(Intercept)`)
+
+range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)
+newdat <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=500))
+
+df.mean <- apply(fits, 2, mean)
+
+df.mean <- as.matrix(df.mean)
+
+dose <- (matrix(NA, nrow= nrow(newdat), ncol = ncol(newdat)))
+for (n in 1:500){
+  dose[n,]<- as.matrix(df.mean[1,] +  (df.mean[2,] * newdat[n,]))
+  
+} 
+
+dose <- as.data.frame(dose)
+
+df_trans <- (matrix(NA, nrow= nrow(dose), ncol = ncol(dose)))
+for (n in 1:500){
+  df_trans[n,]<- as.matrix(logit(dose[n,]))  
+}
+
 
 prob_lwr <- .025
 prob_upr <- .905
