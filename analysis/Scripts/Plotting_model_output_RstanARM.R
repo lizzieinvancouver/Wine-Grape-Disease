@@ -60,13 +60,10 @@ for(i in 1:10)
 
 
 ######Putting it all together
-#codes linear model
-impact_linear_model <- stan_glm(impact2~ SES.FPD, data = focaldistance_enitregenus,
-                                family = gaussian(link="identity"),)
 
 #gets posterior
 posteriorSamples <- as.data.frame(as.matrix(impact_linear_model))
-posteriorSamples <- posteriorSamples[1:1000,]
+posteriorSamples <- posteriorSamples[1:4000,]
 
 #gets original data
 orginal_data<- as.data.frame(focaldistance_enitregenus$SES.FPD)
@@ -120,7 +117,7 @@ impact_invlogit_model <- stan_glm(impact2~ SES.FPD, data = focaldistance_enitreg
                                                                                                                                                             
 #gets posterior
 posteriorSamples2.0 <- as.data.frame(as.matrix(impact_invlogit_model))
-posteriorSamples2.0 <- posteriorSamples2.0[1:1000,]
+posteriorSamples2.0 <- posteriorSamples2.0[1:4000,]
 
 #obtains original data
 orginal_data<- as.data.frame(focaldistance_enitregenus$SES.FPD)
@@ -169,3 +166,46 @@ plot( impact2~SES.FPD , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.
 lines(t(newdat), afterhours2.0.mean)
 # plot a shaded region for 89% HPDI
 shade(afterhours2.0.HPDI,t(newdat) )
+
+##### Plotting Beta regression 
+#loading in datasets
+focaldistance_onespecies <- read.csv("Focaldistanceonespecies.csv")
+focaldistance_enitregenus <- read.csv("Focaldistanceentiregenus.csv")
+
+focaldistance_enitregenus$impact2 <- focaldistance_enitregenus$impact2* 0.01
+focaldistance_onespecies$impact2 <- focaldistance_onespecies$impact2 * 0.01
+
+#codes for the beta model
+beta_fit <- stan_betareg(impact2~ SES.FPD, data = focaldistance_enitregenus)
+
+summary(beta_fit,digits= 4)
+
+#gets posterior
+posteriorSamples3.0 <- as.data.frame(as.matrix(beta_fit))
+
+#obtains original data
+orginal_data<- as.data.frame(focaldistance_enitregenus$SES.FPD)
+
+#creates empty matrix
+dream <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(orginal_data))))
+dreamb <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(orginal_data))))
+dreambeta<- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(orginal_data))))
+
+
+for (n in 1:49){
+  #calculates Mu
+  dream[,n] <- as.matrix(exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * orginal_data[n,]) / (1 + exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * orginal_data[n,])))  #*posteriorSamples3.0$`(phi)`   
+  #calculates 1 - Mu
+  dreamb[,n] <- as.matrix(1 - dream[,n])
+  # gives me shape parameter a
+  dream[,n] <- as.matrix(dream[,n] * posteriorSamples3.0$`(phi)` )
+  #gives me shape parameter b
+  dreamb[,n] <- as.matrix(dreamb[,n] * posteriorSamples3.0$`(phi)` )
+  #give you impact values based on shape parameters
+  dreambeta[,n] <- as.matrix(beta(dream[,n],dreamb[,n]))
+} 
+
+# check I am getting the correct value
+beta(dream[1,2],dreamb[1,2]) 
+
+#something is wrong because means of dreambeta are higher than 1 which shouldnt be possible as you impact of 1 is 100% loss in yeild 
