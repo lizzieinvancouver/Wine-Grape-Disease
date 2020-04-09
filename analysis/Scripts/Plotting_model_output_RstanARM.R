@@ -202,10 +202,66 @@ for (n in 1:49){
   #gives me shape parameter b
   dreamb[,n] <- as.matrix(dreamb[,n] * posteriorSamples3.0$`(phi)` )
   #give you impact values based on shape parameters
-  dreambeta[,n] <- as.matrix(beta(dream[,n],dreamb[,n]))
+  dreambeta[,n] <- as.matrix(rbeta(4000,dream[,n],dreamb[,n]))
 } 
 
-# check I am getting the correct value
-beta(dream[1,2],dreamb[1,2]) 
 
-#something is wrong because means of dreambeta are higher than 1 which shouldnt be possible as you impact of 1 is 100% loss in yeild 
+
+# check I am getting the correct value
+rbeta(1,dream[1,2],dreamb[1,2]) 
+dreamb[1,2]
+dream[1,2]
+
+
+#New data
+#creates empty matrix
+dream2.0 <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat))))
+dreamb2.0 <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat))))
+dreambeta2.0<- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat))))
+
+
+for (n in 1:500){
+  #calculates Mu
+  dream2.0[,n] <- as.matrix(exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * newdat[n,]) / (1 + exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * newdat[n,])))  #*posteriorSamples3.0$`(phi)`   
+  #calculates 1 - Mu
+  dreamb2.0[,n] <- as.matrix(1 - dream2.0[,n])
+  # gives me shape parameter a
+  dream2.0[,n] <- as.matrix(dream2.0[,n] * posteriorSamples3.0$`(phi)` )
+  #gives me shape parameter b
+  dreamb2.0[,n] <- as.matrix(dreamb2.0[,n] * posteriorSamples3.0$`(phi)` )
+  #give you impact values based on shape parameters
+  dreambeta2.0[,n] <- as.matrix(rbeta(4000,dream2.0[,n],dreamb2.0[,n]))
+} 
+
+#figure 4.6
+plot(impact2~SES.FPD, data=focaldistance_enitregenus, type= "n")
+for ( i in 1:100 )
+  points(t(newdat) , dreambeta2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
+
+# summarize the distribution of dose2.0
+dreambeta2.0.mean <- apply( dreambeta2.0 , 2 , mean )
+dreambeta2.0.HPDI <- apply( dreambeta2.0 , 2 , HPDI , prob=0.89 )
+
+#below plots Inverselogit_linearmodel.pdf
+# plots raw data
+# fading out points to make line and interval more visible
+plot( impact2~SES.FPD , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5) )
+
+# plot the MAP line, aka the mean impacts for each SES.FPD
+#plots jagged line of best fit
+lines(spline(t(newdat), dreambeta2.0.mean))
+# plot a shaded region for 89% HPDI
+#plots huge confidence interval
+shade(dreambeta2.0.HPDI,t(newdat) )
+
+# plot is testing other plotting code
+#does not work
+t(dreambeta2.0.mean)
+
+plot <- cbind(newdat,dreambeta2.0.mean)
+
+
+ggplot(plot) + geom_point(aes(x = plot$`seq(range(focaldistance_enitregenus$SES.FPD, na.rm = TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm = TRUE)[2], length.out = 500)`, y = plot$dreambeta2.0.mean), size = 3) +
+  stat_smooth(aes(x = plot$`seq(range(focaldistance_enitregenus$SES.FPD, na.rm = TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm = TRUE)[2], length.out = 500)`, y = plot$dreambeta2.0.mean), method = "lm",
+  )
+
