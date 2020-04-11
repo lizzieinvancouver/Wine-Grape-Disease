@@ -249,19 +249,29 @@ plot( impact2~SES.FPD , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.
 
 # plot the MAP line, aka the mean impacts for each SES.FPD
 #plots jagged line of best fit
-lines(spline(t(newdat), dreambeta2.0.mean))
+#looks ever so slights curved but could be wrong :(
+lines(lowess(t(newdat), dreambeta2.0.mean))
 # plot a shaded region for 89% HPDI
 #plots huge confidence interval
 shade(dreambeta2.0.HPDI,t(newdat) )
 
 # plot is testing other plotting code
 #does not work
-t(dreambeta2.0.mean)
+#t(dreambeta2.0.mean)
 
-plot <- cbind(newdat,dreambeta2.0.mean)
+#plot <- cbind(newdat,dreambeta2.0.mean)
+#colnames(plot) <- c("SES.FPD","impact2")
 
 
-ggplot(plot) + geom_point(aes(x = plot$`seq(range(focaldistance_enitregenus$SES.FPD, na.rm = TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm = TRUE)[2], length.out = 500)`, y = plot$dreambeta2.0.mean), size = 3) +
+#ggplot(plot) + geom_point(aes(x = plot$`seq(range(focaldistance_enitregenus$SES.FPD, na.rm = TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm = TRUE)[2], length.out = 500)`, y = plot$dreambeta2.0.mean), size = 3) +
   stat_smooth(aes(x = plot$`seq(range(focaldistance_enitregenus$SES.FPD, na.rm = TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm = TRUE)[2], length.out = 500)`, y = plot$dreambeta2.0.mean), method = "lm",
   )
 
+#also does not work
+  #ggplot() +
+    #geom_point(data = focaldistance_enitregenus, 
+               #aes(x = SES.FPD, y = impact2),
+               #size = 4, shape = 21) +
+    #xlim(-7, 3) + 
+    #geom_line(data = plot, aes(x = SES.FPD, y = impact2), col="red") +
+    #theme_classic()
