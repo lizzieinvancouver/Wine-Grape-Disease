@@ -63,26 +63,26 @@ for(i in 1:10)
 
 #gets posterior
 posteriorSamples <- as.data.frame(as.matrix(impact_linear_model))
-posteriorSamples <- posteriorSamples[1:4000,]
 
 #gets original data
 orginal_data<- as.data.frame(focaldistance_enitregenus$SES.FPD)
 
 dose <- (matrix(NA, nrow= nrow(posteriorSamples), ncol = ncol(t(orginal_data))))
 
-#does the link function in rethinking with orginal model!
+#does the link function in rethinking with orginal model! (Each column is full posterior for each original data point)
 for (n in 1:49){
   dose[,n]<- as.matrix(posteriorSamples$`(Intercept)` + posteriorSamples$SES.FPD * orginal_data[n,])
   
 } 
 
 #codes for new data
-newdat <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=500))
+newdatlength <- 50
+newdat <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=newdatlength))
 
 dose2.0 <- (matrix(NA, nrow= nrow(posteriorSamples), ncol = ncol(t(newdat))))
 
-#codes for link function with new data
-for (n in 1:500){
+#codes for link function with new data (Each column is full posterior for each new data point)
+for (n in 1:newdatlength){
   dose2.0[,n]<- as.matrix(posteriorSamples$`(Intercept)` + posteriorSamples$SES.FPD * newdat[n,])
   
 } 
