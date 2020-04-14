@@ -110,9 +110,9 @@ shade(dose2.0.HPDI,t(newdat) )
 
 #### Invlogit 
 #converts impact to inverse logit
-focaldistance_enitregenus$impact2 <- inv.logit(focaldistance_enitregenus$impact2)                                                                                                                                                                   
+focaldistance_enitregenus$impact3 <- inv.logit(focaldistance_enitregenus$impact2)                                                                                                                                                                   
 
-impact_invlogit_model <- stan_glm(impact2~ SES.FPD, data = focaldistance_enitregenus,
+impact_invlogit_model <- stan_glm(impact3~ SES.FPD, data = focaldistance_enitregenus,
                                   family = gaussian(link="identity"),)
                                                                                                                                                             
 #gets posterior
@@ -133,24 +133,19 @@ for (n in 1:49){
 
 
 #codes for new data
-newdat <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=500))
 
 afterhours2.0 <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(newdat))))
 
-for (n in 1:500){
+for (n in 1:50){
   afterhours2.0[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$SES.FPD * newdat[n,])
   #back transforms each row after inverlogit each impact
   afterhours2.0[,n]  <- as.matrix(logit(afterhours2.0[,n] ))
 } 
 
-#reinputs old data
-focaldistance_enitregenus <- read.csv("Focaldistanceentiregenus.csv")
-
-focaldistance_enitregenus$impact2 <- focaldistance_enitregenus$impact2* 0.01
 
 #figure 4.6
-plot(impact2~SES.FPD, data=focaldistance_enitregenus, type= "n")
-for ( i in 1:100 )
+plot(impact3~SES.FPD, data=focaldistance_enitregenus, type= "n")
+for ( i in 1:10 )
   points(t(newdat) , afterhours2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
 
 # summarize the distribution of dose2.0
@@ -160,7 +155,7 @@ afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
 #below plots Inverselogit_linearmodel.pdf
 # plots raw data
 # fading out points to make line and interval more visible
-plot( impact2~SES.FPD , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5) )
+plot( impact2~SES.FPD , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5))
 
 # plot the MAP line, aka the mean impacts for each SES.FPD
 lines(t(newdat), afterhours2.0.mean)
@@ -168,13 +163,6 @@ lines(t(newdat), afterhours2.0.mean)
 shade(afterhours2.0.HPDI,t(newdat) )
 
 ##### Plotting Beta regression 
-#loading in datasets
-focaldistance_onespecies <- read.csv("Focaldistanceonespecies.csv")
-focaldistance_enitregenus <- read.csv("Focaldistanceentiregenus.csv")
-
-focaldistance_enitregenus$impact2 <- focaldistance_enitregenus$impact2* 0.01
-focaldistance_onespecies$impact2 <- focaldistance_onespecies$impact2 * 0.01
-
 #codes for the beta model
 beta_fit <- stan_betareg(impact2~ SES.FPD, data = focaldistance_enitregenus)
 
@@ -214,13 +202,15 @@ dream[1,2]
 
 
 #New data
+newdatlength <- 30
+newdat <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=newdatlength))
 #creates empty matrix
 dream2.0 <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat))))
 dreamb2.0 <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat))))
 dreambeta2.0<- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat))))
 
 
-for (n in 1:500){
+for (n in 1:30){
   #calculates Mu
   dream2.0[,n] <- as.matrix(exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * newdat[n,]) / (1 + exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * newdat[n,])))  #*posteriorSamples3.0$`(phi)`   
   #calculates 1 - Mu
@@ -235,7 +225,7 @@ for (n in 1:500){
 
 #figure 4.6
 plot(impact2~SES.FPD, data=focaldistance_enitregenus, type= "n")
-for ( i in 1:100 )
+for ( i in 1:10)
   points(t(newdat) , dreambeta2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
 
 # summarize the distribution of dose2.0
@@ -259,9 +249,10 @@ shade(dreambeta2.0.HPDI,t(newdat) )
 #does not work
 #t(dreambeta2.0.mean)
 
-#plot <- cbind(newdat,dreambeta2.0.mean)
-#colnames(plot) <- c("SES.FPD","impact2")
-
+plot <- cbind(newdat,dreambeta2.0.mean)
+colnames(plot) <- c("SES.FPD","impact2")
+plot(impact2~SES.FPD, data= plot, ylim= c(0,1))
+xyplot(t(newdat) ~ dreambeta2.0.mean), type=c("smooth", "p"))
 
 #ggplot(plot) + geom_point(aes(x = plot$`seq(range(focaldistance_enitregenus$SES.FPD, na.rm = TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm = TRUE)[2], length.out = 500)`, y = plot$dreambeta2.0.mean), size = 3) +
   stat_smooth(aes(x = plot$`seq(range(focaldistance_enitregenus$SES.FPD, na.rm = TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm = TRUE)[2], length.out = 500)`, y = plot$dreambeta2.0.mean), method = "lm",
