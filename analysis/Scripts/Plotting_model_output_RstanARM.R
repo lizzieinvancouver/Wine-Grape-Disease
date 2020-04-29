@@ -297,6 +297,17 @@ View(GasolineYield)
 #codes for the beta model
 beta_comp <- stan_betareg(yield ~ temp, data =GasolineYield)
 
+# check what the default f(x) would give ... 
+plot(yield ~ temp, data=GasolineYield)
+predict_data <- data.frame(
+temp=seq(200, 600, by=20)
+)
+getpredline <- posterior_predict(beta_comp, newdata=predict_data)
+lines(colMeans(getpredline)~seq(200, 600, by=20))
+getpredline.HPDI <- apply(getpredline, 2, HPDI, prob=0.89)
+shade(getpredline.HPDI, seq(200, 600, by=20))
+# end check 
+
 #gets posterior
 posteriorSamples_gas <- as.data.frame(as.matrix(beta_comp))
 
