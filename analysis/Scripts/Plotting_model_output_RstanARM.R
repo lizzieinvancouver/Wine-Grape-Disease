@@ -165,7 +165,10 @@ shade(afterhours2.0.HPDI,t(newdat) )
 ####Lizzie please start reviewing from here 
 ##### Plotting Beta regression 
 #codes for the beta model
-beta_fit <- stan_betareg(impact2~ SES.FPD, data = focaldistance_enitregenus)
+focaldistance_enitregenus_b<- focaldistance_enitregenus[complete.cases(focaldistance_enitregenus$SES.FPD), ]
+focaldistance_enitregenus_beta <- focaldistance_enitregenus_b[,c(4,9)]
+focaldistance_enitregenus_beta <- focaldistance_enitregenus_beta[complete.cases(focaldistance_enitregenus_beta$impact2),]
+beta_fit <- stan_betareg(impact2~ SES.FPD, data = focaldistance_enitregenus_beta)
 
 summary(beta_fit,digits= 4)
 
@@ -181,7 +184,7 @@ dreamb <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(orginal_dat
 dreambeta<- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(orginal_data))))
 
 
-for (n in 1:49){
+for (n in 1:43){
   #calculates Mu
   dream[,n] <- as.matrix(exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * orginal_data[n,]) / (1 + exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * orginal_data[n,])))  #*posteriorSamples3.0$`(phi)`   
   #calculates 1 - Mu
@@ -233,7 +236,9 @@ for ( i in 1:10)
 dreambeta2.0.mean <- apply( dreambeta2.0 , 2 , mean )
 dreambeta2.0.HPDI <- apply( dreambeta2.0 , 2 , HPDI , prob=0.89 )
 
-#below plots Inverselogit_linearmodel.pdf
+
+par(mfrow=c(2,1))
+
 # plots raw data
 # fading out points to make line and interval more visible
 plot( impact2~SES.FPD , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5) )
@@ -244,6 +249,15 @@ lines(lowess(t(newdat), dreambeta2.0.mean))
 # plot a shaded region for 89% HPDI
 #plots huge confidence interval
 shade(dreambeta2.0.HPDI,t(newdat) )
+
+# check what the default f(x) would give ... 
+plot(impact2~SES.FPD, data=focaldistance_enitregenus)
+predict_data <- data.frame(SES.FPD= seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=50))
+getpredline <- posterior_predict(beta_fit, newdata=predict_data, na.action = na.omit)
+lines(lowess(colMeans(getpredline)~seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=50)))
+getpredline.HPDI <- apply(getpredline, 2, HPDI, prob=0.89)
+shade(getpredline.HPDI, seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=50))
+
 
 ### trying with less values of newdat
 #New data
