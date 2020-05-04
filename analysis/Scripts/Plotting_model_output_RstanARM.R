@@ -23,6 +23,7 @@ impact_linear_model <- stan_glm(impact2~ SES.FPD, data = focaldistance_enitregen
                                 family = gaussian(link="identity"),)
 
 summary(impact_linear_model,digits= 4)
+launch_shinystan(impact_linear_model)
 
 #creates data set from linear model
 posteriorSamples <- as.data.frame(as.matrix(impact_linear_model)) 
@@ -155,7 +156,7 @@ afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
 #below plots Inverselogit_linearmodel.pdf
 # plots raw data
 # fading out points to make line and interval more visible
-plot( impact2~SES.FPD , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5))
+plot( impact2~SES.FPD , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5), ylab= "Yield Loss")
 
 # plot the MAP line, aka the mean impacts for each SES.FPD
 lines(t(newdat), afterhours2.0.mean)

@@ -68,6 +68,57 @@ cloud<- cloud + geom_point(aes(x=1, y= -2.90), colour= "red") +
 cloud
 dev.off()
 
+##Below is code that creates figure invlogit linear model
+#### Invlogit 
+#converts impact to inverse logit
+focaldistance_enitregenus$impact3 <- inv.logit(focaldistance_enitregenus$impact2)                                                                                                                                                                   
+
+impact_invlogit_model <- stan_glm(impact3~ SES.FPD, data = focaldistance_enitregenus,
+                                  family = gaussian(link="identity"),)
+
+launch_shinystan(impact_invlogit_model)
+
+#gets posterior
+posteriorSamples2.0 <- as.data.frame(as.matrix(impact_invlogit_model))
+posteriorSamples2.0 <- posteriorSamples2.0[1:4000,]
+
+#codes for new data
+#codes for new data
+newdatlength <- 50
+newdat <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=newdatlength))
+
+afterhours2.0 <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(newdat))))
+
+for (n in 1:50){
+  afterhours2.0[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$SES.FPD * newdat[n,])
+  #back transforms each row after inverlogit each impact
+  afterhours2.0[,n]  <- as.matrix(logit(afterhours2.0[,n] ))
+} 
+
+
+#figure 4.6
+plot(impact3~SES.FPD, data=focaldistance_enitregenus, type= "n")
+for ( i in 1:10 )
+  points(t(newdat) , afterhours2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
+
+# summarize the distribution of dose2.0
+afterhours2.0.mean <- apply( afterhours2.0 , 2 , mean )
+afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
+
+
+
+pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/inlogit_model.pdf")
+#below plots Inverselogit_linearmodel.pdf
+# plots raw data
+# fading out points to make line and interval more visible
+plot( impact2~SES.FPD , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5), ylab= "Yield Loss")
+
+# plot the MAP line, aka the mean impacts for each SES.FPD
+lines(t(newdat), afterhours2.0.mean)
+# plot a shaded region for 89% HPDI
+shade(afterhours2.0.HPDI,t(newdat) )
+dev.off()
+
 ####Beta regression plot 
 #Beta plot from beta_fit1
 #Creates data set for beta_fit
