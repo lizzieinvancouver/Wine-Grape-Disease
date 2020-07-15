@@ -6,7 +6,7 @@ options(stringsAsFactors=FALSE)
 setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/Scripts/")
 
 
-library(dbplyr)
+library(tidyverse)
 
 
 #import data on all wine grape pathogens and hosts
