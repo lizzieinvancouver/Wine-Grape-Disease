@@ -36,6 +36,10 @@ newGrapepests <- newGrapepests %>% drop_na()
 #Removes duplicated rows
 newGrapepests <- as.data.frame(newGrapepests)[duplicated(as.data.frame(newGrapepests))==F,]
 
+#creates species column with an a space similar to the example species list given
+newGrapepests <- newGrapepests %>% unite("Species", New.Genus,New.Species, sep = " ", remove = FALSE)
+
+
 #creates CSV file of winegrape pests
 path_out = "~/Documents/GitHub/Wine-Grape-Disease/analysis/output/"
 write.csv(newGrapepests, paste(path_out, "newGrapepests.csv", sep= ""))
@@ -43,29 +47,32 @@ write.csv(newGrapepests, paste(path_out, "newGrapepests.csv", sep= ""))
 #reads in CSV file for winegrape pests
 splist_pathogens <- read_csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/newGrapepests.csv")
 
-#Removes first column
-splist_pathogens <- splist_pathogens[,-1]
+
+#Removes first column and fifth column
+splist_pathogens <- splist_pathogens[,c(-1,-5)]
 
 #renames columns
 colnames(splist_pathogens)[1] <- "family"
-colnames(splist_pathogens)[2] <- "genus"
-colnames(splist_pathogens)[3] <- "species"
+colnames(splist_pathogens)[2] <- "species"
+colnames(splist_pathogens)[3] <- "genus"
+
+#reorder columns to match examples species list
+splist_pathogens <- splist_pathogens[c(2,3,1)]
+
 
 #Makes phylogenetic hypotheses for winegrape pests and a backbone phylogeny
 result<- phylo.maker(splist_pathogens, output.sp.list = TRUE, output.tree = TRUE, scenarios= "S3")
 
-#creates hosts column with an underscore
-splist_pathogens <- splist_pathogens %>% unite("Species_name", genus,species, remove = FALSE)
+#renames tree made from phylo.maker
+tree<-result$scenario.3
+
+#replaces space with an underscore in splist_pathogens$species column
+newGrapepests <- newGrapepests %>% unite("Species_name", New.Genus,New.Species, remove = FALSE)
 
 
-tree<-result$tree.scenario.3
-mytips<-tree$tip.label
-dropme<-mytips[!mytips %in% splist_pathogens$Species_name]
-ag.tree<-drop.tip(tree, dropme)
-
-tree<-ag.tree
-
-
+#renames columns 
+colnames(newGrapepests)[5] <- "species"
+colnames(newGrapepests)[4] <- "genus"
 
 
 #adds "vitis_vinifera" to each unique pest
@@ -79,15 +86,8 @@ for (i in 1:630) {
 
 #Read in dataframes
 pathogens<-GrapePestsfinal
-agg_spp<-ag.tree$tip.label
+agg_spp<-newGrapepests
 
-agg_spp <- as.data.frame(agg_spp)
-
-#creates hosts column with an underscore
-agg_spp <- agg_spp %>% separate(agg_spp, c("genus","species"), "_")
-
-#creates hosts column with an underscore
-agg_spp <- agg_spp %>% unite("Species_name", genus,species, remove = FALSE)
 
 #######################################
 #assume all genera infected
@@ -143,14 +143,14 @@ path.matrix<-sample2matrix(path.data.abund)
 #this trims the data to just taxa in the tree and the community matrix
 #could relax this to include the tree as the species pool
 #would still have to prune the matrix so only included species in the tree
-phylo.comm.data<-match.phylo.comm(ag.tree, path.matrix)
+phylo.comm.data<-match.phylo.comm(tree, path.matrix)
 mpd.all.sp.in.genus_ALL<-ses.mpd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), null.model = c("taxa.labels"), runs = 99)
-boxplot(mpd.all.sp.in.genus3.0$mpd.obs.z)
+boxplot(mpd.all.sp.in.genus_ALL$mpd.obs.z)
 
 path_out = "~/Documents/GitHub/Wine-Grape-Disease/analysis/output/"
-write.csv(mpd.all.sp.in.genus3.0, paste(path_out, "mpd_all_sp_in_genus3.0.csv", sep= ""))
+write.csv(mpd.all.sp.in.genus_ALL, paste(path_out, "mpd.all.sp.in.genus_ALL.csv", sep= ""))
 
-mntd.all.sp.in.genus3.0<-ses.mntd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), null.model = c("taxa.labels"), runs= 99)
-boxplot(mntd.all.sp.in.genus2.0$mntd.obs.z)
+mntd.all.sp.in.genus_ALL<-ses.mntd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), null.model = c("taxa.labels"), runs= 99)
+boxplot(mntd.all.sp.in.genus_ALL$mntd.obs.z)
 
-write.csv(mntd.all.sp.in.genus2.0, paste(path_out, "mntd_all_sp_in_genus2.0.csv", sep= ""))
+write.csv(mntd.all.sp.in.genus_ALL, paste(path_out, "mntd.all.sp.in.genus_ALL.csv", sep= ""))
