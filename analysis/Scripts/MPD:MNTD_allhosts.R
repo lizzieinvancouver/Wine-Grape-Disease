@@ -216,13 +216,13 @@ path.matrix<-sample2matrix(path.data.abund)
 #could relax this to include the tree as the species pool
 #would still have to prune the matrix so only included species in the tree
 phylo.comm.data<-match.phylo.comm(tree, path.matrix)
-mpd.single.sp.in.genus_ALL <-ses.mpd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), abundance.weighted=TRUE, null.model = c("taxa.labels"))
+mpd.single.sp.in.genus_ALL <-ses.mpd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), abundance.weighted=TRUE, null.model = c("taxa.labels"), runs = 99)
 boxplot(mpd.single.sp.in.genus_ALL$mpd.obs.z)
 
 path_out = "~/Documents/GitHub/Wine-Grape-Disease/analysis/output/"
 write.csv(mpd.single.sp.in.genus_ALL, paste(path_out, "mpd.single.sp.in.genus_ALL.csv", sep= ""))
 
-mntd.single.sp.in.genus_ALL<-ses.mntd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), abundance.weighted=TRUE, null.model = c("taxa.labels"))
+mntd.single.sp.in.genus_ALL<-ses.mntd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), abundance.weighted=TRUE, null.model = c("taxa.labels"), runs = 99)
 boxplot(mntd.single.sp.in.genus_ALL$mntd.obs.z)
 
 write.csv(mntd.single.sp.in.genus_ALL, paste(path_out, "mntd.single.sp.in.genus_ALL.csv", sep= ""))
