@@ -76,7 +76,7 @@ colnames(newGrapepests)[4] <- "genus"
 
 
 #adds "vitis_vinifera" to each unique pest
-for (i in 1:length(GrapePestsfinal)) {
+for (i in 1:length(unique(GrapePestsfinal$pest))) {
   GrapePestsfinal <- add_row(GrapePestsfinal, 
                              pest = unique(GrapePestsfinal$pest)[i],
                              hosts = "Vitis_vinifera",
