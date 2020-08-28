@@ -1,0 +1,463 @@
+pest,yieldLoss,type
+Plasmopara viticola,75,chromista
+Phytophthora cryptogea,No info.,chromista
+Globisporangium irregulare,No info.,chromista
+Fumaria officinalis,No info.,plantae
+Cirsium arvense,No info.,plantae
+Commelina benghalensis,No info.,plantae
+Nicandra physalodes,No info.,plantae
+Oxalis pes-caprae,No info.,plantae
+Veronica persica,No info.,plantae
+Pennisetum clandestinum,No info.,plantae
+Stellaria media,No info.,plantae
+Raphanus raphanistrum,No info.,plantae
+Senecio inaequidens,No info.,plantae
+Paspalum distichum,No info.,plantae
+Setaria viridis,No info.,plantae
+Sonchus oleraceus,No info.,plantae
+Clematis vitalba,No info.,plantae
+Hibiscus trionum,No info.,plantae
+Lepidium draba,No info.,plantae
+Polygonum lapathifolium,No info.,plantae
+Senecio vulgaris,No info.,plantae
+Setaria verticillata,No info.,plantae
+Rumex crispus,No info.,plantae
+Bromus tectorum,No info.,plantae
+Melilotus indica,No info.,plantae
+Euphorbia hirta,No info.,plantae
+Datura stramonium,No info.,plantae
+Commelina diffusa,No info.,plantae
+Richardia brasiliensis,No info.,plantae
+Eragrostis cilianensis,No info.,plantae
+Euphorbia helioscopia,No info.,plantae
+Lolium rigidum,No info.,plantae
+Sorghum halepense,No info.,plantae
+Polygonum aviculare,No info.,plantae
+Linaria vulgaris,No info.,plantae
+Galium aparine,No info.,plantae
+Cirsium vulgare,No info.,plantae
+Solanum elaeagnifolium,No info.,plantae
+Eleusine indica,No info.,plantae
+Heliotropium europaeum,No info.,plantae
+Passiflora foetida,No info.,plantae
+Urtica urens,No info.,plantae
+Setaria faberi,No info.,plantae
+Papaver rhoeas,No info.,plantae
+Tribulus terrestris,No info.,plantae
+Taraxacum officinale complex,No info.,plantae
+Sonchus arvensis,No info.,plantae
+Conyza canadensis,No info.,plantae
+Amaranthus blitum,No info.,plantae
+Emex australis,No info.,plantae
+Helianthus ciliaris,No info.,plantae
+Lolium multiflorum,No info.,plantae
+Conyza bonariensis,No info.,plantae
+Anagallis arvensis,No info.,plantae
+Diaporthe helianthi,40,fungi
+Guignardia bidwellii,100,fungi
+Rosellinia necatrix,No info.,fungi
+Armillaria mellea,85,fungi
+Verticillium dahliae,30,fungi
+Trichoderma harzianum,No info.,fungi
+Penicillium expansum,No info.,fungi
+Albonectria rigidiuscula,No info.,fungi
+Phaeomoniella chlamydospora,10,fungi
+Fusarium oxysporum,No info.,fungi
+Coniella diplodiella,50,fungi
+Rhizopus stolonifer,No info.,fungi
+Trichothecium roseum,No info.,fungi
+Penicillium viridicatum,No info.,fungi
+Phymatotrichopsis omnivora,50,fungi
+Aspergillus niger,80,fungi
+Fomitiporia mediterranea,62,fungi
+Phomopsis viticola,36,fungi
+Gibberella zeae,20,fungi
+Botryotinia fuckeliana,30,fungi
+Botryosphaeria stevensii,No info.,fungi
+Botryosphaeria dothidea,No info.,fungi
+Phyllactinia guttata,No info.,fungi
+Phaeoacremonium aleophilum,No info.,fungi
+Elsinoë ampelina,50,fungi
+Eutypa lata,94,fungi
+Colletotrichum capsici,50,fungi
+Alternaria alternata,No info.,fungi
+Armillaria luteobubalina,No info.,fungi
+Penicillium notatum,No info.,fungi
+Monilinia fructigena,46,fungi
+Phakopsora euvitis,No info.,fungi
+Erysiphe necator,No info.,fungi
+Lasiodiplodia theobromae,57,fungi
+Haematonectria haematococca,No info.,fungi
+Colletotrichum acutatum,80,fungi
+Spodoptera frugiperda,58,metazoa
+Otiorhynchus rugosostriatus,No info.,metazoa
+Theretra oldenlandiae,No info.,metazoa
+Hoplolaimus pararobustus,No info.,metazoa
+Ceroplastes rusci,No info.,metazoa
+Conotrachelus nenuphar,No info.,metazoa
+Deilephila elpenor,No info.,metazoa
+Nipaecoccus viridis,5,metazoa
+Thrips tabaci,50,metazoa
+Rotylenchulus reniformis,No info.,metazoa
+Adoretus sinicus,No info.,metazoa
+Trichodorus,No info.,metazoa
+Polyphagotarsonemus latus,No info.,metazoa
+Maconellicoccus hirsutus,40,metazoa
+Mamestra brassicae,No info.,metazoa
+Drosophila suzukii,No info.,metazoa
+Pseudococcus calceolariae,No info.,metazoa
+Aphis gossypii,25,metazoa
+Parthenolecanium persicae,No info.,metazoa
+Euproctis chrysorrhoea,No info.,metazoa
+Xyleborus dispar,No info.,metazoa
+Gryllotalpa gryllotalpa,30,metazoa
+Pratylenchus penetrans,No info.,metazoa
+Pratylenchus vulnus,50,metazoa
+Scutellonema clathricaudatum,No info.,metazoa
+Brevipalpus lewisi,No info.,metazoa
+Margarodes vredendalensis,No info.,metazoa
+Murgantia histrionica,No info.,metazoa
+Retithrips syriacus,No info.,metazoa
+Proeulia auraria,No info.,metazoa
+Rhipiphorothrips cruentatus,No info.,metazoa
+Limothrips cerealium,No info.,metazoa
+Oligonychus coffeae,No info.,metazoa
+Hippotion celerio,No info.,metazoa
+Costelytra zealandica,20,metazoa
+Agriotes lineatus,60,metazoa
+Metcalfa pruinosa,40,metazoa
+Trichodorus viruliferus,No info.,metazoa
+Colomerus vitis,56,metazoa
+Gonocephalum simplex,5,metazoa
+Hoplolaimus seinhorsti,25,metazoa
+Rastrococcus iceryoides,No info.,metazoa
+Pinnaspis strachani,No info.,metazoa
+Noctua pronuba,No info.,metazoa
+Aonidiella orientalis,No info.,metazoa
+Aleurocanthus spiniferus,No info.,metazoa
+Aspidiotus destructor,No info.,metazoa
+Aspidiotus nerii,No info.,metazoa
+Heliothis virescens,No info.,metazoa
+Schistocerca nitens,No info.,metazoa
+Parthenolecanium corni,No info.,metazoa
+Scutellonema brachyurus,No info.,metazoa
+Brevipalpus californicus,No info.,metazoa
+Dociostaurus maroccanus,No info.,metazoa
+Meloidogyne ethiopica,No info.,metazoa
+Meloidogyne hapla,No info.,metazoa
+Thrips imaginis,70,metazoa
+Xiphinema index,89,metazoa
+Peridroma saucia,No info.,metazoa
+Panonychus citri,No info.,metazoa
+Panonychus ulmi,No info.,metazoa
+Aonidiella aurantii,1,metazoa
+Tetranychus pacificus,20,metazoa
+Tetranychus urticae,No info.,metazoa
+Harmonia axyridis,No info.,metazoa
+Pyrrhalta luteola,No info.,metazoa
+Phalaenoides glycinae,No info.,metazoa
+Anacridium rubrispinum,No info.,metazoa
+Zygotylenchus guevarai,No info.,metazoa
+Acanthacris ruficornis,No info.,metazoa
+Ampelophaga rubiginosa,100,metazoa
+Zeuzera coffeae,No info.,metazoa
+Helopeltis antonii,40,metazoa
+Conogethes punctiferalis,63,metazoa
+Apate monachus,No info.,metazoa
+Tetranychus kanzawai,No info.,metazoa
+Icerya seychellarum,No info.,metazoa
+Aphis spiraecola,No info.,metazoa
+Epiphyas postvittana,No info.,metazoa
+Forficula auricularia,No info.,metazoa
+Drosophila melanogaster,No info.,metazoa
+Eulecanium tiliae,No info.,metazoa
+Meloidogyne arenaria,5,metazoa
+Meloidogyne javanica,30,metazoa
+Achatina fulica,No info.,metazoa
+Xestia c-nigrum,No info.,metazoa
+Xiphinema americanum,No info.,metazoa
+Xiphinema rivesi,No info.,metazoa
+Spodoptera litura,No info.,metazoa
+Criconemella,19,metazoa
+Aphis fabae,No info.,metazoa
+Phytonemus pallidus,No info.,metazoa
+Spodoptera littoralis,No info.,metazoa
+Xylosandrus germanus,No info.,metazoa
+Longidorus,No info.,metazoa
+Helicotylenchus dihystera,No info.,metazoa
+Helicotylenchus multicinctus,No info.,metazoa
+Heteronychus arator,30,metazoa
+Parasaissetia nigra,No info.,metazoa
+Melolontha melolontha,No info.,metazoa
+Macrosiphum euphorbiae,44,metazoa
+Tetranychus cinnabarinus,No info.,metazoa
+Pratylenchus thornei,No info.,metazoa
+Ceratitis capitata,No info.,metazoa
+Ceratitis rosa,No info.,metazoa
+Orgyia postica,No info.,metazoa
+Ametastegia,10,metazoa
+Theretra clotho,No info.,metazoa
+Chaetocnema confinis,No info.,metazoa
+Urophorus humeralis,No info.,metazoa
+Brevipalpus chilensis,No info.,metazoa
+Sphaeraspis vitis,No info.,metazoa
+Thrips hawaiiensis,No info.,metazoa
+Proeulia chrysopteris,No info.,metazoa
+Selenaspidus articulatus,No info.,metazoa
+Chinavia hilaris,No info.,metazoa
+Platynota stultana,No info.,metazoa
+Naupactus xanthographus,No info.,metazoa
+Paratrichodorus porosus,No info.,metazoa
+Grapevine Pinot gris virus,No info.,virus
+Grapevine red blotch-associated virus,No info.,virus
+Grapevine vein necrosis virus,No info.,virus
+Grapevine yellow speckle viroid 1,No info.,virus
+Otiorhynchus sulcatus,No info.,metazoa
+Pseudococcus longispinus,No info.,metazoa
+Planococcus citri,75,metazoa
+Phyllophaga,80,metazoa
+Spodoptera eridania,No info.,metazoa
+Philaenus spumarius,No info.,metazoa
+Phlyctinus callosus,30,metazoa
+Viteus vitifoliae,No info.,metazoa
+Halyomorpha halys,25,metazoa
+Eudocima fullonia,No info.,metazoa
+Anastrepha fraterculus,No info.,metazoa
+Cornu aspersum,25,metazoa
+Helicotylenchus pseudorobustus,No info.,metazoa
+Chrysomphalus dictyospermi,No info.,metazoa
+Ferrisia virgata,No info.,metazoa
+Lobesia botrana,No info.,metazoa
+Tylenchulus semipenetrans,35,metazoa
+Margarodes prieskaensis,No info.,metazoa
+Hyalesthes obsoletus,No info.,metazoa
+Scirtothrips aurantii,No info.,metazoa
+Scirtothrips citri,No info.,metazoa
+Diabrotica speciosa,No info.,metazoa
+Longidorus elongatus,No info.,metazoa
+Hemicycliophora arenaria,No info.,metazoa
+Cnephasia longana,No info.,metazoa
+Ceresa alta,No info.,metazoa
+Pseudococcus viburni,60,metazoa
+Meloidogyne incognita,5,metazoa
+Xiphinema,No info.,metazoa
+Xiphinema diversicaudatum,No info.,metazoa
+Hyphantria cunea,No info.,metazoa
+Scirtothrips dorsalis,55,metazoa
+Hemiberlesia lataniae,No info.,metazoa
+Hemicriconemoides mangiferae,No info.,metazoa
+Autographa gamma,25,metazoa
+Agrotis segetum,No info.,metazoa
+Frankliniella occidentalis,40,metazoa
+Bactrocera tryoni,100,metazoa
+Empoasca vitis,No info.,metazoa
+Crocidosema plebejana,No info.,metazoa
+Homalodisca vitripennis,No info.,metazoa
+Saissetia coffeae,No info.,metazoa
+Calepitrimerus vitis,No info.,metazoa
+Diplodia olivarum,No info.,fungi
+Coniella petrakii,No info.,fungi
+Phialophora parasitica,No info.,fungi
+Phaeoacremonium parasiticum,No info.,fungi
+Cylindrocladiella parva,No info.,fungi
+Trametes versicolor,No info.,fungi
+Cylindrocladiella lageniformis,No info.,fungi
+Phaeoacremonium alvesii,No info.,fungi
+Phaeoacremonium sicilianum,No info.,fungi
+Neofusicoccum macroclavatum,No info.,fungi
+Pestalotiopsis mangiferae,No info.,fungi
+Diaporthe gulyae,No info.,fungi
+Dactylonectria pauciseptata,No info.,fungi
+Phaeoacremonium viticola,No info.,fungi
+Diplodia corticola,No info.,fungi
+Neofusicoccum mediterraneam,No info.,fungi
+Epicoccum nigrum,No info.,fungi
+Botrytis pseudocinerea,No info.,fungi
+Diplodia africana,No info.,fungi
+Greeneria uvicola,No info.,fungi
+Lasiodiplodia crassispora,No info.,fungi
+Cylindrocladium peruvianum,No info.,fungi
+Phaeoacremonium tuscanicum,No info.,fungi
+Neonectria radicicola,No info.,fungi
+Phaeoacremonium fraxinopennsylvanicum,No info.,fungi
+Neofusicoccum vitifusiforme,No info.,fungi
+Botryosphaeria parva,No info.,fungi
+Fusarium proliferatum,No info.,fungi
+Diaporthe medusaea,No info.,fungi
+Phaeoacremonium italicum,No info.,fungi
+Phomopsis cotoneastri,No info.,fungi
+Phaeoacremonium hispanicum,No info.,fungi
+Cylindrocarpon olidum var. crassum,No info.,fungi
+Penicillium viticola,No info.,fungi
+Campylocarpon fasciculare,No info.,fungi
+Botrytis prunorum,No info.,fungi
+Phaeoacremonium iranianum,No info.,fungi
+Diaporthe ambigua,No info.,fungi
+Pseudopezicula tracheiphila,No info.,fungi
+Grovesinia pyramidalis,No info.,fungi
+Gibberella sacchari,No info.,fungi
+Botryosphaeria obtusa,50,fungi
+Phaeoacremonium scolyti,No info.,fungi
+Phomopsis theicola,No info.,fungi
+Truncatella angustata,No info.,fungi
+Stereum hirsutum,No info.,fungi
+Colletotrichum nymphaeae,No info.,fungi
+Gibberella intricans,No info.,fungi
+Cylindrocarpon liriodendri,No info.,fungi
+Neonectria macrodidyma,No info.,fungi
+Diaporthe eres,No info.,fungi
+Mucor circinelloides,No info.,fungi
+Neofusicoccum australe,No info.,fungi
+Botryotinia pseudofuckeliana,No info.,fungi
+Xylotrechus pyrrhoderus,No info.,metazoa
+Tetranychus mcdanieli,No info.,metazoa
+Edwardsiana rosae,No info.,metazoa
+Vitacea polistiformis,No info.,metazoa
+Cerosterna scabrator,No info.,metazoa
+Eotetranychus willamettei,No info.,metazoa
+Otiorhynchus ligustici,No info.,metazoa
+Cadra figulilella,No info.,metazoa
+Theretra japonica,No info.,metazoa
+Sinoxylon perforans,No info.,metazoa
+Oligonychus fileno,No info.,metazoa
+Dikrella cockerellii,No info.,metazoa
+Targionia vitis,No info.,metazoa
+Lygus spinolae,No info.,metazoa
+Tylenchorhynchus mediterraneus,No info.,metazoa
+Erythroneura variabilis,No info.,metazoa
+Paranthrene asilipennis,No info.,metazoa
+Paranthrene regalis,No info.,metazoa
+Noctua fimbriata,No info.,metazoa
+Peribatodes rhomboidaria,No info.,metazoa
+Stelidota geminata,No info.,metazoa
+Meloidogyne luci,No info.,metazoa
+Altica ampelophaga,No info.,metazoa
+Asymmetrasca decedens,No info.,metazoa
+Zygina nivea,No info.,metazoa
+Xiphinema italiae,No info.,metazoa
+Graphocephala atropunctata,No info.,metazoa
+Hyles livornica,No info.,metazoa
+Phyllocnistis vitegenella,No info.,metazoa
+Cotinis nitida,No info.,metazoa
+Zaprionus indianus,No info.,metazoa
+Erythroneura elegantula,No info.,metazoa
+Anystis baccarum,No info.,metazoa
+Jacobiasca lybica,No info.,metazoa
+Lycorma delicatula,No info.,metazoa
+Anomala dubia,No info.,metazoa
+Holocacista capensis,No info.,metazoa
+Arboridia kakogowana,No info.,metazoa
+Zygina rhamni,No info.,metazoa
+Fidia viticida,No info.,metazoa
+Perissopneumon ferox,No info.,metazoa
+Harrisina metallica,No info.,metazoa
+Glyptoscelis squamulata,No info.,metazoa
+Colaspis caligula,No info.,metazoa
+Erythroneura ziczac,No info.,metazoa
+Paranthrene simulans,No info.,metazoa
+Rotylenchus vitis,No info.,metazoa
+Empoasca solani,No info.,metazoa
+Harrisina americana,No info.,metazoa
+Orthotydeus californicus,No info.,metazoa
+Anomala cuprea,No info.,metazoa
+Eotetranychus carpini,No info.,metazoa
+Kalotermes flavicollis,No info.,metazoa
+Pseudococcus maritimus,No info.,metazoa
+Antispila oinophylla,No info.,metazoa
+Merophyas divulsana,No info.,metazoa
+Scirtothrips mangiferae,No info.,metazoa
+Ctenopseustis obliquana,No info.,metazoa
+Endoclita signifer,No info.,metazoa
+Xylotrechus chinensis,No info.,metazoa
+Ceroplastes sinensis,No info.,metazoa
+Arboridia adanae,No info.,metazoa
+Eotetranychus carpini vitis,No info.,metazoa
+Pemphigus saliciradicis,No info.,metazoa
+Tenuipalpus granati,No info.,metazoa
+Ameroseius pavidus,No info.,metazoa
+Amphicerus bimaculatus,No info.,metazoa
+Melittia cucurbitae,No info.,metazoa
+Acoloithus falsarius,No info.,metazoa
+Oides scutellata,No info.,metazoa
+Pratylenchus pratensis,No info.,metazoa
+Sparganothis pilleriana,No info.,metazoa
+Eupoecilia ambiguella,No info.,metazoa
+Nysius niger,No info.,metazoa
+Phenacoccus solani,No info.,metazoa
+Orthotydeus kochi,No info.,metazoa
+Polychrosis viteana,No info.,metazoa
+Amphicerus bicaudatus,No info.,metazoa
+Holocacista rivillei,No info.,metazoa
+Eurhizococcus brasiliensis,No info.,metazoa
+Eotetranychus pruni,No info.,metazoa
+Plagionotus arcuatus,No info.,metazoa
+Drosophila simulans,No info.,metazoa
+Drepanothrips reuteri,No info.,metazoa
+Argyrotaenia ljungiana,No info.,metazoa
+Scaphoideus titanus,No info.,metazoa
+Amyelois transitella,No info.,metazoa
+Aphis illinoisensis,No info.,metazoa
+Hypothenemus eruditus,No info.,metazoa
+Erythroneura comes,No info.,metazoa
+Planococcus ficus,No info.,metazoa
+Planococcus minor,No info.,metazoa
+Empoasca decipiens,No info.,metazoa
+Hypurus bertrandi,No info.,metazoa
+Criconemella xenoplax,No info.,metazoa
+Euseius scutalis,No info.,metazoa
+Frankliniella cestrum,No info.,metazoa
+Pulvinaria vitis,No info.,metazoa
+Phyllocoptes vitis,No info.,metazoa
+Longidorus carniolensis,No info.,metazoa
+Candidatus Phytoplasma solani,80,bacteria
+Candidatus Phytoplasma asteris,80,bacteria
+Rhizobium rhizogenes,No info.,bacteria
+Rhizobium radiobacter,No info.,bacteria
+Phytoplasma mali,50,bacteria
+Xylella fastidiosa,63,bacteria
+Pseudomonas syringae,No info.,bacteria
+Xylophilus ampelinus,70,bacteria
+Pseudomonas viridiflava,No info.,bacteria
+Pseudomonas syringae pv. syringae,No info.,bacteria
+Pseudomonas fluorescens,No info.,bacteria
+Candidatus Phytoplasma australiense,54,bacteria
+Grapevine flavescence doree phytoplasma,No info.,bacteria
+Rhizobium vitis,No info.,bacteria
+clover phyllody phytoplasma,No info.,bacteria
+Grapevine yellows phytoplasmas,70,bacteria
+Tobacco necrosis virus,No info.,virus
+Carnation ringspot virus,No info.,virus
+Strawberry latent ringspot virus,No info.,virus
+Peach rosette mosaic virus,60,virus
+Raspberry ringspot virus,No info.,virus
+Citrus exocortis viroid,No info.,virus
+Grapevine leafroll-associated viruses,No info.,virus
+Grapevine virus A,22,virus
+Tomato black ring virus,No info.,virus
+Grapevine chrome mosaic virus,70,virus
+Grapevine Bulgarian latent virus,No info.,virus
+Artichoke Italian latent virus,25,virus
+Sowbane mosaic virus,No info.,virus
+Alfalfa mosaic virus,No info.,virus
+Cucumber mosaic virus,No info.,virus
+Tomato spotted wilt virus,No info.,virus
+Tobacco ringspot virus,70,virus
+Cherry leaf roll virus,No info.,virus
+Arabis mosaic virus,No info.,virus
+Potato virus X,10,virus
+Broad bean wilt virus,No info.,virus
+Raspberry bushy dwarf virus,No info.,virus
+Tomato ringspot virus,21,virus
+Grapevine fanleaf virus,98,virus
+Hop stunt viroid,No info.,virus
+Xanthomonas campestris pv. viticola,No info.,bacteria
+Pantoea agglomerans,No info.,bacteria
+Grapevine yellow speckle viroid 2,No info.,virus
+Grapevine virus D,No info.,virus
+Grapevine deformation virus,No info.,virus
+Grapevine Syrah virus-1,No info.,virus
+Grapevine asteroid mosaic-associated virus,No info.,virus
+Grapevine Roditis leaf discoloration-associated virus,No info.,virus
+Grapevine fleck virus,No info.,virus
+Grapevine rupestris stem pitting-associated virus,No info.,virus
+Grapevine rupestris vein feathering virus,No info.,virus
