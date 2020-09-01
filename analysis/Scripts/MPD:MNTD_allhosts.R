@@ -13,6 +13,17 @@ library(V.PhyloMaker)
 library(tidyverse)
 
 source("Cleaninghostranges.R")
+yieldLoss <- read_csv("~/Documents/GitHub/Wine-Grape-Disease/data/yieldLoss.csv")
+
+#creates data set with weeds only 
+weeds <- yieldLoss[yieldLoss$type== 'plantae',]
+
+#replaces spaces between genus and species names with underscore 
+weeds$pest <- sub(" ", "_", weeds$pest)
+
+#removes pest if they are a weed
+#lose 1,1116 rows
+GrapePestsfinal <- GrapePestsfinal[!(GrapePestsfinal$pest %in% weeds$pest),]
 
 
 #selects only the first column
@@ -49,15 +60,15 @@ splist_pathogens <- read_csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/out
 
 
 #Removes first column and fifth column
-splist_pathogens <- splist_pathogens[,c(-1,-5)]
+splist_pathogens <- splist_pathogens[,c(-1,-3)]
 
 #renames columns
 colnames(splist_pathogens)[1] <- "family"
-colnames(splist_pathogens)[2] <- "species"
-colnames(splist_pathogens)[3] <- "genus"
+colnames(splist_pathogens)[2] <- "genus"
+colnames(splist_pathogens)[3] <- "species"
 
 #reorder columns to match examples species list
-splist_pathogens <- splist_pathogens[c(2,3,1)]
+splist_pathogens <- splist_pathogens[c(3,2,1)]
 
 
 #Makes phylogenetic hypotheses for winegrape pests and a backbone phylogeny
@@ -144,6 +155,7 @@ path.matrix<-sample2matrix(path.data.abund)
 #this trims the data to just taxa in the tree and the community matrix
 #could relax this to include the tree as the species pool
 #would still have to prune the matrix so only included species in the tree
+#running into error here!!!!!!!
 phylo.comm.data<-match.phylo.comm(tree, path.matrix)
 mpd.all.sp.in.genus_ALL<-ses.mpd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), null.model = c("taxa.labels"), runs = 99)
 boxplot(mpd.all.sp.in.genus_ALL$mpd.obs.z)
