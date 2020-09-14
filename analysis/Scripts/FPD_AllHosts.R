@@ -1,6 +1,6 @@
 #Phylogenetic analysis on winegrape pests including all wide and agricultural hosts
 #created by Darwin
-#July 8th 2020
+#September 11th 2020
 rm(list=ls()) # remove everything currently held in the R memory
 options(stringsAsFactors=FALSE)
 setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/Scripts/")
@@ -154,24 +154,53 @@ path.data.abund<-data.frame(path.data[,1], rep(1, length(path.data[,1])), path.d
 path.matrix<-sample2matrix(path.data.abund)
 
 #this trims the data to just taxa in the tree and the community matrix
-#could relax this to include the tree as the species pool
-#would still have to prune the matrix so only included species in the tree
-#running into error here!!!!!!!
 phylo.comm.data<-match.phylo.comm(tree, path.matrix)
-mpd.all.sp.in.genus_ALL<-ses.mpd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), null.model = c("taxa.labels"), runs = 999)
-boxplot(mpd.all.sp.in.genus_ALL$mpd.obs.z)
 
-path_out = "~/Documents/GitHub/Wine-Grape-Disease/analysis/output/"
-write.csv(mpd.all.sp.in.genus_ALL, paste(path_out, "mpd.all.sp.in.genus_ALL.csv", sep= ""))
 
-mntd.all.sp.in.genus_ALL<-ses.mntd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), null.model = c("taxa.labels"), runs= 999)
-boxplot(mntd.all.sp.in.genus_ALL$mntd.obs.z)
+my.paths<-row.names(phylo.comm.data$comm)
 
-write.csv(mntd.all.sp.in.genus_ALL, paste(path_out, "mntd.all.sp.in.genus_ALL.csv", sep= ""))
+FPD<-NULL
+SES.FPD<-NULL
+
+for (j in 1:length(my.paths)){
+  
+  my.hosts<-colnames(phylo.comm.data$comm)[phylo.comm.data$comm[j,] ==1]
+  
+  if(length(my.hosts)<2){
+    FPD[j]<-NA
+    SES.FPD[j]<-NA
+  }#end if
+  
+  if (length(my.hosts)>1){
+    
+    temp.phy<-drop.tip(tree, tree$tip.label[!tree$tip.label %in% my.hosts])
+    temp.cophen<-cophenetic(temp.phy)
+    tmp.cophen<-temp.cophen[colnames(temp.cophen)=="Vitis_vinifera"]
+    FPD[j]<-sum(tmp.cophen)/(length(tmp.cophen)-1)
+    
+    rnd.FPD<-NULL
+    for (x in 1:999){
+      sp.list<-tree$tip.label[!tree$tip.label == "Vitis_vinifera"]
+      rnd.sp<-c("Vitis_vinifera",sample(sp.list, (length(my.hosts)-1)))
+      rnd.phy<-drop.tip(tree, tree$tip.label[!tree$tip.label %in% rnd.sp])
+      rand.cophen<-cophenetic(rnd.phy)
+      rnd.cophen<-rand.cophen[colnames(rand.cophen)=="Vitis_vinifera"]
+      rnd.FPD[x]<-sum(rnd.cophen)/(length(rnd.cophen)-1)}#end x
+    
+    SES.FPD[j]<-(FPD[j]-mean(rnd.FPD))/sd(rnd.FPD)
+    
+  }#end if
+}#end j
+
+FPD.results<-data.frame(my.paths, FPD, SES.FPD)
 
 #######################################
 #assume single species in genus infected
 #######################################
+
+#Read in dataframes
+pathogens<-GrapePestsfinal
+agg_spp<-newGrapepests
 
 
 #get a list of the pathogens
@@ -225,25 +254,45 @@ path.data<- na.omit(path.data)
 path.data.abund<-data.frame(path.data[,1], rep(1, length(path.data[,1])), path.data[,2],stringsAsFactors=FALSE)
 path.matrix<-sample2matrix(path.data.abund)
 
-#this trims the data to just taxa in the tree and the community matrix
-#could relax this to include the tree as the species pool
-#would still have to prune the matrix so only included species in the tree
 phylo.comm.data<-match.phylo.comm(tree, path.matrix)
-mpd.single.sp.in.genus_ALL <-ses.mpd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), abundance.weighted=TRUE, null.model = c("taxa.labels"), runs = 999)
-boxplot(mpd.single.sp.in.genus_ALL$mpd.obs.z)
+
+my.paths<-row.names(phylo.comm.data$comm)
+
+FPD2<-NULL
+SES.FPD2<-NULL
+
+for (j in 1:length(my.paths)){
+  
+  my.hosts<-colnames(phylo.comm.data$comm)[phylo.comm.data$comm[j,] ==1]
+  
+  if(length(my.hosts)<2){
+    FPD2[j]<-NA
+    SES.FPD2[j]<-NA
+  }#end if
+  
+  if (length(my.hosts)>1){
+    
+    temp.phy<-drop.tip(tree, tree$tip.label[!tree$tip.label %in% my.hosts])
+    temp.cophen<-cophenetic(temp.phy)
+    tmp.cophen<-temp.cophen[colnames(temp.cophen)=="Vitis_vinifera"]
+    FPD2[j]<-sum(tmp.cophen)/(length(tmp.cophen)-1)
+    
+    rnd.FPD2<-NULL
+    for (x in 1:999){
+      sp.list<-tree$tip.label[!tree$tip.label == "Vitis_vinifera"]
+      rnd.sp<-c("Vitis_vinifera",sample(sp.list, (length(my.hosts)-1)))
+      rnd.phy<-drop.tip(tree, tree$tip.label[!tree$tip.label %in% rnd.sp])
+      rand.cophen<-cophenetic(rnd.phy)
+      rnd.cophen<-rand.cophen[colnames(rand.cophen)=="Vitis_vinifera"]
+      rnd.FPD2[x]<-sum(rnd.cophen)/(length(rnd.cophen)-1)}#end x
+    
+    SES.FPD2[j]<-(FPD2[j]-mean(rnd.FPD2))/sd(rnd.FPD2)
+    
+  }#end if
+}#end j
+
+FPD.results2<-data.frame(my.paths, FPD2, SES.FPD2)
 
 path_out = "~/Documents/GitHub/Wine-Grape-Disease/analysis/output/"
-write.csv(mpd.single.sp.in.genus_ALL, paste(path_out, "mpd.single.sp.in.genus_ALL.csv", sep= ""))
-
-mntd.single.sp.in.genus_ALL<-ses.mntd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), abundance.weighted=TRUE, null.model = c("taxa.labels"), runs = 999)
-boxplot(mntd.single.sp.in.genus_ALL$mntd.obs.z)
-
-write.csv(mntd.single.sp.in.genus_ALL, paste(path_out, "mntd.single.sp.in.genus_ALL.csv", sep= ""))
-
-single.sp<-cbind(rep("single.species", length(mpd.single.sp.in.genus_ALL$mpd.obs.z)),mpd.single.sp.in.genus_ALL$mpd.obs.z)
-all.genus<-cbind(rep("all.genus", length(mpd.all.sp.in.genus_ALL$mpd.obs.z)),mpd.all.sp.in.genus_ALL$mpd.obs.z)
-mpd.z<-as.data.frame(rbind(single.sp, all.genus), stringsAsFactors=FALSE)
-
-pdf("Mean pairwise distancesall.pdf")
-boxplot(as.numeric(V2) ~ as.factor(V1), data=mpd.z, ylab = "SES.MPD", main = "Mean pairwise distances between hosts")
-dev.off()
+write.csv(FPD.results, paste(path_out, "Focaldistanceentiregenus.csv", sep= ""))
+write.csv(FPD.results2,paste(path_out, "Focaldistanceonespecies.csv", sep= ""))
