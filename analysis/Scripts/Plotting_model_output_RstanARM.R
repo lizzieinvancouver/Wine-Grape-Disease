@@ -12,8 +12,8 @@ library(egg)
 library(broom)
 
 #loading in datasets
-focaldistance_onespecies <- read.csv("Focaldistanceonespecies.csv")
-focaldistance_enitregenus <- read.csv("Focaldistanceentiregenus.csv")
+focaldistance_onespecies <- read.csv("Focaldistanceonespeciesog.csv")
+focaldistance_enitregenus <- read.csv("Focaldistanceentiregenus_og.csv")
 
 focaldistance_enitregenus$impact2 <- focaldistance_enitregenus$impact2* 0.01
 focaldistance_onespecies$impact2 <- focaldistance_onespecies$impact2 * 0.01

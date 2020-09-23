@@ -15,7 +15,7 @@ library(broom)
 #loading in datasets
 focaldistance_onespecies <- read.csv("Focaldistanceonespecies.csv")
 focaldistance_enitregenus <- read.csv("Focaldistanceentiregenus.csv")
-yieldLoss <- read_csv("~/Documents/GitHub/Wine-Grape-Disease/data/yieldLoss.csv")
+yieldLoss <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/data/yieldLoss.csv")
 
 #Renaming columns 
 colnames(focaldistance_enitregenus)[2] <- "pest"
@@ -35,6 +35,96 @@ Yieldloss2.0$impact <- as.numeric(Yieldloss2.0$impact)
 
 #Multiplies impact value by 0.01
 Yieldloss2.0$impact <- Yieldloss2.0$impact * 0.01
+
+#### Linear_Model
+impact_linear_model <- stan_glm(impact~ SES.FPD, data = Yieldloss2.0,
+                                family = gaussian(link="identity"),)
+
+summary(impact_linear_model,digits= 4)
+launch_shinystan(impact_linear_model)
+
+#creates data set from linear model
+posteriorSamples <- as.data.frame(as.matrix(impact_linear_model)) 
+
+# I think you can use this get predictions that might help with plotting ... for example:
+range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)
+newdat <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=500))
+names(newdat) <- "SES.FPD"
+
+
+###rethinking code 2.0 (page101-103)
+
+#this gives you ten data points
+focaldistance_enitregenus2.0<-focaldistance_enitregenus[1:12,]
+
+#new model with just ten data points
+impact_linear_model2.0 <- stan_glm(impact2~ SES.FPD, data = focaldistance_enitregenus2.0,
+                                   family = gaussian(link="identity"),)
+
+
+#extracts entire posterior
+posteriorSamples <- as.data.frame(as.matrix(impact_linear_model2.0))
+posteriorSamples <- as.data.frame(as.matrix(impact_linear_model))
+
+mu_at_5 <- posteriorSamples$`(Intercept)` + posteriorSamples$SES.FPD * 5
+#extracts first 10 samples
+posteriorSamples10 <-posteriorSamples[1:10,]
+
+
+#plots 10 data points with uncertainity 
+plot(impact2~SES.FPD, data=focaldistance_enitregenus)
+
+for(i in 1:10)
+  abline(a=posteriorSamples10$`(Intercept)`[i], b=posteriorSamples10$SES.FPD[i], col=col.alpha("black",0.3))
+
+
+######Putting it all together
+
+#gets posterior
+posteriorSamples <- as.data.frame(as.matrix(impact_linear_model))
+
+#gets original data
+orginal_data<- as.data.frame(focaldistance_enitregenus$SES.FPD)
+
+dose <- (matrix(NA, nrow= nrow(posteriorSamples), ncol = ncol(t(orginal_data))))
+
+#does the link function in rethinking with orginal model! (Each column is full posterior for each original data point)
+for (n in 1:49){
+  dose[,n]<- as.matrix(posteriorSamples$`(Intercept)` + posteriorSamples$SES.FPD * orginal_data[n,])
+  
+} 
+
+#codes for new data
+newdatlength <- 50
+newdat <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=newdatlength))
+
+dose2.0 <- (matrix(NA, nrow= nrow(posteriorSamples), ncol = ncol(t(newdat))))
+
+#codes for link function with new data (Each column is full posterior for each new data point)
+for (n in 1:newdatlength){
+  dose2.0[,n]<- as.matrix(posteriorSamples$`(Intercept)` + posteriorSamples$SES.FPD * newdat[n,])
+  
+} 
+
+
+#figure 4.6
+plot(impact~SES.FPD, data=Yieldloss2.0, type= "n")
+for ( i in 1:100 )
+  points(t(newdat) , dose2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
+
+# summarize the distribution of dose2.0
+dose2.0.mean <- apply( dose2.0 , 2 , mean )
+dose2.0.HPDI <- apply( dose2.0 , 2 , HPDI , prob=0.89 )
+
+#plots linearmodel.pdf
+# plot raw data
+# fading out points to make line and interval more visible
+plot( impact~SES.FPD , data=Yieldloss2.0 , col=col.alpha(rangi2,0.5) )
+
+# plot the MAP line, aka the mean impacts for each SES.FPD
+lines(t(newdat), dose2.0.mean)
+# plot a shaded region for 89% HPDI
+shade(dose2.0.HPDI,t(newdat) )
 
 #### Invlogit 
 #converts impact to inverse logit
