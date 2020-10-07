@@ -1,6 +1,7 @@
-#Phylogenetic analysis on winegrape pests including all wide and agricultural hosts
+#Phylogenetic analysis on winegrape pests including only wild hosts
 #created by Darwin
-#July 8th 2020
+#October 5th 2020
+
 rm(list=ls()) # remove everything currently held in the R memory
 options(stringsAsFactors=FALSE)
 setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/Scripts/")
@@ -14,6 +15,7 @@ library(tidyverse)
 
 source("Cleaninghostranges.R")
 yieldLoss <- read_csv("~/Documents/GitHub/Wine-Grape-Disease/data/yieldLoss.csv")
+agricultural_species <- read_csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/input/agricultural_species.csv")
 
 #creates data set with weeds only 
 weeds <- yieldLoss[yieldLoss$type== 'plantae',]
@@ -25,6 +27,10 @@ weeds$pest <- sub(" ", "_", weeds$pest)
 #lose 1,1116 rows
 GrapePestsfinal <- GrapePestsfinal[!(GrapePestsfinal$pest %in% weeds$pest),]
 GrapePests <- GrapePests[!(GrapePests$pest %in% weeds$pest),]
+
+#Removes hosts if they are an agriculutral host
+#lose almost 15,000 rows
+GrapePestsfinal<- GrapePestsfinal[!(GrapePestsfinal$hosts %in% agricultural_species$Species_name),]
 
 #selects only the first column
 splist <- GrapePestsfinal[,1]
@@ -53,10 +59,10 @@ newGrapepests <- newGrapepests %>% unite("Species", New.Genus,New.Species, sep =
 
 #creates CSV file of winegrape pests
 path_out = "~/Documents/GitHub/Wine-Grape-Disease/analysis/output/"
-write.csv(newGrapepests, paste(path_out, "newGrapepests.csv", sep= ""))
+write.csv(newGrapepests, paste(path_out, "newGrapepests_wild.csv", sep= ""))
 
 #reads in CSV file for winegrape pests
-splist_pathogens <- read_csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/newGrapepests.csv")
+splist_pathogens <- read_csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/newGrapepests_wild.csv")
 
 
 #Removes first column and fifth column
@@ -98,7 +104,6 @@ for (i in 1:length(unique(GrapePestsfinal$pest))) {
 #Read in dataframes
 pathogens<-GrapePestsfinal
 agg_spp<-newGrapepests
-
 
 #######################################
 #assume all genera infected

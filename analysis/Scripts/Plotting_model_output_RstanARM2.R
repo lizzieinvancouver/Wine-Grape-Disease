@@ -119,7 +119,7 @@ dose2.0.HPDI <- apply( dose2.0 , 2 , HPDI , prob=0.89 )
 #plots linearmodel.pdf
 # plot raw data
 # fading out points to make line and interval more visible
-plot( impact~SES.FPD , data=Yieldloss2.0 , col=col.alpha(rangi2,0.5) )
+plot( impact~SES.FPD , data=Yieldloss2.0 , col=col.alpha(rangi2,0.5), ylab= "Yield Loss", ylim= c(0,1) )
 
 # plot the MAP line, aka the mean impacts for each SES.FPD
 lines(t(newdat), dose2.0.mean)
@@ -177,7 +177,7 @@ afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
 #below plots Inverselogit_linearmodel.pdf
 # plots raw data
 # fading out points to make line and interval more visible
-plot( impact2~SES.FPD , data=Yieldloss2.0 , col=col.alpha(rangi2,0.5), ylab= "Yield Loss")
+plot( impact2~SES.FPD , data=Yieldloss2.0 , col=col.alpha(rangi2,0.5), ylab= "Yield Loss", ylim= c(0,1))
 
 # plot the MAP line, aka the mean impacts for each SES.FPD
 lines(t(newdat), afterhours2.0.mean)

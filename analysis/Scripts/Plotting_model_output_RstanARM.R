@@ -30,8 +30,8 @@ posteriorSamples <- as.data.frame(as.matrix(impact_linear_model))
 
 # I think you can use this get predictions that might help with plotting ... for example:
 range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)
-newdat <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=500))
-names(newdat) <- "SES.FPD"
+newdat2.0 <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=500))
+names(newdat2.0) <- "SES.FPD"
  
 
 ###rethinking code 2.0 (page101-103)
@@ -77,14 +77,14 @@ for (n in 1:49){
 } 
 
 #codes for new data
-newdatlength <- 50
-newdat <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=newdatlength))
+newdat2.0length <- 50
+newdat2.0 <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=newdat2.0length))
 
-dose2.0 <- (matrix(NA, nrow= nrow(posteriorSamples), ncol = ncol(t(newdat))))
+dose2.0 <- (matrix(NA, nrow= nrow(posteriorSamples), ncol = ncol(t(newdat2.0))))
 
 #codes for link function with new data (Each column is full posterior for each new data point)
-for (n in 1:newdatlength){
-  dose2.0[,n]<- as.matrix(posteriorSamples$`(Intercept)` + posteriorSamples$SES.FPD * newdat[n,])
+for (n in 1:newdat2.0length){
+  dose2.0[,n]<- as.matrix(posteriorSamples$`(Intercept)` + posteriorSamples$SES.FPD * newdat2.0[n,])
   
 } 
 
@@ -92,7 +92,7 @@ for (n in 1:newdatlength){
 #figure 4.6
 plot(impact2~SES.FPD, data=focaldistance_enitregenus, type= "n")
 for ( i in 1:100 )
-  points(t(newdat) , dose2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
+  points(t(newdat2.0) , dose2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
 
 # summarize the distribution of dose2.0
 dose2.0.mean <- apply( dose2.0 , 2 , mean )
@@ -104,9 +104,9 @@ dose2.0.HPDI <- apply( dose2.0 , 2 , HPDI , prob=0.89 )
 plot( impact2~SES.FPD , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5) )
 
 # plot the MAP line, aka the mean impacts for each SES.FPD
-lines(t(newdat), dose2.0.mean)
+lines(t(newdat2.0), dose2.0.mean)
 # plot a shaded region for 89% HPDI
-shade(dose2.0.HPDI,t(newdat) )
+shade(dose2.0.HPDI,t(newdat2.0) )
 
 
 #### Invlogit 
@@ -135,10 +135,10 @@ for (n in 1:49){
 
 #codes for new data
 
-afterhours2.0 <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(newdat))))
+afterhours2.0 <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(newdat2.0))))
 
 for (n in 1:50){
-  afterhours2.0[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$SES.FPD * newdat[n,])
+  afterhours2.0[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$SES.FPD * newdat2.0[n,])
   #back transforms each row after inverlogit each impact
   afterhours2.0[,n]  <- as.matrix(logit(afterhours2.0[,n] ))
 } 
@@ -147,7 +147,7 @@ for (n in 1:50){
 #figure 4.6
 plot(impact3~SES.FPD, data=focaldistance_enitregenus, type= "n")
 for ( i in 1:10 )
-  points(t(newdat) , afterhours2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
+  points(t(newdat2.0) , afterhours2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
 
 # summarize the distribution of dose2.0
 afterhours2.0.mean <- apply( afterhours2.0 , 2 , mean )
@@ -159,9 +159,9 @@ afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
 plot( impact2~SES.FPD , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5), ylab= "Yield Loss")
 
 # plot the MAP line, aka the mean impacts for each SES.FPD
-lines(t(newdat), afterhours2.0.mean)
+lines(t(newdat2.0), afterhours2.0.mean)
 # plot a shaded region for 89% HPDI
-shade(afterhours2.0.HPDI,t(newdat) )
+shade(afterhours2.0.HPDI,t(newdat2.0) )
 
 ####Lizzie please start reviewing from here 
 ##### Plotting Beta regression 
@@ -207,17 +207,17 @@ dream[1,2]
 
 
 #New data
-newdatlength <- 50
-newdat <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=newdatlength))
+newdat2.0length <- 50
+newdat2.0 <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=newdat2.0length))
 #creates empty matrix
-dream2.0 <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat))))
-dreamb2.0 <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat))))
-dreambeta2.0<- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat))))
+dream2.0 <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat2.0))))
+dreamb2.0 <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat2.0))))
+dreambeta2.0<- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat2.0))))
 
 
 for (n in 1:50){
   #calculates Mu
-  dream2.0[,n] <- as.matrix(exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * newdat[n,]) / (1 + exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * newdat[n,])))  #*posteriorSamples3.0$`(phi)`   
+  dream2.0[,n] <- as.matrix(exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * newdat2.0[n,]) / (1 + exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * newdat2.0[n,])))  #*posteriorSamples3.0$`(phi)`   
   #calculates 1 - Mu
   dreamb2.0[,n] <- as.matrix(1 - dream2.0[,n])
   # gives me shape parameter a
@@ -231,7 +231,7 @@ for (n in 1:50){
 #figure 4.6
 plot(impact2~SES.FPD, data=focaldistance_enitregenus, type= "n")
 for ( i in 1:10)
-  points(t(newdat) , dreambeta2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
+  points(t(newdat2.0) , dreambeta2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
 
 # summarize the distribution of dose2.0
 dreambeta2.0.mean <- apply( dreambeta2.0 , 2 , mean )
@@ -246,33 +246,33 @@ plot( impact2~SES.FPD , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.
 
 # plot the MAP line, aka the mean impacts for each SES.FPD
 #plots jagged line of best fit
-lines(lowess(t(newdat), dreambeta2.0.mean))
+lines(lowess(t(newdat2.0), dreambeta2.0.mean))
 # plot a shaded region for 89% HPDI
 #plots huge confidence interval
-shade(dreambeta2.0.HPDI,t(newdat) )
+shade(dreambeta2.0.HPDI,t(newdat2.0) )
 
 # check what the default f(x) would give ... 
 plot(impact2~SES.FPD, data=focaldistance_enitregenus)
 predict_data <- data.frame(SES.FPD= seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=50))
-getpredline <- posterior_predict(beta_fit, newdata=predict_data, na.action = na.omit)
+getpredline <- posterior_predict(beta_fit, newdat2.0a=predict_data, na.action = na.omit)
 lines(lowess(colMeans(getpredline)~seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=50)))
 getpredline.HPDI <- apply(getpredline, 2, HPDI, prob=0.89)
 shade(getpredline.HPDI, seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=50))
 
 
-### trying with less values of newdat
+### trying with less values of newdat2.0
 #New data
-newdatlength <- 20
-newdat <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=newdatlength))
+newdat2.0length <- 20
+newdat2.0 <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=newdat2.0length))
 #creates empty matrix
-dream3.0 <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat))))
-dreamb3.0 <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat))))
-dreambeta3.0<- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat))))
+dream3.0 <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat2.0))))
+dreamb3.0 <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat2.0))))
+dreambeta3.0<- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat2.0))))
 
 
 for (n in 1:20){
   #calculates Mu
-  dream3.0[,n] <- as.matrix(exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * newdat[n,]) / (1 + exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * newdat[n,])))  #*posteriorSamples3.0$`(phi)`   
+  dream3.0[,n] <- as.matrix(exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * newdat2.0[n,]) / (1 + exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * newdat2.0[n,])))  #*posteriorSamples3.0$`(phi)`   
   #calculates 1 - Mu
   dreamb3.0[,n] <- as.matrix(1 - dream3.0[,n])
   # gives me shape parameter a
@@ -286,7 +286,7 @@ for (n in 1:20){
 #figure 4.6
 plot(impact2~SES.FPD, data=focaldistance_enitregenus, type= "n")
 for ( i in 1:10)
-  points(t(newdat) , dreambeta3.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
+  points(t(newdat2.0) , dreambeta3.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
 
 # summarize the distribution of dose3.0
 dreambeta3.0.mean <- apply( dreambeta3.0 , 2 , mean )
@@ -298,10 +298,10 @@ dreambeta3.0.HPDI <- apply( dreambeta3.0 , 2 , HPDI , prob=0.89 )
 plot( impact2~SES.FPD , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5) )
 
 # plot the MAP line, aka the mean impacts for each SES.FPD
-lines(lowess(t(newdat), dreambeta3.0.mean))
+lines(lowess(t(newdat2.0), dreambeta3.0.mean))
 # plot a shaded region for 89% HPDI
 #plots huge confidence interval
-shade(dreambeta3.0.HPDI,t(newdat) )
+shade(dreambeta3.0.HPDI,t(newdat2.0) )
 
 ##################
 ### Gasoline data example
@@ -317,7 +317,7 @@ plot(yield ~ temp, data=GasolineYield)
 predict_data <- data.frame(
 temp=seq(200, 600, by=20)
 )
-getpredline <- posterior_predict(beta_comp, newdata=predict_data)
+getpredline <- posterior_predict(beta_comp, newdat2.0a=predict_data)
 lines(colMeans(getpredline)~seq(200, 600, by=20))
 getpredline.HPDI <- apply(getpredline, 2, HPDI, prob=0.89)
 shade(getpredline.HPDI, seq(200, 600, by=20))
@@ -350,18 +350,18 @@ for (n in 1:32){
 
 
 #New data
-newdatlength <- 50
-newdat_gas <- as.data.frame(seq(range(GasolineYield$temp, na.rm=TRUE)[1], range(GasolineYield$temp, na.rm=TRUE)[2], length.out=newdatlength))
+newdat2.0length <- 50
+newdat2.0_gas <- as.data.frame(seq(range(GasolineYield$temp, na.rm=TRUE)[1], range(GasolineYield$temp, na.rm=TRUE)[2], length.out=newdat2.0length))
 
 #creates empty matrix
-frameworks2.0 <- (matrix(NA, nrow= nrow(posteriorSamples_gas), ncol = ncol(t(newdat_gas))))
-frameworksb2.0 <- (matrix(NA, nrow= nrow(posteriorSamples_gas), ncol = ncol(t(newdat_gas))))
-frameworksbeta2.0<- (matrix(NA, nrow= nrow(posteriorSamples_gas), ncol = ncol(t(newdat_gas))))
+frameworks2.0 <- (matrix(NA, nrow= nrow(posteriorSamples_gas), ncol = ncol(t(newdat2.0_gas))))
+frameworksb2.0 <- (matrix(NA, nrow= nrow(posteriorSamples_gas), ncol = ncol(t(newdat2.0_gas))))
+frameworksbeta2.0<- (matrix(NA, nrow= nrow(posteriorSamples_gas), ncol = ncol(t(newdat2.0_gas))))
 
 
 for (n in 1:50){
   #calculates Mu
-  frameworks2.0[,n] <- as.matrix(exp(posteriorSamples_gas$`(Intercept)` + posteriorSamples_gas$temp * newdat_gas[n,]) / (1 + exp(posteriorSamples_gas$`(Intercept)` + posteriorSamples_gas$temp * newdat_gas[n,])))  #*posteriorSamples3.0$`(phi)`   
+  frameworks2.0[,n] <- as.matrix(exp(posteriorSamples_gas$`(Intercept)` + posteriorSamples_gas$temp * newdat2.0_gas[n,]) / (1 + exp(posteriorSamples_gas$`(Intercept)` + posteriorSamples_gas$temp * newdat2.0_gas[n,])))  #*posteriorSamples3.0$`(phi)`   
   #calculates 1 - Mu
   frameworksb2.0[,n] <- as.matrix(1 - frameworks2.0[,n])
   # gives me shape parameter a
@@ -385,8 +385,8 @@ plot( yield~temp , data=GasolineYield , col=col.alpha(rangi2,0.5) )
 # plot the MAP line, aka the mean impacts for each SES.FPD
 #plots jagged line of best fit
 #looks ever so slights curved but could be wrong :(
-lines(lowess(t(newdat_gas), frameworksbeta2.0.mean))
+lines(lowess(t(newdat2.0_gas), frameworksbeta2.0.mean))
 # plot a shaded region for 89% HPDI
 #plots huge confidence interval
-shade(frameworksbeta2.0.HPDI,t(newdat_gas) )
+shade(frameworksbeta2.0.HPDI,t(newdat2.0_gas) )
 
