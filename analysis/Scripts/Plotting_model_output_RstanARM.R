@@ -129,7 +129,7 @@ afterhours <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(orginal
 for (n in 1:49){
   afterhours[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$SES.FPD * orginal_data[n,])
   #back transforms each row after inverlogit each impact
-  afterhours[,n]  <- as.matrix(logit(afterhours[,n] ))
+  #afterhours[,n]  <- as.matrix(logit(afterhours[,n] ))
 } 
 
 
@@ -137,15 +137,19 @@ for (n in 1:49){
 
 afterhours2.0 <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(newdat2.0))))
 
+newdat2.0length <- 50
+newdat2.0 <- as.data.frame(seq(range(focaldistance_enitregenus$mpd.obs.z, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=newdat2.0length))
+
+
 for (n in 1:50){
   afterhours2.0[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$SES.FPD * newdat2.0[n,])
   #back transforms each row after inverlogit each impact
-  afterhours2.0[,n]  <- as.matrix(logit(afterhours2.0[,n] ))
+  #afterhours2.0[,n]  <- as.matrix(logit(afterhours2.0[,n] ))
 } 
 
 
 #figure 4.6
-plot(impact3~SES.FPD, data=focaldistance_enitregenus, type= "n")
+plot(impact3~mpd.obs.z, data=focaldistance_enitregenus, type= "n")
 for ( i in 1:10 )
   points(t(newdat2.0) , afterhours2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
 
@@ -156,237 +160,126 @@ afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
 #below plots Inverselogit_linearmodel.pdf
 # plots raw data
 # fading out points to make line and interval more visible
-plot( impact2~SES.FPD , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5), ylab= "Yield Loss")
+plot( impact3~mpd.obs.z , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5), ylab= "Yield Loss")
 
 # plot the MAP line, aka the mean impacts for each SES.FPD
 lines(t(newdat2.0), afterhours2.0.mean)
 # plot a shaded region for 89% HPDI
 shade(afterhours2.0.HPDI,t(newdat2.0) )
 
-####Lizzie please start reviewing from here 
-##### Plotting Beta regression 
-#codes for the beta model
-focaldistance_enitregenus_b<- focaldistance_enitregenus[complete.cases(focaldistance_enitregenus$SES.FPD), ]
-focaldistance_enitregenus_beta <- focaldistance_enitregenus_b[,c(4,9)]
-focaldistance_enitregenus_beta <- focaldistance_enitregenus_beta[complete.cases(focaldistance_enitregenus_beta$impact2),]
-beta_fit <- stan_betareg(impact2~ SES.FPD, data = focaldistance_enitregenus_beta)
+#### Invlogit with mpd
+#converts impact to inverse logit
+focaldistance_enitregenus$impact3 <- inv.logit(focaldistance_enitregenus$impact2)                                                                                                                                                                   
 
-summary(beta_fit,digits= 4)
+impact_invlogit_model <- stan_glm(impact3~ mpd.obs.z, data = focaldistance_enitregenus,
+                                  family = gaussian(link="identity"),)
 
 #gets posterior
-posteriorSamples3.0 <- as.data.frame(as.matrix(beta_fit))
+posteriorSamples2.0 <- as.data.frame(as.matrix(impact_invlogit_model))
+posteriorSamples2.0 <- posteriorSamples2.0[1:4000,]
 
 #obtains original data
-orginal_data<- as.data.frame(focaldistance_enitregenus$SES.FPD)
+orginal_data<- as.data.frame(focaldistance_enitregenus$mpd.obs.z)
 
 #creates empty matrix
-dream <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(orginal_data))))
-dreamb <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(orginal_data))))
-dreambeta<- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(orginal_data))))
+afterhours <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(orginal_data))))
 
-
-for (n in 1:43){
-  #calculates Mu
-  dream[,n] <- as.matrix(exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * orginal_data[n,]) / (1 + exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * orginal_data[n,])))  #*posteriorSamples3.0$`(phi)`   
-  #calculates 1 - Mu
-  dreamb[,n] <- as.matrix(1 - dream[,n])
-  # gives me shape parameter a
-  dream[,n] <- as.matrix(dream[,n] * posteriorSamples3.0$`(phi)` )
-  #gives me shape parameter b
-  dreamb[,n] <- as.matrix(dreamb[,n] * posteriorSamples3.0$`(phi)` )
-  #give you impact values based on shape parameters
-  dreambeta[,n] <- as.matrix(rbeta(4000,dream[,n],dreamb[,n]))
+for (n in 1:49){
+  afterhours[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$mpd.obs.z * orginal_data[n,])
+  #back transforms each row after inverlogit each impact
+  afterhours[,n]  <- as.matrix(logit(afterhours[,n] ))
 } 
 
 
-
-# check I am getting the correct value
-rbeta(1,dream[1,2],dreamb[1,2]) 
-dreamb[1,2]
-dream[1,2]
-
-
-#New data
+#codes for new data
 newdat2.0length <- 50
-newdat2.0 <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=newdat2.0length))
-#creates empty matrix
-dream2.0 <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat2.0))))
-dreamb2.0 <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat2.0))))
-dreambeta2.0<- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat2.0))))
+newdat2.0 <- as.data.frame(seq(range(focaldistance_enitregenus$mpd.obs.z, na.rm=TRUE)[1], range(focaldistance_enitregenus$mpd.obs.z, na.rm=TRUE)[2], length.out=newdat2.0length))
+
+
+afterhours2.0 <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(newdat2.0))))
 
 
 for (n in 1:50){
-  #calculates Mu
-  dream2.0[,n] <- as.matrix(exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * newdat2.0[n,]) / (1 + exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * newdat2.0[n,])))  #*posteriorSamples3.0$`(phi)`   
-  #calculates 1 - Mu
-  dreamb2.0[,n] <- as.matrix(1 - dream2.0[,n])
-  # gives me shape parameter a
-  dream2.0[,n] <- as.matrix(dream2.0[,n] * posteriorSamples3.0$`(phi)` )
-  #gives me shape parameter b
-  dreamb2.0[,n] <- as.matrix(dreamb2.0[,n] * posteriorSamples3.0$`(phi)` )
-  #give you impact values based on shape parameters
-  dreambeta2.0[,n] <- as.matrix(rbeta(4000,dream2.0[,n],dreamb2.0[,n]))
+  afterhours2.0[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$mpd.obs.z * newdat2.0[n,])
+  #back transforms each row after inverlogit each impact
+  #afterhours2.0[,n]  <- as.matrix(logit(afterhours2.0[,n] ))
 } 
+
 
 #figure 4.6
-plot(impact2~SES.FPD, data=focaldistance_enitregenus, type= "n")
-for ( i in 1:10)
-  points(t(newdat2.0) , dreambeta2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
+plot(impact3~mpd.obs.z, data=focaldistance_enitregenus, type= "n")
+for ( i in 1:10 )
+  points(t(newdat2.0) , afterhours2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
 
 # summarize the distribution of dose2.0
-dreambeta2.0.mean <- apply( dreambeta2.0 , 2 , mean )
-dreambeta2.0.HPDI <- apply( dreambeta2.0 , 2 , HPDI , prob=0.89 )
-
-
-par(mfrow=c(2,1))
-
-# plots raw data
-# fading out points to make line and interval more visible
-plot( impact2~SES.FPD , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5) )
-
-# plot the MAP line, aka the mean impacts for each SES.FPD
-#plots jagged line of best fit
-lines(lowess(t(newdat2.0), dreambeta2.0.mean))
-# plot a shaded region for 89% HPDI
-#plots huge confidence interval
-shade(dreambeta2.0.HPDI,t(newdat2.0) )
-
-# check what the default f(x) would give ... 
-plot(impact2~SES.FPD, data=focaldistance_enitregenus)
-predict_data <- data.frame(SES.FPD= seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=50))
-getpredline <- posterior_predict(beta_fit, newdat2.0a=predict_data, na.action = na.omit)
-lines(lowess(colMeans(getpredline)~seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=50)))
-getpredline.HPDI <- apply(getpredline, 2, HPDI, prob=0.89)
-shade(getpredline.HPDI, seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=50))
-
-
-### trying with less values of newdat2.0
-#New data
-newdat2.0length <- 20
-newdat2.0 <- as.data.frame(seq(range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[1], range(focaldistance_enitregenus$SES.FPD, na.rm=TRUE)[2], length.out=newdat2.0length))
-#creates empty matrix
-dream3.0 <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat2.0))))
-dreamb3.0 <- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat2.0))))
-dreambeta3.0<- (matrix(NA, nrow= nrow(posteriorSamples3.0), ncol = ncol(t(newdat2.0))))
-
-
-for (n in 1:20){
-  #calculates Mu
-  dream3.0[,n] <- as.matrix(exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * newdat2.0[n,]) / (1 + exp(posteriorSamples3.0$`(Intercept)` + posteriorSamples3.0$SES.FPD * newdat2.0[n,])))  #*posteriorSamples3.0$`(phi)`   
-  #calculates 1 - Mu
-  dreamb3.0[,n] <- as.matrix(1 - dream3.0[,n])
-  # gives me shape parameter a
-  dream3.0[,n] <- as.matrix(dream3.0[,n] * posteriorSamples3.0$`(phi)` )
-  #gives me shape parameter b
-  dreamb3.0[,n] <- as.matrix(dreamb3.0[,n] * posteriorSamples3.0$`(phi)` )
-  #give you impact values based on shape parameters
-  dreambeta3.0[,n] <- as.matrix(rbeta(4000,dream3.0[,n],dreamb3.0[,n]))
-} 
-
-#figure 4.6
-plot(impact2~SES.FPD, data=focaldistance_enitregenus, type= "n")
-for ( i in 1:10)
-  points(t(newdat2.0) , dreambeta3.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
-
-# summarize the distribution of dose3.0
-dreambeta3.0.mean <- apply( dreambeta3.0 , 2 , mean )
-dreambeta3.0.HPDI <- apply( dreambeta3.0 , 2 , HPDI , prob=0.89 )
-
-
-# plots raw data
-# fading out points to make line and interval more visible
-plot( impact2~SES.FPD , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5) )
-
-# plot the MAP line, aka the mean impacts for each SES.FPD
-lines(lowess(t(newdat2.0), dreambeta3.0.mean))
-# plot a shaded region for 89% HPDI
-#plots huge confidence interval
-shade(dreambeta3.0.HPDI,t(newdat2.0) )
-
-##################
-### Gasoline data example
-data("GasolineYield", package = "betareg")
-
-View(GasolineYield)
-
-#codes for the beta model
-beta_comp <- stan_betareg(yield ~ temp, data =GasolineYield)
-
-# check what the default f(x) would give ... 
-plot(yield ~ temp, data=GasolineYield)
-predict_data <- data.frame(
-temp=seq(200, 600, by=20)
-)
-getpredline <- posterior_predict(beta_comp, newdat2.0a=predict_data)
-lines(colMeans(getpredline)~seq(200, 600, by=20))
-getpredline.HPDI <- apply(getpredline, 2, HPDI, prob=0.89)
-shade(getpredline.HPDI, seq(200, 600, by=20))
-# end check 
-
-#gets posterior
-posteriorSamples_gas <- as.data.frame(as.matrix(beta_comp))
-
-#obtains original data
-orginal_data_gas<- as.data.frame(GasolineYield$temp)
-
-#creates empty matrix
-frameworks <- (matrix(NA, nrow= nrow(posteriorSamples_gas), ncol = ncol(t(orginal_data_gas))))
-frameworksb <- (matrix(NA, nrow= nrow(posteriorSamples_gas), ncol = ncol(t(orginal_data_gas))))
-frameworksbeta<- (matrix(NA, nrow= nrow(posteriorSamples_gas), ncol = ncol(t(orginal_data_gas))))
-
-
-for (n in 1:32){
-  #calculates Mu
-  frameworks[,n] <- as.matrix(exp(posteriorSamples_gas$`(Intercept)` + posteriorSamples_gas$temp * orginal_data_gas[n,]) / (1 + exp(posteriorSamples_gas$`(Intercept)` + posteriorSamples_gas$temp * orginal_data_gas[n,])))  #*posteriorSamples3.0$`(phi)`   
-  #calculates 1 - Mu
-  frameworksb[,n] <- as.matrix(1 - frameworks[,n])
-  # gives me shape parameter a
-  frameworks[,n] <- as.matrix(frameworks[,n] * posteriorSamples_gas$`(phi)` )
-  #gives me shape parameter b
-  frameworksb[,n] <- as.matrix(frameworksb[,n] * posteriorSamples_gas$`(phi)` )
-  #give you impact values based on shape parameters
-  frameworksbeta[,n] <- as.matrix(rbeta(4000,frameworks[,n],frameworksb[,n]))
-} 
-
-
-#New data
-newdat2.0length <- 50
-newdat2.0_gas <- as.data.frame(seq(range(GasolineYield$temp, na.rm=TRUE)[1], range(GasolineYield$temp, na.rm=TRUE)[2], length.out=newdat2.0length))
-
-#creates empty matrix
-frameworks2.0 <- (matrix(NA, nrow= nrow(posteriorSamples_gas), ncol = ncol(t(newdat2.0_gas))))
-frameworksb2.0 <- (matrix(NA, nrow= nrow(posteriorSamples_gas), ncol = ncol(t(newdat2.0_gas))))
-frameworksbeta2.0<- (matrix(NA, nrow= nrow(posteriorSamples_gas), ncol = ncol(t(newdat2.0_gas))))
-
-
-for (n in 1:50){
-  #calculates Mu
-  frameworks2.0[,n] <- as.matrix(exp(posteriorSamples_gas$`(Intercept)` + posteriorSamples_gas$temp * newdat2.0_gas[n,]) / (1 + exp(posteriorSamples_gas$`(Intercept)` + posteriorSamples_gas$temp * newdat2.0_gas[n,])))  #*posteriorSamples3.0$`(phi)`   
-  #calculates 1 - Mu
-  frameworksb2.0[,n] <- as.matrix(1 - frameworks2.0[,n])
-  # gives me shape parameter a
-  frameworks2.0[,n] <- as.matrix(frameworks2.0[,n] * posteriorSamples_gas$`(phi)` )
-  #gives me shape parameter b
-  frameworksb2.0[,n] <- as.matrix(frameworksb2.0[,n] * posteriorSamples_gas$`(phi)` )
-  #give you impact values based on shape parameters
-  frameworksbeta2.0[,n] <- as.matrix(rbeta(4000,frameworks2.0[,n],frameworksb2.0[,n]))
-}
-
-
-# summarize the distribution of dose2.0
-frameworksbeta2.0.mean <- apply( frameworksbeta2.0 , 2 , mean )
-frameworksbeta2.0.HPDI <- apply( frameworksbeta2.0 , 2 , HPDI , prob=0.89 )
+afterhours2.0.mean <- apply( afterhours2.0 , 2 , mean )
+afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
 
 #below plots Inverselogit_linearmodel.pdf
 # plots raw data
 # fading out points to make line and interval more visible
-plot( yield~temp , data=GasolineYield , col=col.alpha(rangi2,0.5) )
+plot( impact3~mpd.obs.z , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5), ylab= "Yield Loss")
 
 # plot the MAP line, aka the mean impacts for each SES.FPD
-#plots jagged line of best fit
-#looks ever so slights curved but could be wrong :(
-lines(lowess(t(newdat2.0_gas), frameworksbeta2.0.mean))
+lines(t(newdat2.0), afterhours2.0.mean)
 # plot a shaded region for 89% HPDI
-#plots huge confidence interval
-shade(frameworksbeta2.0.HPDI,t(newdat2.0_gas) )
+shade(afterhours2.0.HPDI,t(newdat2.0) )
 
+#rerunning models with onespecies analysis
+#### Invlogit with mpd
+#converts impact to inverse logit
+focaldistance_onespecies$impact3 <- inv.logit(focaldistance_onespecies$impact2)                                                                                                                                                                   
+
+impact_invlogit_model <- stan_glm(impact3~ mpd.obs.z, data = focaldistance_onespecies,
+                                  family = gaussian(link="identity"),)
+
+#gets posterior
+posteriorSamples2.0 <- as.data.frame(as.matrix(impact_invlogit_model))
+posteriorSamples2.0 <- posteriorSamples2.0[1:4000,]
+
+#obtains original data
+orginal_data<- as.data.frame(focaldistance_onespecies$mpd.obs.z)
+
+#creates empty matrix
+afterhours <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(orginal_data))))
+
+for (n in 1:49){
+  afterhours[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$mpd.obs.z * orginal_data[n,])
+  #back transforms each row after inverlogit each impact
+  afterhours[,n]  <- as.matrix(logit(afterhours[,n] ))
+} 
+
+
+#codes for new data
+newdat2.0length <- 50
+newdat2.0 <- as.data.frame(seq(range(focaldistance_onespecies$mpd.obs.z, na.rm=TRUE)[1], range(focaldistance_enitregenus$mpd.obs.z, na.rm=TRUE)[2], length.out=newdat2.0length))
+
+
+afterhours2.0 <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(newdat2.0))))
+
+
+for (n in 1:50){
+  afterhours2.0[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$mpd.obs.z * newdat2.0[n,])
+  #back transforms each row after inverlogit each impact
+  #afterhours2.0[,n]  <- as.matrix(logit(afterhours2.0[,n] ))
+} 
+
+
+#figure 4.6
+plot(impact3~mpd.obs.z, data=focaldistance_onespecies, type= "n")
+for ( i in 1:10 )
+  points(t(newdat2.0) , afterhours2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
+
+# summarize the distribution of dose2.0
+afterhours2.0.mean <- apply( afterhours2.0 , 2 , mean )
+afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
+
+#below plots Inverselogit_linearmodel.pdf
+# plots raw data
+# fading out points to make line and interval more visible
+plot( impact3~mpd.obs.z , data=focaldistance_onespecies , col=col.alpha(rangi2,0.5), ylab= "Yield Loss")
+
+# plot the MAP line, aka the mean impacts for each SES.FPD
+lines(t(newdat2.0), afterhours2.0.mean)
+# plot a shaded region for 89% HPDI
+shade(afterhours2.0.HPDI,t(newdat2.0) )
