@@ -303,3 +303,101 @@ cloud2.0 + geom_point(aes(x=1, y= -1.1763932), colour= "red") +
   xlab ("Pathogen Type") + 
   theme(legend.position = "none")
 
+#######################################################################
+#Testing theory about restricted pathogens 
+######################################################################
+
+#load datasets 
+mpd_all_sp_in_genus_majorpathogens_allhosts <- read.csv("mpd_all_sp_in_genus_majorpathogens_allhosts.csv")
+
+post3<- stan_glm(mpd.obs.z ~ Type, data = mpd_all_sp_in_genus_majorpathogens_allhosts,
+                 family = gaussian(link="identity"),)  
+
+#shows summary of RstanArm model
+summary(post3)
+
+#shows coeficents for model
+coef(post3)
+
+#pulls out prosterior data
+fits3.0 <- post3 %>% 
+  as_data_frame 
+
+#reanmes intercept column
+colnames(fits3.0)[1]<- "intercept"
+
+#removes sigma and NA column
+fits3.0 <- fits3.0[,-6]
+
+#creates patho for each unique column name
+path <- unique(names(fits3.0))
+
+#Creates empty dataframe
+dose3.0 <- (matrix(NA, nrow= nrow(fits3.0), ncol = ncol(fits3.0)))
+
+#for loop that adds bacteria values to other columns
+for (n in 1:length(path)){ 
+  dose3.0[,1]<- as.matrix(fits3.0[,1] * 1)
+  dose3.0[,n]<- as.matrix(fits3.0[,1] + fits3.0[,n])
+}  
+
+#makes output a dataframe
+dose3.0 <- as.data.frame(dose3.0)
+
+#codes for 93% prediction interval
+prob_lwr <- .025
+prob_upr <- .905
+
+#new path
+path <- unique(names(dose3.0))
+
+#codes for empty dataframe
+tycho3.0 <- (matrix(NA, nrow= 3, ncol = ncol(dose3.0)))
+
+#for loop that calculates prediction interval for each pathogen type
+for (n in 1:length(path)){ 
+  tycho3.0[1,n]<- as.matrix(median(dose3.0[,n]))
+  tycho3.0[2,n] <- as.matrix(quantile(dose3.0[,n], prob_lwr))                    
+  tycho3.0[3,n]<- as.matrix(quantile(dose3.0[,n], prob_upr)) 
+}  
+
+#make output as data frame
+tycho3.0 <- as.data.frame(tycho3.0)
+
+#changes rownames
+rownames(tycho3.0)[1] <- "median"
+rownames(tycho3.0)[2] <- "lower"
+rownames(tycho3.0)[3] <- "upper"
+
+#changes column names
+colnames(tycho3.0)[1] <- "B"
+colnames(tycho3.0)[2] <- "F"
+colnames(tycho3.0)[3] <- "N"
+colnames(tycho3.0)[4] <- "P"
+colnames(tycho3.0)[5] <- "V"
+
+# transpose tycho dataframe then makes dataframe then changes rownames to columnames 
+ford3.0 <- t(tycho3.0)
+ford3.0 <- as.data.frame(ford3.0)
+ford3.0 <- rownames_to_column(ford3.0)
+colnames(ford3.0)[1] <- "Type"
+
+#joins dataset of mpd and ford
+cloud3.1<- full_join(mpd_all_sp_in_genus_majorpathogens_allhosts, ford3.0, by= "Type")
+
+
+#Vizulizing Data
+cloud3.0<- ggplot(mpd_all_sp_in_genus_majorpathogens_allhosts, aes(x = Type, y =mpd.obs.z )) + 
+  geom_point(size = 1.5, shape= 21, position = position_jitter(height = 0.5, width = 0.1)) 
+
+#codes for prediction median and error bars based on prediction intervals
+cloud3.0 + geom_point(aes(x=1, y= -1.4836679), colour= "red") + 
+  geom_point(aes(x=2, y= -2.2084030	), colour= "red") +
+  geom_point(aes(x=3, y= -0.7743441), colour= "red") +
+  geom_point(aes(x=4, y= -1.0301779), colour= "red") +
+  geom_point(aes(x=5, y= -2.2761786), colour= "red") +
+  geom_errorbar(data= cloud3.1, aes(ymin=lower, ymax=upper, colour= "red"), width=0,
+                position=position_dodge(0.05)) +
+  ylab ("SES.MPD") + 
+  xlab ("Pathogen Type") + 
+  theme(legend.position = "none")

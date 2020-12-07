@@ -69,8 +69,8 @@ For each parameter, mcse is Monte Carlo standard error, n_eff is a crude measure
 coef(post1)
 
 fits <- post1 %>% 
-  as_data_frame %>% 
-  rename(intercept = `(Intercept)`)
+  as_data_frame #%>% 
+  #rename(intercept = `(Intercept)`)
   
 fits <- fits[,-6]
 
