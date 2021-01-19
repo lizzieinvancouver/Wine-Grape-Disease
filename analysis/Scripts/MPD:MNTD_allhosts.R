@@ -1,4 +1,4 @@
-#Phylogenetic analysis on winegrape pests including all wide and agricultural hosts
+#Phylogenetic analysis on winegrape pests including all wild and agricultural hosts
 #created by Darwin
 #July 8th 2020
 rm(list=ls()) # remove everything currently held in the R memory

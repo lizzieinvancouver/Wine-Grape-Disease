@@ -100,4 +100,5 @@ plot( impact2~mpd.obs.z , data=Yieldloss2.0 , col=col.alpha(rangi2,0.5), ylab= "
 # plot the MAP line, aka the mean impacts for each SES.FPD
 lines(t(newdat), afterhours2.0.mean)
 # plot a shaded region for 89% HPDI
-shade(afterhours2.0.HPDI,t(newdat) )
+shade(afterhours2.0.HPDI,t(newdat))
+

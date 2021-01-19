@@ -160,7 +160,7 @@ shade(dose2.0.HPDI,t(newdat) )
 #converts impact to inverse logit
 Yieldloss2.0$impact2 <- inv.logit(Yieldloss2.0$impact) 
 
-Yieldloss2.0<- Yieldloss2.0[complete.cases(Yieldloss2.0), ]
+
 
 impact_invlogit_model <- stan_glm(impact2~ SES.FPD, data = Yieldloss2.0,
                                   family = gaussian(link="identity"),)
@@ -189,23 +189,23 @@ newdatlength <- 50
 newdat <- as.data.frame(seq(-15, 15, length.out=newdatlength))
 #as.data.frame(seq(range(Yieldloss2.0$SES.FPD, na.rm=TRUE)[1], range(Yieldloss2.0$SES.FPD, na.rm=TRUE)[2], length.out=newdatlength))
 
-afterhours2.0 <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(newdat))))
+afterhours3.0 <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(newdat))))
 
 for (n in 1:nrow(newdat)){
-  afterhours2.0[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$SES.FPD * newdat[n,])
+  afterhours3.0[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$SES.FPD * newdat[n,])
   #back transforms each row after inverlogit each impact
-  #afterhours2.0[,n]  <- as.matrix(logit(afterhours2.0[,n] ))
+  #afterhours3.0[,n]  <- as.matrix(logit(afterhours3.0[,n] ))
 } 
 
 
 #figure 4.6
 plot(impact2~SES.FPD, data=Yieldloss2.0, type= "n")
 for ( i in 1:10 )
-  points(t(newdat) , afterhours2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
+  points(t(newdat) , afterhours3.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
 
 # summarize the distribution of dose2.0
-afterhours2.0.mean <- apply( afterhours2.0 , 2 , mean )
-afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
+afterhours3.0.mean <- apply( afterhours3.0 , 2 , mean )
+afterhours3.0.HPDI <- apply( afterhours3.0 , 2 , HPDI , prob=0.89 )
 
 ##### Inverselogit with MPD
 #### Invlogit 
@@ -241,23 +241,23 @@ newdatlength <- 50
 newdat <- as.data.frame(seq(-13, 15, length.out=newdatlength))
 #as.data.frame(seq(range(Yieldloss2.0$SES.FPD, na.rm=TRUE)[1], range(Yieldloss2.0$SES.FPD, na.rm=TRUE)[2], length.out=newdatlength))
 
-afterhours2.0 <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(newdat))))
+afterhours3.0 <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(newdat))))
 
 for (n in 1:nrow(newdat)){
-  afterhours2.0[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$mpd.obs.z * newdat[n,])
+  afterhours3.0[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$mpd.obs.z * newdat[n,])
   #back transforms each row after inverlogit each impact
-  #\afterhours2.0[,n]  <- as.matrix(logit(afterhours2.0[,n] ))
+  #\afterhours3.0[,n]  <- as.matrix(logit(afterhours3.0[,n] ))
 } 
 
 
 #figure 4.6
 plot(impact2~mpd.obs.z, data=Yieldloss2.0, type= "n")
 for ( i in 1:10 )
-  points(t(newdat) , afterhours2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
+  points(t(newdat) , afterhours3.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
 
 # summarize the distribution of dose2.0
-afterhours2.0.mean <- apply( afterhours2.0 , 2 , mean )
-afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
+afterhours3.0.mean <- apply( afterhours3.0 , 2 , mean )
+afterhours3.0.HPDI <- apply( afterhours3.0 , 2 , HPDI , prob=0.89 )
 
 
 
@@ -268,9 +268,9 @@ afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
 plot( impact~mpd.obs.z , data=Yieldloss2.0 , col=col.alpha(rangi2,0.5), ylab= "Yield Loss", ylim= c(0,1))
 
 # plot the MAP line, aka the mean impacts for each SES.FPD
-lines(t(newdat), afterhours2.0.mean)
+lines(t(newdat), afterhours3.0.mean)
 # plot a shaded region for 89% HPDI
-shade(afterhours2.0.HPDI,t(newdat) )
+shade(afterhours3.0.HPDI,t(newdat) )
 
 ### testing a prediction
 ##### Inverselogit with MPD
@@ -307,23 +307,23 @@ newdatlength <- 50
 newdat <- as.data.frame(seq(-13, 15, length.out=newdatlength))
 #as.data.frame(seq(range(Yieldloss2.0$SES.FPD, na.rm=TRUE)[1], range(Yieldloss2.0$SES.FPD, na.rm=TRUE)[2], length.out=newdatlength))
 
-afterhours2.0 <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(newdat))))
+afterhours3.0 <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(newdat))))
 
 for (n in 1:nrow(newdat)){
-  afterhours2.0[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$mpd.obs.z * newdat[n,])
+  afterhours3.0[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$mpd.obs.z * newdat[n,])
   #back transforms each row after inverlogit each impact
-  #\afterhours2.0[,n]  <- as.matrix(logit(afterhours2.0[,n] ))
+  #\afterhours3.0[,n]  <- as.matrix(logit(afterhours3.0[,n] ))
 } 
 
 
 #figure 4.6
 plot(impact2~mpd.obs.z, data=Yieldloss2.0, type= "n")
 for ( i in 1:10 )
-  points(t(newdat) , afterhours2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
+  points(t(newdat) , afterhours3.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
 
 # summarize the distribution of dose2.0
-afterhours2.0.mean <- apply( afterhours2.0 , 2 , mean )
-afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
+afterhours3.0.mean <- apply( afterhours3.0 , 2 , mean )
+afterhours3.0.HPDI <- apply( afterhours3.0 , 2 , HPDI , prob=0.89 )
 
 
 #below plots Inverselogit_linearmodel.pdf
@@ -332,9 +332,9 @@ afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
 plot( impact2~mpd.obs.z , data=Yieldloss2.0 , col=col.alpha(rangi2,0.5), ylab= "Yield Loss", ylim= c(0,1))
 
 # plot the MAP line, aka the mean impacts for each SES.FPD
-lines(t(newdat), afterhours2.0.mean)
+lines(t(newdat), afterhours3.0.mean)
 # plot a shaded region for 89% HPDI
-shade(afterhours2.0.HPDI,t(newdat) )
+shade(afterhours3.0.HPDI,t(newdat) )
 
 #### model comparisons 
 loo1 <- loo(post1, k_threshold = 0.7)
@@ -380,23 +380,23 @@ newdatlength <- 50
 newdat <- as.data.frame(seq(-9, 15, length.out=newdatlength))
 #as.data.frame(seq(range(Yieldloss2.0$SES.FPD, na.rm=TRUE)[1], range(Yieldloss2.0$SES.FPD, na.rm=TRUE)[2], length.out=newdatlength))
 
-afterhours2.0 <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(newdat))))
+afterhours3.0 <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(newdat))))
 
 for (n in 1:nrow(newdat)){
-  afterhours2.0[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$mpd.obs.z * newdat[n,])
+  afterhours3.0[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$mpd.obs.z * newdat[n,])
   #back transforms each row after inverlogit each impact
-  #\afterhours2.0[,n]  <- as.matrix(logit(afterhours2.0[,n] ))
+  #\afterhours3.0[,n]  <- as.matrix(logit(afterhours3.0[,n] ))
 } 
 
 
 #figure 4.6
 plot(impact2~mpd.obs.z, data=Yieldloss3.0, type= "n")
 for ( i in 1:10 )
-  points(t(newdat) , afterhours2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
+  points(t(newdat) , afterhours3.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
 
 # summarize the distribution of dose2.0
-afterhours2.0.mean <- apply( afterhours2.0 , 2 , mean )
-afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
+afterhours3.0.mean <- apply( afterhours3.0 , 2 , mean )
+afterhours3.0.HPDI <- apply( afterhours3.0 , 2 , HPDI , prob=0.89 )
 
 
 #below plots Inverselogit_linearmodel.pdf
@@ -405,6 +405,7 @@ afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
 plot( impact2~mpd.obs.z , data=Yieldloss3.0 , col=col.alpha(rangi2,0.5), ylab= "Yield Loss", ylim= c(0,1))
 
 # plot the MAP line, aka the mean impacts for each SES.FPD
-lines(t(newdat), afterhours2.0.mean)
+lines(t(newdat), afterhours3.0.mean)
 # plot a shaded region for 89% HPDI
-shade(afterhours2.0.HPDI,t(newdat) )
+shade(afterhours3.0.HPDI,t(newdat) )
+

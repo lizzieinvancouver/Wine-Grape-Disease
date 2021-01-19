@@ -83,15 +83,6 @@ for (n in 1:length(path)){
 }  
 
 dose <- as.data.frame(dose)
-dose <- dose %>%
-  rename(
-  intercept = V1,
-  TypeF = V2,
-  TypeN = V3,
-  TypeP = V4,
-  TypeV = V5
-)
-  
 
 prob_lwr <- .025
 prob_upr <- .905
@@ -106,18 +97,18 @@ for (n in 1:length(path)){
 }  
 
 tycho <- as.data.frame(tycho)
-tycho <- tycho %>%
-  rename(
-    B = V1,
-    F = V2,
-    N = V3,
-    P = V4,
-    V = V5
-  )
+
 
 rownames(tycho)[1] <- "median"
 rownames(tycho)[2] <- "lower"
 rownames(tycho)[3] <- "upper"
+
+#changes column names
+colnames(tycho)[1] <- "B"
+colnames(tycho)[2] <- "F"
+colnames(tycho)[3] <- "N"
+colnames(tycho)[4] <- "P"
+colnames(tycho)[5] <- "V"
 
 
 
@@ -129,6 +120,19 @@ colnames(ford)[1] <- "Type"
 
 cloud1<- full_join(mpd_all_sp_in_genus, ford, by= "Type")
 
+#replaces groups with the full name in cloud1 
+cloud1$Type<- gsub("F", "Fungi",cloud1$Type)
+cloud1$Type<- gsub("P", "Pest",cloud1$Type)
+cloud1$Type<- gsub("B", "Bacteria",cloud1$Type)
+cloud1$Type<- gsub("V", "Virus",cloud1$Type)
+cloud1$Type<- gsub("N", "Nematode",cloud1$Type)
+
+#replaces groups with the full name in mpd_all_sp_in_genus 
+mpd_all_sp_in_genus$Type<- gsub("F", "Fungi",mpd_all_sp_in_genus$Type)
+mpd_all_sp_in_genus$Type<- gsub("P", "Pest",mpd_all_sp_in_genus$Type)
+mpd_all_sp_in_genus$Type<- gsub("B", "Bacteria",mpd_all_sp_in_genus$Type)
+mpd_all_sp_in_genus$Type<- gsub("V", "Virus",mpd_all_sp_in_genus$Type)
+mpd_all_sp_in_genus$Type<- gsub("N", "Nematode",mpd_all_sp_in_genus$Type)
 
 #Vizulizing Data
 cloud<- ggplot(mpd_all_sp_in_genus, aes(x = Type, y =mpd.obs.z )) + 
@@ -137,13 +141,16 @@ cloud<- ggplot(mpd_all_sp_in_genus, aes(x = Type, y =mpd.obs.z )) +
 
 cloud  + ylab ("SES.MPD")
 
-cloud + geom_point(aes(x=1, y= -2.90), colour= "red") + 
+Type1<- cloud + geom_point(aes(x=1, y= -2.90), colour= "red") + 
  geom_point(aes(x=2, y= -3.85), colour= "red") +
  geom_point(aes(x=3, y= -1.99), colour= "red") +
  geom_point(aes(x=4, y= -3.16), colour= "red") +
  geom_point(aes(x=5, y= -3.45), colour= "red") +
  geom_errorbar(data= cloud1, aes(ymin=lower, ymax=upper), width=0,
-                position=position_dodge(0.05))
+                position=position_dodge(0.05)) +
+  ylab ("SES.MPD") + 
+  xlab ("Pathogen Type") + 
+  theme(legend.position = "none")
 
 
 

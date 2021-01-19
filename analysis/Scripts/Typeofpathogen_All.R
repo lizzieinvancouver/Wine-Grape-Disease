@@ -11,16 +11,39 @@ library(plyr)
 library(rstanarm)
 library(tibble)
 library(ggplot2)
+library(ggpubr)
 
 
 
 #loading in datasets
 mpd_all_sp_in_genus_ALL <- read.csv("mpd.all.sp.in.genus_ALL.csv")
 mpd_single_sp_in_genus_ALL <- read.csv("mpd.single.sp.in.genus_ALL.csv")
-
+GrapePestsfinal <- read.csv("GrapePestsfinal.csv")
 
 #rename column
 colnames(mpd_all_sp_in_genus_ALL)[1] <- "pest"
+colnames(mpd_single_sp_in_genus_ALL)[1] <- "pest"
+
+#Adding pathogen category 
+#creates dataframe where for each pathogen the number of genera it infects is counted 
+category <- aggregate(New.Genus ~ pest, GrapePestsfinal, function(x) length(unique(x)))
+
+#if loop that assigns category to each pest based on number of genera infect
+for (i in 1:nrow(category)){
+  if (category$New.Genus[i] == 1){
+    category$category[i] <- "S"  
+  } else if (category$New.Genus[i] != 1 ){
+    category$category[i] <- "G"  
+  } else {
+    #if row is NA then it will show up as NA
+    category$category[i]<- "NA"
+  }
+}
+
+#merges original data with category dataframe!
+mpd_all_sp_in_genus_ALL<- merge(mpd_all_sp_in_genus_ALL, category, by = "pest" )
+mpd_single_sp_in_genus_ALL<- merge(mpd_single_sp_in_genus_ALL, category, by = "pest" )
+
 
 #removes underscore and replaces it with a space
 mpd_all_sp_in_genus_ALL$pest <- sub("_", " ",mpd_all_sp_in_genus_ALL$pest )
@@ -104,7 +127,7 @@ type<- mpd_all_sp_in_genus_ALL$Type
 mpd_single_sp_in_genus_ALL<- bind_cols(mpd_single_sp_in_genus_ALL, type)
 
 #renames column to type
-colnames(mpd_single_sp_in_genus_ALL)[10] <- "type"
+colnames(mpd_single_sp_in_genus_ALL)[12] <- "Type"
 
 test<-mpd_all_sp_in_genus_ALL[!is.na(mpd_all_sp_in_genus_ALL$Type), ]
 
@@ -193,7 +216,7 @@ cloud<- ggplot(mpd_all_sp_in_genus_ALL, aes(x = Type, y =mpd.obs.z )) +
   geom_point(size = 1.5, shape= 21, position = position_jitter(height = 0.5, width = 0.1)) 
 
 #codes for prediction median and error bars based on prediction intervals
-cloud + geom_point(aes(x=1, y= -3.46395381), colour= "red") + 
+Type2 <- cloud + geom_point(aes(x=1, y= -3.46395381), colour= "red") + 
   geom_point(aes(x=2, y= -0.09418464), colour= "red") +
   geom_point(aes(x=3, y= -0.71437080), colour= "red") +
   geom_point(aes(x=4, y= -4.78071987), colour= "red") +
@@ -401,3 +424,19 @@ cloud3.0 + geom_point(aes(x=1, y= -1.4836679), colour= "red") +
   ylab ("SES.MPD") + 
   xlab ("Pathogen Type") + 
   theme(legend.position = "none")
+
+##################################
+#Testing to see if category is important
+
+post1<- stan_glm(mpd.obs.z~ Type + category, data = mpd_all_sp_in_genus_ALL,
+                 family = gaussian(link="identity"),)
+
+post2<- stan_glm(mpd.obs.z~ Type + category, data = mpd_single_sp_in_genus_ALL,
+                 family = gaussian(link="identity"),)
+
+###########################
+#making figure 
+
+figure <- ggarrange(Type1, Type2,
+                    labels = c("A", "B"),
+                    ncol = 2, nrow = 1)
