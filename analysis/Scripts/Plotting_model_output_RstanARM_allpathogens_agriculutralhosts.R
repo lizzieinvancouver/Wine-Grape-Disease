@@ -102,3 +102,10 @@ lines(t(newdat), afterhours2.0.mean)
 # plot a shaded region for 89% HPDI
 shade(afterhours2.0.HPDI,t(newdat))
 
+
+labels <- c("A", "B")
+par(mfrow = c(1, 2))
+for(i in 1:2){
+  add_label_legend(0.02, 0.07, labels[i])
+}
+add_label()

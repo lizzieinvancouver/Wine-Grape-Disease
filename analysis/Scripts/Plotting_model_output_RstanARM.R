@@ -160,7 +160,7 @@ afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
 #below plots Inverselogit_linearmodel.pdf
 # plots raw data
 # fading out points to make line and interval more visible
-plot( impact3~mpd.obs.z , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5), ylab= "Yield Loss")
+plot( impact3~mpd.obs.z , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5), ylab= "Yield Loss", xlab= "MPD")
 
 # plot the MAP line, aka the mean impacts for each SES.FPD
 lines(t(newdat2.0), afterhours2.0.mean)
@@ -192,15 +192,15 @@ for (n in 1:49){
 
 
 #codes for new data
-newdat2.0length <- 50
-newdat2.0 <- as.data.frame(seq(range(focaldistance_enitregenus$mpd.obs.z, na.rm=TRUE)[1], range(focaldistance_enitregenus$mpd.obs.z, na.rm=TRUE)[2], length.out=newdat2.0length))
+newdat3.0length <- 50
+newdat3.0 <- as.data.frame(seq(range(focaldistance_enitregenus$mpd.obs.z, na.rm=TRUE)[1], range(focaldistance_enitregenus$mpd.obs.z, na.rm=TRUE)[2], length.out=newdat3.0length))
 
 
-afterhours2.0 <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(newdat2.0))))
+afterhours3.0 <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(newdat3.0))))
 
 
 for (n in 1:50){
-  afterhours2.0[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$mpd.obs.z * newdat2.0[n,])
+  afterhours3.0[,n] <- as.matrix(posteriorSamples2.0$`(Intercept)` + posteriorSamples2.0$mpd.obs.z * newdat3.0[n,])
   #back transforms each row after inverlogit each impact
   #afterhours2.0[,n]  <- as.matrix(logit(afterhours2.0[,n] ))
 } 
@@ -209,21 +209,21 @@ for (n in 1:50){
 #figure 4.6
 plot(impact3~mpd.obs.z, data=focaldistance_enitregenus, type= "n")
 for ( i in 1:10 )
-  points(t(newdat2.0) , afterhours2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
+  points(t(newdat3.0) , afterhours2.0[i,] , pch=16 , col=col.alpha(rangi2,0.1))
 
 # summarize the distribution of dose2.0
-afterhours2.0.mean <- apply( afterhours2.0 , 2 , mean )
-afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
+afterhours3.0.mean <- apply( afterhours3.0 , 2 , mean )
+afterhours3.0.HPDI <- apply( afterhours3.0 , 2 , HPDI , prob=0.89 )
 
 #below plots Inverselogit_linearmodel.pdf
 # plots raw data
 # fading out points to make line and interval more visible
-plot( impact3~mpd.obs.z , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5), ylab= "Yield Loss")
+plot( impact3~mpd.obs.z , data=focaldistance_enitregenus , col=col.alpha(rangi2,0.5), ylab= "Yield Loss", xlab= "MPD")
 
 # plot the MAP line, aka the mean impacts for each SES.FPD
-lines(t(newdat2.0), afterhours2.0.mean)
+lines(t(newdat3.0), afterhours3.0.mean)
 # plot a shaded region for 89% HPDI
-shade(afterhours2.0.HPDI,t(newdat2.0) )
+shade(afterhours3.0.HPDI,t(newdat3.0) )
 
 #rerunning models with onespecies analysis
 #### Invlogit with mpd
