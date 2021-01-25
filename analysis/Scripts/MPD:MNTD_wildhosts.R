@@ -92,15 +92,6 @@ colnames(newGrapepests)[5] <- "species"
 colnames(newGrapepests)[4] <- "genus"
 
 
-#adds "vitis_vinifera" to each unique pest
-for (i in 1:length(unique(GrapePestsfinal$pest))) {
-  GrapePestsfinal <- add_row(GrapePestsfinal, 
-                             pest = unique(GrapePestsfinal$pest)[i],
-                             hosts = "Vitis_vinifera",
-                             New.Genus = "Vitis",
-                             New.Species = "vinifera")
-}
-
 #Read in dataframes
 pathogens<-GrapePestsfinal
 agg_spp<-newGrapepests
@@ -166,12 +157,12 @@ mpd.all.sp.in.genus_ALL<-ses.mpd(phylo.comm.data$comm, cophenetic(phylo.comm.dat
 boxplot(mpd.all.sp.in.genus_ALL$mpd.obs.z)
 
 path_out = "~/Documents/GitHub/Wine-Grape-Disease/analysis/output/"
-write.csv(mpd.all.sp.in.genus_ALL, paste(path_out, "mpd.all.sp.in.genus_ALL.csv", sep= ""))
+write.csv(mpd.all.sp.in.genus_ALL, paste(path_out, "mpd.all.sp.in.genus_ALL_Wildhosts.csv", sep= ""))
 
 mntd.all.sp.in.genus_ALL<-ses.mntd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), null.model = c("taxa.labels"), runs= 999)
 boxplot(mntd.all.sp.in.genus_ALL$mntd.obs.z)
 
-write.csv(mntd.all.sp.in.genus_ALL, paste(path_out, "mntd.all.sp.in.genus_ALL.csv", sep= ""))
+write.csv(mntd.all.sp.in.genus_ALL, paste(path_out, "mntd.all.sp.in.genus_ALL_Wildhosts.csv", sep= ""))
 
 #######################################
 #assume single species in genus infected
@@ -237,12 +228,12 @@ mpd.single.sp.in.genus_ALL <-ses.mpd(phylo.comm.data$comm, cophenetic(phylo.comm
 boxplot(mpd.single.sp.in.genus_ALL$mpd.obs.z)
 
 path_out = "~/Documents/GitHub/Wine-Grape-Disease/analysis/output/"
-write.csv(mpd.single.sp.in.genus_ALL, paste(path_out, "mpd.single.sp.in.genus_ALL.csv", sep= ""))
+write.csv(mpd.single.sp.in.genus_ALL, paste(path_out, "mpd.single.sp.in.genus_ALL_Wildhosts.csv", sep= ""))
 
 mntd.single.sp.in.genus_ALL<-ses.mntd(phylo.comm.data$comm, cophenetic(phylo.comm.data$phy), abundance.weighted=TRUE, null.model = c("taxa.labels"), runs = 999)
 boxplot(mntd.single.sp.in.genus_ALL$mntd.obs.z)
 
-write.csv(mntd.single.sp.in.genus_ALL, paste(path_out, "mntd.single.sp.in.genus_ALL.csv", sep= ""))
+write.csv(mntd.single.sp.in.genus_ALL, paste(path_out, "mntd.single.sp.in.genus_ALL_Wildhosts.csv", sep= ""))
 
 single.sp<-cbind(rep("single.species", length(mpd.single.sp.in.genus_ALL$mpd.obs.z)),mpd.single.sp.in.genus_ALL$mpd.obs.z)
 all.genus<-cbind(rep("all.genus", length(mpd.all.sp.in.genus_ALL$mpd.obs.z)),mpd.all.sp.in.genus_ALL$mpd.obs.z)

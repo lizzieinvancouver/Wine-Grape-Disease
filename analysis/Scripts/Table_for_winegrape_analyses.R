@@ -50,10 +50,24 @@ colnames(MajorWinegrape_all)[5] <- "MNTD.Single"
 colnames(MajorWinegrape_all)[6] <- "MPD.Entire"
 colnames(MajorWinegrape_all)[7] <- "MPD.Single"
 
+#Function that plots correlation coefficient on pairs plots
+#sent from Jonathan!
+panel.cor <- function(x, y, digits=2, prefix="", cex.cor)
+{
+  usr <- par("usr"); on.exit(par(usr))
+  par(usr = c(0, 1, 0, 1), cex.axis = 1.7)
+  r <- abs(cor(x, y, use = "pairwise"))
+  txt <- format(c(r, 0.123456789), digits=digits)[1]
+  txt <- paste(prefix, txt, sep="")
+  text(0.5, 0.5, txt, cex = 1.7)
+}
+
 #creates pairs plots for all metrics
 #creates plot pairs_Majorwine_Agrihosts.pdf and saves in figure folder
+#Last part of pairs plot code, plots the correlation coefficients directly on the plot
 pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/pairs_Majorwine_Agrihosts.pdf")
-pairs(MajorWinegrape_all[,-1])
+pairs(MajorWinegrape_all[,-1], lower.panel=panel.smooth, 
+      upper.panel=panel.cor, cex.labels = 2)
 dev.off()
 
 ##########################################################
@@ -112,8 +126,10 @@ colnames(allpathogens_agrihosts_all)[7] <- "MPD.Single"
 
 #creates pairs plots for all metrics
 #creates plot pairs_allpathogens_Agrihosts.pdf and saves in figure folder
+#Last part of pairs plot code, plots the correlation coefficients directly on the plot
 pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/pairs_allpathogens_Agrihosts.pdf")
-pairs(allpathogens_agrihosts_all[,-1])
+pairs(allpathogens_agrihosts_all[,-1], lower.panel=panel.smooth, 
+      upper.panel=panel.cor, cex.labels = 2)
 dev.off()
 
 
@@ -163,8 +179,10 @@ colnames(allpathogens_wild_all)[7] <- "MPD.Single"
 
 #creates pairs plots for all metrics
 #creates plot pairs_allpathogens_wildhosts.pdf and saves in figure folder
+#Last part of pairs plot code, plots the correlation coefficients directly on the plot
 pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/pairs_allpathogens_wildhosts.pdf")
-pairs(allpathogens_wild_all[,-1])
+pairs(allpathogens_wild_all[,-1], lower.panel=panel.smooth, 
+      upper.panel=panel.cor, cex.labels = 2)
 dev.off()
 
 ##########################################################
@@ -213,8 +231,10 @@ colnames(allpathogens_ALL_all)[7] <- "MPD.Single"
 
 #creates pairs plots for all metrics
 #creates plot pairs_allpathogens_allhosts.pdf and saves in figure folder
+#Last part of pairs plot code, plots the correlation coefficients directly on the plot
 pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/pairs_allpathogens_allhosts.pdf")
-pairs(allpathogens_ALL_all[,-1])
+pairs(allpathogens_ALL_all[,-1], lower.panel=panel.smooth, 
+      upper.panel=panel.cor, cex.labels = 2)
 dev.off()
 
 
@@ -249,8 +269,56 @@ colnames(allpathogens_complete)[19] <- "MPD.Single.all"
 
 #creates pairs plots for all metrics
 #creates plot pairs_allpathogens_allhosts_Allanalyses_All.pdf and saves in figure folder
+#Last part of pairs plot code, plots the correlation coefficients directly on the plot
 pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/pairs_allpathogens_allhosts_Allanalyses_All.pdf")
-pairs(allpathogens_complete[,-1])
+pairs(allpathogens_complete[,-1], lower.panel=panel.smooth, 
+      upper.panel=panel.cor, cex.labels = 2)
 dev.off()
 
+########################################
+#Creating tables for all pathogen analyses split by metrics
+#Start with FPD
+
+# selects columns with pathogen names and FPD metrics
+allpathogens_ALL_FPD<- allpathogens_complete %>%
+  select(matches("pathogen|FPD"))  
+
+#creates pairs plots for all metrics
+#creates plot pairs_allpathogens_allhosts_Allanalyses_FPD.pdf and saves in figure folder
+#Last part of pairs plot code, plots the correlation coefficients directly on the plot
+pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/pairs_allpathogens_allhosts_Allanalyses_FPD.pdf")
+pairs(allpathogens_ALL_FPD[-1], lower.panel=panel.smooth, 
+              upper.panel=panel.cor, cex.labels = 2)
+dev.off()
+
+#####################################
+#Next up is MPD table for all pathogens
+
+# selects columns with pathogen names and FPD metrics
+allpathogens_ALL_MPD<- allpathogens_complete %>%
+  select(matches("pathogen|MPD")) 
+
+#creates pairs plots for all metrics
+#creates plot pairs_allpathogens_allhosts_Allanalyses_MPD.pdf and saves in figure folder
+#Last part of pairs plot code, plots the correlation coefficients directly on the plot
+pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/pairs_allpathogens_allhosts_Allanalyses_MPD.pdf")
+pairs(allpathogens_ALL_MPD[-1], lower.panel=panel.smooth, 
+      upper.panel=panel.cor, cex.labels = 2)
+dev.off()
+
+
+######################################
+#Lastly is MNTD table for all pathogens 
+
+# selects columns with pathogen names and FPD metrics
+allpathogens_ALL_MNTD<- allpathogens_complete %>%
+  select(matches("pathogen|MNTD")) 
+
+#creates pairs plots for all metrics
+#creates plot pairs_allpathogens_allhosts_Allanalyses_MNTD.pdf and saves in figure folder
+#Last part of pairs plot code, plots the correlation coefficients directly on the plot
+pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/pairs_allpathogens_allhosts_Allanalyses_MNTD.pdf")
+pairs(allpathogens_ALL_MNTD[-1], lower.panel=panel.smooth, 
+      upper.panel=panel.cor, cex.labels = 2)
+dev.off()
 

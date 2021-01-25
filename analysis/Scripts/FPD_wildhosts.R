@@ -92,15 +92,6 @@ colnames(newGrapepests)[5] <- "species"
 colnames(newGrapepests)[4] <- "genus"
 
 
-#adds "vitis_vinifera" to each unique pest
-for (i in 1:length(unique(GrapePestsfinal$pest))) {
-  GrapePestsfinal <- add_row(GrapePestsfinal, 
-                             pest = unique(GrapePestsfinal$pest)[i],
-                             hosts = "Vitis_vinifera",
-                             New.Genus = "Vitis",
-                             New.Species = "vinifera")
-}
-
 #Read in dataframes
 pathogens<-GrapePestsfinal
 agg_spp<-newGrapepests
@@ -298,5 +289,5 @@ for (j in 1:length(my.paths)){
 FPD.results2<-data.frame(my.paths, FPD2, SES.FPD2)
 
 path_out = "~/Documents/GitHub/Wine-Grape-Disease/analysis/output/"
-write.csv(FPD.results, paste(path_out, "Focaldistanceentiregenus.csv", sep= ""))
-write.csv(FPD.results2,paste(path_out, "Focaldistanceonespecies.csv", sep= ""))
+write.csv(FPD.results, paste(path_out, "Focaldistanceentiregenus_All_Wildhost.csv", sep= ""))
+write.csv(FPD.results2,paste(path_out, "Focaldistanceonespecies_All_Wildhost.csv", sep= ""))
