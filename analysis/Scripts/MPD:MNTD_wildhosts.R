@@ -57,16 +57,12 @@ newGrapepests <- as.data.frame(newGrapepests)[duplicated(as.data.frame(newGrapep
 newGrapepests <- newGrapepests %>% unite("Species", New.Genus,New.Species, sep = " ", remove = FALSE)
 
 
-#creates CSV file of winegrape pests
-path_out = "~/Documents/GitHub/Wine-Grape-Disease/analysis/output/"
-write.csv(newGrapepests, paste(path_out, "newGrapepests_wild.csv", sep= ""))
-
 #reads in CSV file for winegrape pests
-splist_pathogens <- read_csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/newGrapepests_wild.csv")
+splist_pathogens <- newGrapepests
 
 
 #Removes first column and fifth column
-splist_pathogens <- splist_pathogens[,c(-1,-5)]
+splist_pathogens <- splist_pathogens[,-4]
 
 #renames columns
 colnames(splist_pathogens)[1] <- "family"
