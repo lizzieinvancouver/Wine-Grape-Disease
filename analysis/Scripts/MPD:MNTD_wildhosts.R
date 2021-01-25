@@ -31,61 +31,63 @@ GrapePests <- GrapePests[!(GrapePests$pest %in% weeds$pest),]
 #Removes hosts if they are an agriculutral host
 #lose almost 15,000 rows
 GrapePestsfinal<- GrapePestsfinal[!(GrapePestsfinal$hosts %in% agricultural_species$Species_name),]
+GrapePests<- GrapePests[!(GrapePests$hosts %in% agricultural_species$Species_name),]
 
-#selects only the first column
-splist <- GrapePestsfinal[,1]
+#Removes any hosts with sp. in the name for species list
+splist<- GrapePests[!grepl('sp.', GrapePests$hosts),]
 
-#removes duplicated hosts
-splist <-as.data.frame(splist)[duplicated(as.data.frame(splist))==F,]
-
-#makes list into a data frame
-splist <- as.data.frame(splist)
-
-#removes any species names that contain sp.
-splist<- splist[!grepl('sp.', splist$splist),]
+#removes duplicated hosts 
+splist <-as.data.frame(splist)[duplicated(as.data.frame(splist$hosts))==F,]
 
 #selects columns for family, genus and species
-newGrapepests <- select(GrapePests, Family, New.Genus, New.Species)
+splist <- select(splist, hosts, Family, New.Genus, New.Species)
 
 #Drops any values with NAs
-newGrapepests <- newGrapepests %>% drop_na()
-
-#Removes duplicated rows
-newGrapepests <- as.data.frame(newGrapepests)[duplicated(as.data.frame(newGrapepests))==F,]
+splist  <- splist  %>% drop_na()
 
 #creates species column with an a space similar to the example species list given
-newGrapepests <- newGrapepests %>% unite("Species", New.Genus,New.Species, sep = " ", remove = FALSE)
-
-
-#reads in CSV file for winegrape pests
-splist_pathogens <- newGrapepests
+splist <- splist %>% unite("Species", New.Genus,New.Species, sep = " ", remove = FALSE)
 
 
 #Removes first column and fifth column
-splist_pathogens <- splist_pathogens[,-4]
+splist <- splist[,c(-1,-5)]
 
 #renames columns
-colnames(splist_pathogens)[1] <- "family"
-colnames(splist_pathogens)[2] <- "species"
-colnames(splist_pathogens)[3] <- "genus"
+colnames(splist)[1] <- "family"
+colnames(splist)[2] <- "species"
+colnames(splist)[3] <- "genus"
 
 #reorder columns to match examples species list
-splist_pathogens <- splist_pathogens[c(2,3,1)]
+splist <- splist[c(2,3,1)]
 
 
 #Makes phylogenetic hypotheses for winegrape pests and a backbone phylogeny
-result<- phylo.maker(splist_pathogens, output.sp.list = TRUE, output.tree = TRUE) #, scenarios= "S3"
+result<- phylo.maker(splist, output.sp.list = TRUE, output.tree = TRUE) #, scenarios= "S3"
 
 #renames tree made from phylo.maker
 tree<-result$scenario.3
 
-#replaces space with an underscore in splist_pathogens$species column
-newGrapepests <- newGrapepests %>% unite("Species_name", New.Genus,New.Species, remove = FALSE)
+
+#####Created newGrapepests with grape pests including species with sp. but remove NAs
+
+#Selects host, New.Genus, New.Species columns
+newGrapepests <- GrapePests %>% select(hosts, New.Genus, New.Species) 
+
+
+#removes duplicated hosts 
+newGrapepests <-as.data.frame(newGrapepests)[duplicated(as.data.frame(newGrapepests$hosts))==F,]
+
+
+#Drops any values with NAs
+newGrapepests  <- newGrapepests  %>% drop_na()
 
 
 #renames columns 
-colnames(newGrapepests)[5] <- "species"
-colnames(newGrapepests)[4] <- "genus"
+colnames(newGrapepests)[3]<- "species"
+colnames(newGrapepests)[2]<- "genus"
+
+#Adds colums called species_name by combinig genus and species columns and seperating with an underscore
+newGrapepests <- newGrapepests %>% unite("Species_name", genus,species, sep = "_", remove = FALSE)
 
 
 #Read in dataframes
