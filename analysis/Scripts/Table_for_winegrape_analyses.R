@@ -67,7 +67,7 @@ panel.cor <- function(x, y, digits=2, prefix="", cex.cor)
 #Last part of pairs plot code, plots the correlation coefficients directly on the plot
 pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/pairs_Majorwine_Agrihosts.pdf")
 pairs(MajorWinegrape_all[,-1], lower.panel=panel.smooth, 
-      upper.panel=panel.cor, cex.labels = 2)
+      upper.panel=panel.cor, cex.labels = 1)
 dev.off()
 
 ##########################################################
@@ -129,7 +129,7 @@ colnames(allpathogens_agrihosts_all)[7] <- "MPD.Single"
 #Last part of pairs plot code, plots the correlation coefficients directly on the plot
 pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/pairs_allpathogens_Agrihosts.pdf")
 pairs(allpathogens_agrihosts_all[,-1], lower.panel=panel.smooth, 
-      upper.panel=panel.cor, cex.labels = 2)
+      upper.panel=panel.cor, cex.labels = 1)
 dev.off()
 
 
@@ -182,7 +182,7 @@ colnames(allpathogens_wild_all)[7] <- "MPD.Single"
 #Last part of pairs plot code, plots the correlation coefficients directly on the plot
 pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/pairs_allpathogens_wildhosts.pdf")
 pairs(allpathogens_wild_all[,-1], lower.panel=panel.smooth, 
-      upper.panel=panel.cor, cex.labels = 2)
+      upper.panel=panel.cor, cex.labels = 1)
 dev.off()
 
 ##########################################################
@@ -234,7 +234,7 @@ colnames(allpathogens_ALL_all)[7] <- "MPD.Single"
 #Last part of pairs plot code, plots the correlation coefficients directly on the plot
 pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/pairs_allpathogens_allhosts.pdf")
 pairs(allpathogens_ALL_all[,-1], lower.panel=panel.smooth, 
-      upper.panel=panel.cor, cex.labels = 2)
+      upper.panel=panel.cor, cex.labels = 1)
 dev.off()
 
 
@@ -272,7 +272,7 @@ colnames(allpathogens_complete)[19] <- "MPD.Single.all"
 #Last part of pairs plot code, plots the correlation coefficients directly on the plot
 pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/pairs_allpathogens_allhosts_Allanalyses_All.pdf")
 pairs(allpathogens_complete[,-1], lower.panel=panel.smooth, 
-      upper.panel=panel.cor, cex.labels = 2)
+      upper.panel=panel.cor, cex.labels = 1)
 dev.off()
 
 ########################################
@@ -288,7 +288,7 @@ allpathogens_ALL_FPD<- allpathogens_complete %>%
 #Last part of pairs plot code, plots the correlation coefficients directly on the plot
 pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/pairs_allpathogens_allhosts_Allanalyses_FPD.pdf")
 pairs(allpathogens_ALL_FPD[-1], lower.panel=panel.smooth, 
-              upper.panel=panel.cor, cex.labels = 2)
+              upper.panel=panel.cor, cex.labels = 1)
 dev.off()
 
 #####################################
@@ -303,7 +303,7 @@ allpathogens_ALL_MPD<- allpathogens_complete %>%
 #Last part of pairs plot code, plots the correlation coefficients directly on the plot
 pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/pairs_allpathogens_allhosts_Allanalyses_MPD.pdf")
 pairs(allpathogens_ALL_MPD[-1], lower.panel=panel.smooth, 
-      upper.panel=panel.cor, cex.labels = 2)
+      upper.panel=panel.cor, cex.labels = 1)
 dev.off()
 
 
@@ -319,6 +319,6 @@ allpathogens_ALL_MNTD<- allpathogens_complete %>%
 #Last part of pairs plot code, plots the correlation coefficients directly on the plot
 pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/pairs_allpathogens_allhosts_Allanalyses_MNTD.pdf")
 pairs(allpathogens_ALL_MNTD[-1], lower.panel=panel.smooth, 
-      upper.panel=panel.cor, cex.labels = 2)
+      upper.panel=panel.cor, cex.labels = 1)
 dev.off()
 
