@@ -13,7 +13,7 @@ library(dbplyr)
 library(data.table)
 library(readr)
 
-source("Cleaninghostranges.R")
+source("Cleaninghostrangesnew.R")
 source("match_taxa.R")
 
 
@@ -27,13 +27,17 @@ ag.tree<-drop.tip(zanne.tree, dropme)
 tree<-ag.tree
 
 #adds "vitis_vinifera" to each unique pest
-for (i in 1:630) {
+for (i in 1:length(unique(GrapePestsfinal$pest))) {
   GrapePestsfinal <- add_row(GrapePestsfinal, 
                       pest = unique(GrapePestsfinal$pest)[i],
                       hosts = "Vitis_vinifera",
                       New.Genus = "Vitis",
                       New.Species = "vinifera")
 }
+
+#Removes duplicated rows
+#loses 531 rows
+GrapePestsfinal<- unique(GrapePestsfinal)
 
 #Read in dataframes
 pathogens<-GrapePestsfinal

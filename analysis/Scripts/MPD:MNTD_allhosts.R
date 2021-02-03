@@ -12,19 +12,7 @@ library(readr)
 library(V.PhyloMaker)
 library(tidyverse)
 
-source("Cleaninghostranges.R")
-yieldLoss <- read_csv("~/Documents/GitHub/Wine-Grape-Disease/data/yieldLoss.csv")
-
-#creates data set with weeds only 
-weeds <- yieldLoss[yieldLoss$type== 'plantae',]
-
-#replaces spaces between genus and species names with underscore 
-weeds$pest <- sub(" ", "_", weeds$pest)
-
-#removes pest if they are a weed
-#lose 1,1116 rows
-GrapePestsfinal <- GrapePestsfinal[!(GrapePestsfinal$pest %in% weeds$pest),]
-GrapePests <- GrapePests[!(GrapePests$pest %in% weeds$pest),]
+source("Cleaninghostrangesnew.R")
 
 #selects only the first column
 splist <- GrapePestsfinal[,1]
@@ -39,7 +27,7 @@ splist <- as.data.frame(splist)
 splist<- splist[!grepl('sp.', splist$splist),]
 
 #selects columns for family, genus and species
-newGrapepests <- select(GrapePests, Family, New.Genus, New.Species)
+newGrapepests <- select(GrapePests, hostFamily, New.Genus, New.Species)
 
 #Drops any values with NAs
 newGrapepests <- newGrapepests %>% drop_na()
@@ -50,17 +38,11 @@ newGrapepests <- as.data.frame(newGrapepests)[duplicated(as.data.frame(newGrapep
 #creates species column with an a space similar to the example species list given
 newGrapepests <- newGrapepests %>% unite("Species", New.Genus,New.Species, sep = " ", remove = FALSE)
 
-
-#creates CSV file of winegrape pests
-path_out = "~/Documents/GitHub/Wine-Grape-Disease/analysis/output/"
-write.csv(newGrapepests, paste(path_out, "newGrapepests.csv", sep= ""))
-
-#reads in CSV file for winegrape pests
-splist_pathogens <- read_csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/newGrapepests.csv")
-
+#Renames newGrapepests to splist_pathogens for no apparent reason
+splist_pathogens<- newGrapepests
 
 #Removes first column and fifth column
-splist_pathogens <- splist_pathogens[,c(-1,-5)]
+splist_pathogens <- splist_pathogens[,-4]
 
 #renames columns
 colnames(splist_pathogens)[1] <- "family"
@@ -94,6 +76,12 @@ for (i in 1:length(unique(GrapePestsfinal$pest))) {
                              New.Genus = "Vitis",
                              New.Species = "vinifera")
 }
+
+
+#Removes duplicated rows
+#loses 531 rows
+GrapePestsfinal<- unique(GrapePestsfinal)
+
 
 #Read in dataframes
 pathogens<-GrapePestsfinal

@@ -13,20 +13,8 @@ library(readr)
 library(V.PhyloMaker)
 library(tidyverse)
 
-source("Cleaninghostranges.R")
-yieldLoss <- read_csv("~/Documents/GitHub/Wine-Grape-Disease/data/yieldLoss.csv")
+source("Cleaninghostrangesnew.R")
 agricultural_species <- read_csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/input/agricultural_species.csv")
-
-#creates data set with weeds only 
-weeds <- yieldLoss[yieldLoss$type== 'plantae',]
-
-#replaces spaces between genus and species names with underscore 
-weeds$pest <- sub(" ", "_", weeds$pest)
-
-#removes pest if they are a weed
-#lose 1,1116 rows
-GrapePestsfinal <- GrapePestsfinal[!(GrapePestsfinal$pest %in% weeds$pest),]
-GrapePests <- GrapePests[!(GrapePests$pest %in% weeds$pest),]
 
 #Removes hosts if they are an agriculutral host
 #lose almost 15,000 rows
@@ -40,7 +28,7 @@ splist<- GrapePests[!grepl('sp.', GrapePests$hosts),]
 splist <-as.data.frame(splist)[duplicated(as.data.frame(splist$hosts))==F,]
 
 #selects columns for family, genus and species
-splist <- select(splist, hosts, Family, New.Genus, New.Species)
+splist <- select(splist, hosts, hostFamily, New.Genus, New.Species)
 
 #Drops any values with NAs
 splist  <- splist  %>% drop_na()

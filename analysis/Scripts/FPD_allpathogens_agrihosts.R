@@ -11,7 +11,7 @@ library(phytools)
 library(readr)
 library(tidyverse)
 
-source("Cleaninghostranges.R")
+source("Cleaninghostrangesnew.R")
 source("match_taxa.R")
 
 zanne.tree<-read.tree("Vascular_Plants_rooted.dated.tre")
@@ -21,19 +21,6 @@ dropme<-mytips[!mytips %in% agg.dat$Species_name]
 ag.tree<-drop.tip(zanne.tree, dropme)
 
 tree<-ag.tree
-
-yieldLoss <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/data/yieldLoss.csv")
-
-#creates data set with weeds only 
-weeds <- yieldLoss[yieldLoss$type== 'plantae',]
-
-#replaces spaces between genus and species names with underscore 
-weeds$pest <- sub(" ", "_", weeds$pest)
-
-#removes pest if they are a weed
-#lose 1,1116 rows
-GrapePestsfinal <- GrapePestsfinal[!(GrapePestsfinal$pest %in% weeds$pest),]
-GrapePests <- GrapePests[!(GrapePests$pest %in% weeds$pest),]
 
 
 #adds "vitis_vinifera" to each unique pest
@@ -46,7 +33,8 @@ for (i in 1:length(unique(GrapePestsfinal$pest))) {
 }
 
 #Removes duplicated rows
-GrapePestsfinal <- as.data.frame(GrapePestsfinal[duplicated(as.data.frame(GrapePestsfinal))==F,])
+#loses 531 rows
+GrapePestsfinal<- unique(GrapePestsfinal)
 
 
 
