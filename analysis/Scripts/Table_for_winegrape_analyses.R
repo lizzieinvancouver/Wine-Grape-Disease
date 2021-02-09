@@ -81,11 +81,6 @@ mntd_single_sp_in_genus2_0 <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/an
 mpd_all_sp_in_genus2_0 <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/mpd_all_sp_in_genus2.0.csv")
 mpd_single_sp_in_genus2_0 <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/mpd.single.sp.in.genus2.0.csv")
 
-#####Removing rows that are weeds for mntd and mpd analyses 
-mntd_all_sp_in_genus2_0<- mntd_all_sp_in_genus2_0[(mntd_all_sp_in_genus2_0$X %in% Focaldistanceentiregenus_allpathogens_agrihost$my.paths),]
-mntd_single_sp_in_genus2_0<- mntd_single_sp_in_genus2_0[(mntd_single_sp_in_genus2_0$X %in% Focaldistanceentiregenus_allpathogens_agrihost$my.paths),]
-mpd_all_sp_in_genus2_0<- mpd_all_sp_in_genus2_0[(mpd_all_sp_in_genus2_0$X %in% Focaldistanceentiregenus_allpathogens_agrihost$my.paths),]
-mpd_single_sp_in_genus2_0<- mpd_single_sp_in_genus2_0[(mpd_single_sp_in_genus2_0$X %in% Focaldistanceentiregenus_allpathogens_agrihost$my.paths),]
 
 #Ensures all species are the same across all analyses 
 Focaldistanceentiregenus_allpathogens_agrihost<- Focaldistanceentiregenus_allpathogens_agrihost[(Focaldistanceentiregenus_allpathogens_agrihost$my.paths %in% mntd_all_sp_in_genus2_0$X),]
@@ -137,12 +132,12 @@ dev.off()
 #Next up extended pathogen list with wild hosts
 
 #Read in datasets
-Focaldistanceentiregenus_wild <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/Focaldistanceentiregenus_wild.csv")
-Focaldistanceonespecies_wild <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/Focaldistanceonespecies_wild.csv")
-mntd.all.sp.in.genus_wild <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/mntd.all.sp.in.genus_wild.csv")
-mntd.single.sp.in.genus_wild <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/mntd.single.sp.in.genus_wild.csv")
-mpd.all.sp.in.genus_wild <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/mpd.all.sp.in.genus_wild.csv")
-mpd.single.sp.in.genus_wild <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/mpd.single.sp.in.genus_wild.csv")
+Focaldistanceentiregenus_wild <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/Focaldistanceentiregenus_All_Wildhost.csv")
+Focaldistanceonespecies_wild <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/Focaldistanceonespecies_All_Wildhost.csv")
+mntd.all.sp.in.genus_wild <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/mntd.all.sp.in.genus_ALL_Wildhosts.csv")
+mntd.single.sp.in.genus_wild <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/mntd.single.sp.in.genus_ALL_Wildhosts.csv")
+mpd.all.sp.in.genus_wild <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/mpd.all.sp.in.genus_ALL_Wildhosts.csv")
+mpd.single.sp.in.genus_wild <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/mpd.single.sp.in.genus_ALL_Wildhosts.csv")
 
 
 #Removing columns not needed
