@@ -1,18 +1,138 @@
-#Bayesian models based on type of pathogen for extended winegrape pathogens
-setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/") # setwd("~/Documents/git/projects/others/darwin/winegrapedisease/Wine-Grape-Disease/analysis/output")
+#Figures for Winegrape paper 2.0
+#Started Feb 9th 2021
+#By Darwin 
 rm(list=ls()) # remove everything currently held in the R memory
 options(stringsAsFactors=FALSE)
+setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/")
 
-#loades packes
-library(readr)
-library(taxize)
-library(dplyr)
-library(plyr)
-library(rstanarm)
-library(tibble)
-library(ggplot2)
-library(ggpubr)
+#plots phylogenetic_metrics.pdf
+mntd.all.sp.in.genus_ALL <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/mntd.all.sp.in.genus_ALL.csv")
+mpd.all.sp.in.genus_ALL <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/mpd.all.sp.in.genus_ALL.csv")
 
+#Takes MNTD and MPD data and merges into a single dataframe
+mntd<-cbind(rep("MNTD", length(mntd.all.sp.in.genus_ALL$mntd.obs.z)),mntd.all.sp.in.genus_ALL$mntd.obs.z)
+mpd<-cbind(rep("MPD", length(mpd.all.sp.in.genus_ALL$mpd.obs.z)),mpd.all.sp.in.genus_ALL$mpd.obs.z)
+phylomet<-as.data.frame(rbind(mntd, mpd), stringsAsFactors=FALSE)
+
+pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/phylogenetic_metrics.pdf")
+par(mfrow= c(1,1))
+boxplot(as.numeric(V2) ~ as.factor(V1), data=phylomet, staplelwd = 0 , ylab = "SES", xlab =" ")
+abline(h=0, col=2, lty=2)
+dev.off()
+
+##Below is code that creates figure MPDvsMNTD_ALL.pdf
+MNTD_MPDcomparison<- merge(mntd.all.sp.in.genus_ALL,mpd.all.sp.in.genus_ALL)
+
+
+pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/MPDvsMNTD_ALL.pdf")
+par(mfrow= c(1,1))
+plot(MNTD_MPDcomparison$mntd.obs.z~ MNTD_MPDcomparison$mpd.obs.z, data = MNTD_MPDcomparison, ylab = "SES.MNTD", 
+     xlab = "SES.MPD", col='black', pch=19)
+rect(c(0,-15), c(0,5), c(0,0), c(0,0), col=gray(0.8,alpha=0.5), border=NA)
+rect(c(0,0), -1e6, c(15,0), c(0,0), col=gray(0.8,alpha=0.5), border=NA)
+abline(v=0, col=2, lty=2)
+abline(h=0, col=2, lty=2)
+text(-9, 0.5, "MNTD>MPD", cex = 0.75)
+text(10, -17, "MPD>MNTD", cex = 0.75)
+dev.off()
+
+####################################################
+#Creates figure for TypeofPathogen_Combined.pdf
+
+#####Codes for major winegrape pathogens 
+#loading in datasets
+mpd_all_sp_in_genus <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/mpd_all_sp_in_genus.csv")
+
+post1<- stan_glm(mpd.obs.z~ Type, data = mpd_all_sp_in_genus,
+                 family = gaussian(link="identity"),)
+
+coef(post1)
+
+fits <- post1 %>% 
+  as_data_frame #%>% 
+#rename(intercept = `(Intercept)`)
+
+fits <- fits[,-6]
+
+path <- unique(names(fits))
+
+dose <- (matrix(NA, nrow= nrow(fits), ncol = ncol(fits)))
+for (n in 1:length(path)){ 
+  dose[,1]<- as.matrix(fits[,1] * 1)
+  dose[,n]<- as.matrix(fits[,1] + fits[,n])
+}  
+
+dose <- as.data.frame(dose)
+
+prob_lwr <- .025
+prob_upr <- .905
+
+
+path <- unique(names(dose))
+tycho <- (matrix(NA, nrow= 3, ncol = ncol(dose)))
+for (n in 1:length(path)){ 
+  tycho[1,n]<- as.matrix(median(dose[,n]))
+  tycho[2,n] <- as.matrix(quantile(dose[,n], prob_lwr))                    
+  tycho[3,n]<- as.matrix(quantile(dose[,n], prob_upr)) 
+}  
+
+tycho <- as.data.frame(tycho)
+
+
+rownames(tycho)[1] <- "median"
+rownames(tycho)[2] <- "lower"
+rownames(tycho)[3] <- "upper"
+
+#changes column names
+colnames(tycho)[1] <- "B"
+colnames(tycho)[2] <- "F"
+colnames(tycho)[3] <- "N"
+colnames(tycho)[4] <- "P"
+colnames(tycho)[5] <- "V"
+
+
+
+ford <- t(tycho)
+ford <- as.data.frame(ford)
+ford <- rownames_to_column(ford)
+colnames(ford)[1] <- "Type"
+
+
+cloud1<- full_join(mpd_all_sp_in_genus, ford, by= "Type")
+
+#replaces groups with the full name in cloud1 
+cloud1$Type<- gsub("F", "Fungi",cloud1$Type)
+cloud1$Type<- gsub("P", "Pest",cloud1$Type)
+cloud1$Type<- gsub("B", "Bacteria",cloud1$Type)
+cloud1$Type<- gsub("V", "Virus",cloud1$Type)
+cloud1$Type<- gsub("N", "Nematode",cloud1$Type)
+
+#replaces groups with the full name in mpd_all_sp_in_genus 
+mpd_all_sp_in_genus$Type<- gsub("F", "Fungi",mpd_all_sp_in_genus$Type)
+mpd_all_sp_in_genus$Type<- gsub("P", "Pest",mpd_all_sp_in_genus$Type)
+mpd_all_sp_in_genus$Type<- gsub("B", "Bacteria",mpd_all_sp_in_genus$Type)
+mpd_all_sp_in_genus$Type<- gsub("V", "Virus",mpd_all_sp_in_genus$Type)
+mpd_all_sp_in_genus$Type<- gsub("N", "Nematode",mpd_all_sp_in_genus$Type)
+
+#Vizulizing Data
+cloud<- ggplot(mpd_all_sp_in_genus, aes(x = Type, y =mpd.obs.z )) + 
+  geom_point(size = 1.5, shape= 21, position = position_jitter(height = 0.5, width = 0.1)) 
+
+
+cloud  + ylab ("SES.MPD")
+
+Type1<- cloud + geom_point(aes(x=1, y= -2.90), colour= "red") + 
+  geom_point(aes(x=2, y= -3.85), colour= "red") +
+  geom_point(aes(x=3, y= -1.99), colour= "red") +
+  geom_point(aes(x=4, y= -3.16), colour= "red") +
+  geom_point(aes(x=5, y= -3.45), colour= "red") +
+  geom_errorbar(data= cloud1, aes(ymin=lower, ymax=upper), width=0,
+                position=position_dodge(0.05)) +
+  ylab ("SES.MPD") + 
+  xlab ("Pathogen Type") + 
+  theme(legend.position = "none")
+
+######Codes for all winegrape pathogens 
 source("~/Documents/GitHub/Wine-Grape-Disease/analysis/scripts/Cleaninghostrangesnew.R")
 
 #loading in datasets
@@ -80,7 +200,7 @@ for (i in 1:length(output)){
     phylumdata[i,] <- "NA"
   } else {
     phylumdata[i,] <- output[[i]][output[[i]]$rank == "phylum",]
-}
+  }
 }
 
 #Changes column names 
@@ -226,216 +346,17 @@ Type2 <- cloud + geom_point(aes(x=1, y= -3.0508140), colour= "red") +
   xlab ("Pathogen Type") + 
   theme(legend.position = "none")
 
-###############################################################################
-#MPD single species
-###############################################################################
-post2<- stan_glm(mpd.obs.z ~ type, data = mpd_single_sp_in_genus_ALL,
-                 family = gaussian(link="identity"),)    
+#making figure TypeofPathogen_Combined.pdf
 
-
-#shows summary of RstanArm model
-summary(post2)
-
-#shows coeficents for model
-coef(post2)
-
-#pulls out prosterior data
-fits2.0 <- post2 %>% 
-  as_data_frame 
-
-#reanmes intercept column
-colnames(fits2.0)[1]<- "intercept"
-
-#removes sigma and NA column
-fits2.0 <- fits2.0[,c(-7,-3)]
-
-#creates patho for each unique column name
-path <- unique(names(fits2.0))
-
-#Creates empty dataframe
-dose2.0 <- (matrix(NA, nrow= nrow(fits2.0), ncol = ncol(fits2.0)))
-
-#for loop that adds bacteria values to other columns
-for (n in 1:length(path)){ 
-  dose2.0[,1]<- as.matrix(fits2.0[,1] * 1)
-  dose2.0[,n]<- as.matrix(fits2.0[,1] + fits2.0[,n])
-}  
-
-#makes output a dataframe
-dose2.0 <- as.data.frame(dose2.0)
-
-#codes for 93% prediction interval
-prob_lwr <- .025
-prob_upr <- .905
-
-#new path
-path <- unique(names(dose2.0))
-
-#codes for empty dataframe
-tycho2.0 <- (matrix(NA, nrow= 3, ncol = ncol(dose2.0)))
-
-#for loop that calculates prediction interval for each pathogen type
-for (n in 1:length(path)){ 
-  tycho2.0[1,n]<- as.matrix(median(dose2.0[,n]))
-  tycho2.0[2,n] <- as.matrix(quantile(dose2.0[,n], prob_lwr))                    
-  tycho2.0[3,n]<- as.matrix(quantile(dose2.0[,n], prob_upr)) 
-}  
-
-#make output as data frame
-tycho2.0 <- as.data.frame(tycho2.0)
-
-#changes rownames
-rownames(tycho2.0)[1] <- "median"
-rownames(tycho2.0)[2] <- "lower"
-rownames(tycho2.0)[3] <- "upper"
-
-#changes column names
-colnames(tycho2.0)[1] <- "Bacteria"
-colnames(tycho2.0)[2] <- "Fungi"
-colnames(tycho2.0)[3] <- "Nematode"
-colnames(tycho2.0)[4] <- "Pest"
-colnames(tycho2.0)[5] <- "Virus"
-
-# transpose tycho dataframe then makes dataframe then changes rownames to columnames 
-ford2.0 <- t(tycho2.0)
-ford2.0 <- as.data.frame(ford2.0)
-ford2.0 <- rownames_to_column(ford2.0)
-colnames(ford2.0)[1] <- "type"
-
-#creates dataset with removing NAs
-mpd_single_sp_in_genus_ALL <- subset(mpd_single_sp_in_genus_ALL, type!= "NA")
-
-#joins dataset of mpd and ford
-cloud2.1<- full_join(mpd_single_sp_in_genus_ALL, ford2.0, by= "type")
-
-
-#Vizulizing Data
-cloud2.0<- ggplot(mpd_single_sp_in_genus_ALL, aes(x = type, y =mpd.obs.z )) + 
-  geom_point(size = 1.5, shape= 21, position = position_jitter(height = 0.5, width = 0.1)) 
-
-#codes for prediction median and error bars based on prediction intervals
-cloud2.0 + geom_point(aes(x=1, y= -1.1763932), colour= "red") + 
-  geom_point(aes(x=2, y= 0.2073315), colour= "red") +
-  geom_point(aes(x=3, y= -0.4227126), colour= "red") +
-  geom_point(aes(x=4, y= -1.1786602), colour= "red") +
-  geom_point(aes(x=5, y= -1.646524), colour= "red") +
-  geom_errorbar(data= cloud2.1, aes(ymin=lower, ymax=upper, colour= "red"), width=0,
-                position=position_dodge(0.05)) +
-  ylab ("SES.MPD") + 
-  xlab ("Pathogen Type") + 
-  theme(legend.position = "none")
-
-#######################################################################
-#Testing theory about restricted pathogens 
-######################################################################
-
-#load datasets 
-mpd_all_sp_in_genus_majorpathogens_allhosts <- read.csv("mpd_all_sp_in_genus_majorpathogens_allhosts.csv")
-
-post3<- stan_glm(mpd.obs.z ~ Type, data = mpd_all_sp_in_genus_majorpathogens_allhosts,
-                 family = gaussian(link="identity"),)  
-
-#shows summary of RstanArm model
-summary(post3)
-
-#shows coeficents for model
-coef(post3)
-
-#pulls out prosterior data
-fits3.0 <- post3 %>% 
-  as_data_frame 
-
-#reanmes intercept column
-colnames(fits3.0)[1]<- "intercept"
-
-#removes sigma and NA column
-fits3.0 <- fits3.0[,-6]
-
-#creates patho for each unique column name
-path <- unique(names(fits3.0))
-
-#Creates empty dataframe
-dose3.0 <- (matrix(NA, nrow= nrow(fits3.0), ncol = ncol(fits3.0)))
-
-#for loop that adds bacteria values to other columns
-for (n in 1:length(path)){ 
-  dose3.0[,1]<- as.matrix(fits3.0[,1] * 1)
-  dose3.0[,n]<- as.matrix(fits3.0[,1] + fits3.0[,n])
-}  
-
-#makes output a dataframe
-dose3.0 <- as.data.frame(dose3.0)
-
-#codes for 93% prediction interval
-prob_lwr <- .025
-prob_upr <- .905
-
-#new path
-path <- unique(names(dose3.0))
-
-#codes for empty dataframe
-tycho3.0 <- (matrix(NA, nrow= 3, ncol = ncol(dose3.0)))
-
-#for loop that calculates prediction interval for each pathogen type
-for (n in 1:length(path)){ 
-  tycho3.0[1,n]<- as.matrix(median(dose3.0[,n]))
-  tycho3.0[2,n] <- as.matrix(quantile(dose3.0[,n], prob_lwr))                    
-  tycho3.0[3,n]<- as.matrix(quantile(dose3.0[,n], prob_upr)) 
-}  
-
-#make output as data frame
-tycho3.0 <- as.data.frame(tycho3.0)
-
-#changes rownames
-rownames(tycho3.0)[1] <- "median"
-rownames(tycho3.0)[2] <- "lower"
-rownames(tycho3.0)[3] <- "upper"
-
-#changes column names
-colnames(tycho3.0)[1] <- "B"
-colnames(tycho3.0)[2] <- "F"
-colnames(tycho3.0)[3] <- "N"
-colnames(tycho3.0)[4] <- "P"
-colnames(tycho3.0)[5] <- "V"
-
-# transpose tycho dataframe then makes dataframe then changes rownames to columnames 
-ford3.0 <- t(tycho3.0)
-ford3.0 <- as.data.frame(ford3.0)
-ford3.0 <- rownames_to_column(ford3.0)
-colnames(ford3.0)[1] <- "Type"
-
-#joins dataset of mpd and ford
-cloud3.1<- full_join(mpd_all_sp_in_genus_majorpathogens_allhosts, ford3.0, by= "Type")
-
-
-#Vizulizing Data
-cloud3.0<- ggplot(mpd_all_sp_in_genus_majorpathogens_allhosts, aes(x = Type, y =mpd.obs.z )) + 
-  geom_point(size = 1.5, shape= 21, position = position_jitter(height = 0.5, width = 0.1)) 
-
-#codes for prediction median and error bars based on prediction intervals
-cloud3.0 + geom_point(aes(x=1, y= -1.4836679), colour= "red") + 
-  geom_point(aes(x=2, y= -2.2084030	), colour= "red") +
-  geom_point(aes(x=3, y= -0.7743441), colour= "red") +
-  geom_point(aes(x=4, y= -1.0301779), colour= "red") +
-  geom_point(aes(x=5, y= -2.2761786), colour= "red") +
-  geom_errorbar(data= cloud3.1, aes(ymin=lower, ymax=upper, colour= "red"), width=0,
-                position=position_dodge(0.05)) +
-  ylab ("SES.MPD") + 
-  xlab ("Pathogen Type") + 
-  theme(legend.position = "none")
-
-##################################
-#Testing to see if category is important
-
-post1<- stan_glm(mpd.obs.z~ Type + category, data = mpd.all.sp.in.genus_ALL,
-                 family = gaussian(link="identity"),)
-
-post2<- stan_glm(mpd.obs.z~ Type + category, data = mpd_single_sp_in_genus_ALL,
-                 family = gaussian(link="identity"),)
-
-###########################
-#making figure 
 
 figure <- ggarrange(Type1, Type2,
                     labels = c("A", "B"),
                     ncol = 2, nrow = 1)
+
+pdf("~/Documents/GitHub/Wine-Grape-Disease/figures/TypeofPathogen_Combined.pdf")
+figure 
+dev.off()
+
+##############################
+
+

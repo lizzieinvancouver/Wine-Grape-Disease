@@ -70,7 +70,7 @@ for (n in 1:nrow(orginal_data)){
 
 #codes for new data
 newdatlength <- 50
-newdat <- as.data.frame(seq(-9.5, 2, length.out=newdatlength))
+newdat <- as.data.frame(seq(-10, 2.4, length.out=newdatlength))
 #as.data.frame(seq(range(Yieldloss2.0$SES.FPD, na.rm=TRUE)[1], range(Yieldloss2.0$SES.FPD, na.rm=TRUE)[2], length.out=newdatlength))
 
 afterhours2.0 <- (matrix(NA, nrow= nrow(posteriorSamples2.0), ncol = ncol(t(newdat))))
@@ -95,7 +95,7 @@ afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
 #below plots Inverselogit_linearmodel.pdf
 # plots raw data
 # fading out points to make line and interval more visible
-plot( impact2~mpd.obs.z , data=Yieldloss2.0 , col=col.alpha(rangi2,0.5), ylab= "Yield Loss", xlab= "MPD", ylim= c(0,1), xlim=c(-9.5,2))
+plot( impact2~mpd.obs.z , data=Yieldloss2.0 , col=col.alpha(rangi2,0.5), ylab= "Yield Loss", xlab= "MPD", ylim= c(0,1), xlim=c(-10.5,2))
 
 # plot the MAP line, aka the mean impacts for each SES.FPD
 lines(t(newdat), afterhours2.0.mean)
@@ -104,8 +104,8 @@ shade(afterhours2.0.HPDI,t(newdat))
 
 
 labels <- c("A", "B")
-par(mfrow = c(1, 2))
-for(i in 1:2){
+par(mfrow = c(2, 1))
+for(i in 2:1){
   add_label_legend(0.02, 0.07, labels[i])
 }
 add_label()
