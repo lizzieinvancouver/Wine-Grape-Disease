@@ -65,7 +65,7 @@ for (n in 1:length(path)){
 dose <- as.data.frame(dose)
 
 prob_lwr <- .025
-prob_upr <- .905
+prob_upr <- .975
 
 
 path <- unique(names(dose))
@@ -119,18 +119,18 @@ cloud<- ggplot(mpd_all_sp_in_genus, aes(x = Type, y =mpd.obs.z )) +
   geom_point(size = 1.5, shape= 21, position = position_jitter(height = 0.5, width = 0.1)) 
 
 
-cloud  + ylab ("SES.MPD")
+cloud  + ylab ("SES.MPD") + theme_classic()
 
-Type1<- cloud + geom_point(aes(x=1, y= -2.90), colour= "red") + 
+Type1<- cloud + geom_point(aes(x=1, y= -2.75), colour= "red") + 
   geom_point(aes(x=2, y= -3.85), colour= "red") +
-  geom_point(aes(x=3, y= -1.99), colour= "red") +
+  geom_point(aes(x=3, y= -1.97), colour= "red") +
   geom_point(aes(x=4, y= -3.16), colour= "red") +
-  geom_point(aes(x=5, y= -3.45), colour= "red") +
+  geom_point(aes(x=5, y= -3.47), colour= "red") +
   geom_errorbar(data= cloud1, aes(ymin=lower, ymax=upper), width=0,
                 position=position_dodge(0.05)) +
   ylab ("SES.MPD") + 
   xlab ("Pathogen Type") + 
-  theme(legend.position = "none")
+  theme(legend.position = "none") + theme_classic()
 
 ######Codes for all winegrape pathogens 
 source("~/Documents/GitHub/Wine-Grape-Disease/analysis/scripts/Cleaninghostrangesnew.R")
@@ -287,7 +287,7 @@ dose <- as.data.frame(dose)
 
 #codes for 93% prediction interval
 prob_lwr <- .025
-prob_upr <- .905
+prob_upr <- .975
 
 #new path
 path <- unique(names(dose))
@@ -335,15 +335,16 @@ cloud<- ggplot(mpd.all.sp.in.genus_ALL, aes(x = Type, y =mpd.obs.z )) +
   geom_point(size = 1.5, shape= 21, position = position_jitter(height = 0.5, width = 0.1)) 
 
 #codes for prediction median and error bars based on prediction intervals
-Type2 <- cloud + geom_point(aes(x=1, y= -3.0508140), colour= "red") + 
-  geom_point(aes(x=2, y= -1.6957303), colour= "red") +
-  geom_point(aes(x=3, y= -0.73529445), colour= "red") +
-  geom_point(aes(x=4, y= -4.175719), colour= "red") +
-  geom_point(aes(x=5, y= -4.191239), colour= "red") +
+Type2 <- cloud + geom_point(aes(x=1, y= -3.0608140), colour= "red")+ 
+  geom_point(aes(x=2, y= -1.705), colour= "red") +
+  geom_point(aes(x=3, y= -0.77), colour= "red") +
+  geom_point(aes(x=4, y= -4.18), colour= "red") +
+  geom_point(aes(x=5, y= -4.18), colour= "red") +
   geom_errorbar(data= cloud1, aes(ymin=lower, ymax=upper, colour= "red"), width=0,
                 position=position_dodge(0.05)) +
   ylab ("SES.MPD") + 
-  xlab ("Pathogen Type") + 
+  xlab ("Pathogen Type") +
+  theme_classic() +
   theme(legend.position = "none")
 
 #making figure TypeofPathogen_Combined.pdf
