@@ -89,7 +89,7 @@ for ( i in 1:10 )
 
 # summarize the distribution of dose2.0
 afterhours2.0.mean <- apply( afterhours2.0 , 2 , mean )
-afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.89 )
+afterhours2.0.HPDI <- apply( afterhours2.0 , 2 , HPDI , prob=0.95 )
 
 
 #below plots Inverselogit_linearmodel.pdf

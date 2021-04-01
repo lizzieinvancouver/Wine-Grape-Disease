@@ -67,7 +67,7 @@ Yieldloss3.0$impact <- Yieldloss3.0$impact * 0.01
 
 
 #### Linear_Model
-impact_linear_model <- stan_glm(impact~ SES.FPD, data = Yieldloss2.0,
+impact_linear_model <- stan_glm(impact~ FPD, data = Yieldloss2.0,
                                 family = gaussian(link="identity"),)
 
 summary(impact_linear_model,digits= 4)
