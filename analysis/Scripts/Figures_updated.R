@@ -5,6 +5,12 @@ rm(list=ls()) # remove everything currently held in the R memory
 options(stringsAsFactors=FALSE)
 setwd("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/")
 
+library(rstanarm)
+library(tidyverse)
+library(taxize)
+library(plyr)
+library(egg)
+
 #plots phylogenetic_metrics.pdf
 mntd.all.sp.in.genus_ALL <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/mntd.all.sp.in.genus_ALL.csv")
 mpd.all.sp.in.genus_ALL <- read.csv("~/Documents/GitHub/Wine-Grape-Disease/analysis/output/mpd.all.sp.in.genus_ALL.csv")
@@ -127,7 +133,7 @@ Type1<- cloud + geom_point(aes(x=1, y= -2.75), colour= "red") +
   geom_point(aes(x=4, y= -3.16), colour= "red") +
   geom_point(aes(x=5, y= -3.47), colour= "red") +
   geom_errorbar(data= cloud1, aes(ymin=lower, ymax=upper), width=0,
-                position=position_dodge(0.05)) +
+                position=position_dodge(0.05), colour= "black") +
   ylab ("SES.MPD") + 
   xlab ("Pathogen Type") + 
   theme(legend.position = "none") + theme_classic()
@@ -285,7 +291,7 @@ for (n in 1:length(path)){
 #makes output a dataframe
 dose <- as.data.frame(dose)
 
-#codes for 93% prediction interval
+#codes for 95% prediction interval
 prob_lwr <- .025
 prob_upr <- .975
 
@@ -340,8 +346,8 @@ Type2 <- cloud + geom_point(aes(x=1, y= -3.0608140), colour= "red")+
   geom_point(aes(x=3, y= -0.77), colour= "red") +
   geom_point(aes(x=4, y= -4.18), colour= "red") +
   geom_point(aes(x=5, y= -4.18), colour= "red") +
-  geom_errorbar(data= cloud1, aes(ymin=lower, ymax=upper, colour= "red"), width=0,
-                position=position_dodge(0.05)) +
+  geom_errorbar(data= cloud1, aes(ymin=lower, ymax=upper,), width=0,
+                position=position_dodge(0.05), colour= "black") +
   ylab ("SES.MPD") + 
   xlab ("Pathogen Type") +
   theme_classic() +
